@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxury Nail Designs</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#D4AF37", secondary: "#F5F5F5" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333333;
+      }
+      h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      }
+      .hero-section {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=elegant%20luxury%20nail%20art%20design%20with%20gold%20accents%20on%20a%20woman%5Cs%20hand%2C%20professional%20studio%20lighting%2C%20soft%20focus%2C%20high-end%20nail%20salon%20atmosphere%2C%20neutral%20background%20that%20transitions%20to%20white%20on%20the%20left%20side%2C%20perfect%20manicure%20with%20intricate%20details%2C%20glossy%20finish&width=1920&height=1080&seq=nail1&orientation=landscape');
+      background-size: cover;
+      background-position: center;
+      }
+      .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .gallery-item {
+      transition: all 0.3s ease;
+      }
+      .quick-view {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      }
+      .gallery-item:hover .quick-view {
+      opacity: 1;
+      }
+      .filter-btn.active {
+      color: #D4AF37;
+      border-bottom: 2px solid #D4AF37;
+      }
+      input:focus {
+      outline: none;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Navigation -->
+    <nav
+      class="w-full bg-white py-4 px-6 flex items-center justify-between shadow-sm fixed top-0 z-50"
+    >
+      <div class="flex items-center">
+        <h1 class="text-2xl font-['Pacifico'] text-primary">logo</h1>
+      </div>
+      <div class="hidden md:flex items-center space-x-8">
+        <a
+          href="#home"
+          class="text-sm font-medium hover:text-primary transition-colors"
+          >Home</a
+        >
+        <a
+          href="#gallery"
+          class="text-sm font-medium hover:text-primary transition-colors"
+          >Gallery</a
+        >
+        <a
+          href="#about"
+          class="text-sm font-medium hover:text-primary transition-colors"
+          >About</a
+        >
+        <a
+          href="#contact"
+          class="text-sm font-medium hover:text-primary transition-colors"
+          >Contact</a
+        >
+      </div>
+      <div class="flex items-center space-x-4">
+        <a
+          href="#"
+          class="bg-primary text-white px-5 py-2 text-sm font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors"
+          >Book Now</a
+        >
+        <div class="md:hidden w-8 h-8 flex items-center justify-center">
+          <i class="ri-menu-line ri-lg"></i>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero-section w-full h-screen flex items-center justify-center pt-16"
+    >
+      <div class="w-full max-w-6xl mx-auto px-6 text-center">
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+        >
+          Elevate Your Style with Handcrafted Nails
+        </h1>
+        <p class="text-white text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+          Discover our premium collection of bespoke nail designs created with
+          precision and artistry.
+        </p>
+        <a
+          href="#gallery"
+          class="inline-block bg-primary text-white px-8 py-3 text-base font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors"
+          >View Gallery</a
+        >
+      </div>
+      <div
+        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <div class="w-8 h-8 flex items-center justify-center text-white">
+          <i class="ri-arrow-down-line ri-lg"></i>
+        </div>
+      </div>
+    </section>
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-secondary">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+          Our Signature Designs
+        </h2>
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center mb-10 gap-2 md:gap-8">
+          <button
+            class="filter-btn active px-4 py-2 text-sm font-medium transition-colors"
+          >
+            All
+          </button>
+          <button
+            class="filter-btn px-4 py-2 text-sm font-medium transition-colors"
+          >
+            Glossy
+          </button>
+          <button
+            class="filter-btn px-4 py-2 text-sm font-medium transition-colors"
+          >
+            Matte
+          </button>
+          <button
+            class="filter-btn px-4 py-2 text-sm font-medium transition-colors"
+          >
+            Bridal
+          </button>
+          <button
+            class="filter-btn px-4 py-2 text-sm font-medium transition-colors"
+          >
+            Bold
+          </button>
+        </div>
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Gallery Item 1 -->
+          <div class="gallery-item bg-white rounded overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=elegant%20glossy%20nude%20nail%20design%20with%20subtle%20gold%20accent%2C%20professional%20manicure%20on%20slender%20fingers%2C%20studio%20lighting%2C%20soft%20background%2C%20luxury%20nail%20salon%20atmosphere%2C%20perfect%20finish%2C%20high-end%20nail%20art&width=600&height=800&seq=nail2&orientation=portrait"
+                alt="Glossy Nude Nails"
+                class="w-full h-80 object-cover object-top"
+              />
+              <div
+                class="quick-view absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-white rounded-full"
+                >
+                  <i class="ri-search-line ri-lg text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium">Elegant Nude Gloss</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Timeless elegance with subtle gold accents
+              </p>
+            </div>
+          </div>
+          <!-- Gallery Item 2 -->
+          <div class="gallery-item bg-white rounded overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=matte%20burgundy%20nail%20design%20with%20geometric%20gold%20details%2C%20professional%20manicure%20on%20elegant%20hands%2C%20studio%20lighting%2C%20soft%20background%2C%20luxury%20nail%20salon%20atmosphere%2C%20perfect%20finish%2C%20high-end%20nail%20art%2C%20trendy%20design&width=600&height=800&seq=nail3&orientation=portrait"
+                alt="Matte Burgundy Nails"
+                class="w-full h-80 object-cover object-top"
+              />
+              <div
+                class="quick-view absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-white rounded-full"
+                >
+                  <i class="ri-search-line ri-lg text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium">Burgundy Matte</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Bold geometric patterns with gold accents
+              </p>
+            </div>
+          </div>
+          <!-- Gallery Item 3 -->
+          <div class="gallery-item bg-white rounded overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=bridal%20nail%20design%20with%20pearl%20accents%20and%20delicate%20lace%20patterns%2C%20french%20manicure%20base%2C%20professional%20nail%20art%20on%20elegant%20hands%2C%20studio%20lighting%2C%20soft%20background%2C%20luxury%20nail%20salon%20atmosphere%2C%20perfect%20finish%2C%20wedding-ready%20nails&width=600&height=800&seq=nail4&orientation=portrait"
+                alt="Bridal Nails"
+                class="w-full h-80 object-cover object-top"
+              />
+              <div
+                class="quick-view absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-white rounded-full"
+                >
+                  <i class="ri-search-line ri-lg text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium">Bridal Elegance</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Pearl accents with delicate lace patterns
+              </p>
+            </div>
+          </div>
+          <!-- Gallery Item 4 -->
+          <div class="gallery-item bg-white rounded overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=bold%20cobalt%20blue%20nail%20design%20with%20minimalist%20white%20geometric%20accents%2C%20modern%20manicure%20on%20elegant%20hands%2C%20studio%20lighting%2C%20soft%20background%2C%20luxury%20nail%20salon%20atmosphere%2C%20perfect%20finish%2C%20high-end%20nail%20art%2C%20trendy%20design&width=600&height=800&seq=nail5&orientation=portrait"
+                alt="Bold Blue Nails"
+                class="w-full h-80 object-cover object-top"
+              />
+              <div
+                class="quick-view absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-white rounded-full"
+                >
+                  <i class="ri-search-line ri-lg text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium">Cobalt Statement</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Bold blue with minimalist white accents
+              </p>
+            </div>
+          </div>
+          <!-- Gallery Item 5 -->
+          <div class="gallery-item bg-white rounded overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=glossy%20emerald%20green%20nail%20design%20with%20gold%20foil%20accents%2C%20almond%20shaped%20nails%2C%20professional%20manicure%20on%20elegant%20hands%2C%20studio%20lighting%2C%20soft%20background%2C%20luxury%20nail%20salon%20atmosphere%2C%20perfect%20finish%2C%20high-end%20nail%20art&width=600&height=800&seq=nail6&orientation=portrait"
+                alt="Emerald Nails"
+                class="w-full h-80 object-cover object-top"
+              />
+              <div
+                class="quick-view absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-white rounded-full"
+                >
+                  <i class="ri-search-line ri-lg text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium">Emerald Luxe</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Rich green with gold foil details
+              </p>
+            </div>
+          </div>
+          <!-- Gallery Item 6 -->
+          <div class="gallery-item bg-white rounded overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=matte%20black%20nail%20design%20with%20subtle%20glitter%20ombre%20effect%2C%20stiletto%20shaped%20nails%2C%20professional%20manicure%20on%20elegant%20hands%2C%20studio%20lighting%2C%20soft%20background%2C%20luxury%20nail%20salon%20atmosphere%2C%20perfect%20finish%2C%20high-end%20nail%20art%2C%20dramatic%20design&width=600&height=800&seq=nail7&orientation=portrait"
+                alt="Matte Black Nails"
+                class="w-full h-80 object-cover object-top"
+              />
+              <div
+                class="quick-view absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-white rounded-full"
+                >
+                  <i class="ri-search-line ri-lg text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium">Midnight Glimmer</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Matte black with subtle glitter ombre
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-12">
+          <button
+            id="loadMoreBtn"
+            class="inline-block border-2 border-primary text-primary px-8 py-3 text-base font-medium !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-colors"
+          >
+            Load More
+          </button>
+        </div>
+        <div
+          id="additionalGallery"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 hidden"
+        >
+          <!-- Additional Gallery Item 1 -->
+          <div class="gallery-item bg-white rounded overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=holographic%20chrome%20nail%20design%20with%20iridescent%20finish%2C%20modern%20nail%20art%20on%20elegant%20hands%2C%20studio%20lighting%2C%20soft%20background%2C%20luxury%20nail%20salon%20atmosphere%2C%20perfect%20finish%2C%20trendy%20design&width=600&height=800&seq=nail9&orientation=portrait"
+                alt="Chrome Nails"
+                class="w-full h-80 object-cover object-top"
+              />
+              <div
+                class="quick-view absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-white rounded-full"
+                >
+                  <i class="ri-search-line ri-lg text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium">Holographic Chrome</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Iridescent finish with modern appeal
+              </p>
+            </div>
+          </div>
+          <!-- Additional Gallery Item 2 -->
+          <div class="gallery-item bg-white rounded overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=pastel%20rainbow%20french%20tips%20nail%20design%2C%20delicate%20and%20elegant%2C%20professional%20manicure%20on%20slender%20fingers%2C%20studio%20lighting%2C%20soft%20background%2C%20luxury%20nail%20salon%20atmosphere%2C%20perfect%20finish&width=600&height=800&seq=nail10&orientation=portrait"
+                alt="Rainbow Tips"
+                class="w-full h-80 object-cover object-top"
+              />
+              <div
+                class="quick-view absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-white rounded-full"
+                >
+                  <i class="ri-search-line ri-lg text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium">Rainbow Tips</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Pastel french tips with a playful twist
+              </p>
+            </div>
+          </div>
+          <!-- Additional Gallery Item 3 -->
+          <div class="gallery-item bg-white rounded overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=minimalist%20abstract%20line%20art%20nail%20design%20in%20white%20and%20gold%2C%20clean%20modern%20aesthetic%2C%20professional%20manicure%20on%20elegant%20hands%2C%20studio%20lighting%2C%20soft%20background%2C%20luxury%20nail%20salon%20atmosphere&width=600&height=800&seq=nail11&orientation=portrait"
+                alt="Abstract Lines"
+                class="w-full h-80 object-cover object-top"
+              />
+              <div
+                class="quick-view absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-white rounded-full"
+                >
+                  <i class="ri-search-line ri-lg text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium">Abstract Lines</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Minimalist design with gold accents
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="md:w-1/2">
+            <img
+              src="https://readdy.ai/api/search-image?query=elegant%20nail%20salon%20interior%20with%20modern%20minimalist%20design%2C%20soft%20lighting%2C%20comfortable%20nail%20stations%2C%20luxury%20atmosphere%2C%20high-end%20equipment%2C%20clean%20and%20sophisticated%20space%2C%20neutral%20color%20palette%20with%20gold%20accents&width=800&height=600&seq=nail8&orientation=landscape"
+              alt="Nail Salon Interior"
+              class="w-full h-auto rounded shadow-lg"
+            />
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Artistry</h2>
+            <p class="text-gray-700 mb-6">
+              At our luxury nail studio, we blend artistry with precision to
+              create bespoke nail designs that elevate your personal style. Each
+              design is meticulously crafted using premium products and
+              innovative techniques, ensuring long-lasting beauty and impeccable
+              finish.
+            </p>
+            <p class="text-gray-700 mb-8">
+              Our team of certified nail artists continuously train in the
+              latest trends and techniques to bring you cutting-edge designs
+              that make a statement.
+            </p>
+            <a
+              href="#contact"
+              class="inline-block bg-primary text-white px-8 py-3 text-base font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-secondary">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+          Client Experiences
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div class="flex text-primary mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "The attention to detail is incredible. My bridal nails were
+              absolute perfection and lasted through my entire honeymoon. Worth
+              every penny!"
+            </p>
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3"
+              >
+                <i class="ri-user-line"></i>
+              </div>
+              <div>
+                <h4 class="font-medium">Olivia Bennett</h4>
+                <p class="text-sm text-gray-500">New York, NY</p>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div class="flex text-primary mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "I always receive compliments on my nails. The designs are unique
+              and the quality is exceptional. I wouldn't trust anyone else with
+              my manicures."
+            </p>
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3"
+              >
+                <i class="ri-user-line"></i>
+              </div>
+              <div>
+                <h4 class="font-medium">Sophia Rodriguez</h4>
+                <p class="text-sm text-gray-500">Miami, FL</p>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div class="flex text-primary mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "As someone who's always on camera for my job, having flawless
+              nails is essential. Their designs are both camera-ready and
+              durable. Absolutely love them!"
+            </p>
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3"
+              >
+                <i class="ri-user-line"></i>
+              </div>
+              <div>
+                <h4 class="font-medium">Emma Thompson</h4>
+                <p class="text-sm text-gray-500">Los Angeles, CA</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-12">
+          <div class="md:w-1/2">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Get In Touch</h2>
+            <p class="text-gray-700 mb-8">
+              Ready to elevate your nail game? Contact us to book an appointment
+              or inquire about our services. We look forward to creating
+              something beautiful for you.
+            </p>
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4"
+                >
+                  <i class="ri-map-pin-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium mb-1">Visit Us</h4>
+                  <p class="text-gray-600">
+                    123 Fashion Avenue, Suite 45<br />New York, NY 10001
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4"
+                >
+                  <i class="ri-phone-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium mb-1">Call Us</h4>
+                  <p class="text-gray-600">+1 (212) 555-7890</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary mr-4"
+                >
+                  <i class="ri-mail-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium mb-1">Email Us</h4>
+                  <p class="text-gray-600">appointments@luxurynails.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="md:w-1/2">
+            <form class="bg-secondary p-8 rounded">
+              <h3 class="text-2xl font-medium mb-6">Book an Appointment</h3>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-2" for="name"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  class="w-full px-4 py-3 border-none rounded bg-white"
+                  placeholder="Your name"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-2" for="email"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-3 border-none rounded bg-white"
+                  placeholder="Your email"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-2" for="phone"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  class="w-full px-4 py-3 border-none rounded bg-white"
+                  placeholder="Your phone"
+                />
+              </div>
+              <div class="mb-6">
+                <label class="block text-sm font-medium mb-2" for="message"
+                  >Your Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="4"
+                  class="w-full px-4 py-3 border-none rounded bg-white"
+                  placeholder="Tell us about the service you're interested in"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-primary text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-colors"
+              >
+                Submit Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Instagram Feed Section -->
+    <section class="py-20 bg-secondary">
+      <div class="max-w-6xl mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between mb-12"
+        >
+          <h2 class="text-3xl md:text-4xl font-bold">Follow Our Instagram</h2>
+          <a
+            href="#"
+            class="flex items-center text-primary font-medium mt-4 md:mt-0"
+          >
+            <span>@luxurynailstudio</span>
+            <div class="w-6 h-6 flex items-center justify-center ml-2">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <img
+            src="https://readdy.ai/api/search-image?query=close-up%20of%20elegant%20nail%20design%20on%20womans%20hand%2C%20professional%20manicure%2C%20studio%20lighting%2C%20luxury%20nail%20art%2C%20perfect%20finish%2C%20high-end%20nail%20salon%20atmosphere&width=400&height=400&seq=insta1&orientation=squarish"
+            alt="Instagram Post"
+            class="w-full h-64 object-cover object-top rounded"
+          />
+          <img
+            src="https://readdy.ai/api/search-image?query=close-up%20of%20bold%20red%20nail%20design%20with%20gold%20accents%20on%20womans%20hand%2C%20professional%20manicure%2C%20studio%20lighting%2C%20luxury%20nail%20art%2C%20perfect%20finish%2C%20high-end%20nail%20salon%20atmosphere&width=400&height=400&seq=insta2&orientation=squarish"
+            alt="Instagram Post"
+            class="w-full h-64 object-cover object-top rounded"
+          />
+          <img
+            src="https://readdy.ai/api/search-image?query=close-up%20of%20pastel%20pink%20nail%20design%20with%20pearl%20details%20on%20womans%20hand%2C%20professional%20manicure%2C%20studio%20lighting%2C%20luxury%20nail%20art%2C%20perfect%20finish%2C%20high-end%20nail%20salon%20atmosphere&width=400&height=400&seq=insta3&orientation=squarish"
+            alt="Instagram Post"
+            class="w-full h-64 object-cover object-top rounded"
+          />
+          <img
+            src="https://readdy.ai/api/search-image?query=close-up%20of%20french%20manicure%20with%20modern%20twist%20on%20womans%20hand%2C%20professional%20nail%20art%2C%20studio%20lighting%2C%20luxury%20design%2C%20perfect%20finish%2C%20high-end%20nail%20salon%20atmosphere&width=400&height=400&seq=insta4&orientation=squarish"
+            alt="Instagram Post"
+            class="w-full h-64 object-cover object-top rounded"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-white py-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mb-8"
+        >
+          <h1 class="text-2xl font-['Pacifico'] text-primary mb-6 md:mb-0">
+            logo
+          </h1>
+          <div class="flex space-x-6">
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-primary hover:text-primary transition-colors"
+            >
+              <i class="ri-instagram-line"></i>
+            </a>
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-primary hover:text-primary transition-colors"
+            >
+              <i class="ri-pinterest-line"></i>
+            </a>
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-primary hover:text-primary transition-colors"
+            >
+              <i class="ri-facebook-line"></i>
+            </a>
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-primary hover:text-primary transition-colors"
+            >
+              <i class="ri-tiktok-line"></i>
+            </a>
+          </div>
+        </div>
+        <hr class="border-gray-200 mb-8" />
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-sm text-gray-500 mb-4 md:mb-0">
+            &copy; 2025 Luxury Nail Studio. All rights reserved.
+          </p>
+          <div class="flex flex-wrap justify-center gap-6">
+            <a href="#" class="text-sm text-gray-500 hover:text-primary"
+              >Privacy Policy</a
+            >
+            <a href="#" class="text-sm text-gray-500 hover:text-primary"
+              >Terms of Service</a
+            >
+            <a href="#" class="text-sm text-gray-500 hover:text-primary"
+              >Booking Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Filter buttons functionality
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            // Remove active class from all buttons
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            // Add active class to clicked button
+            this.classList.add("active");
+          });
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadMoreBtn = document.getElementById("loadMoreBtn");
+        const additionalGallery = document.getElementById("additionalGallery");
+        let isExpanded = false;
+
+        loadMoreBtn.addEventListener("click", function () {
+          if (!isExpanded) {
+            additionalGallery.classList.remove("hidden");
+            loadMoreBtn.textContent = "Show Less";
+            isExpanded = true;
+          } else {
+            additionalGallery.classList.add("hidden");
+            loadMoreBtn.textContent = "Load More";
+            isExpanded = false;
+
+            // Smooth scroll back to the main gallery section
+            const gallerySection = document.getElementById("gallery");
+            window.scrollTo({
+              top: gallerySection.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80, // Adjust for fixed header
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

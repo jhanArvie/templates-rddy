@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drive Right Academy - Your Road to Confidence</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#f59e0b" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Inter', sans-serif;
+      }
+      .video-container {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: 600px;
+      }
+      .video-container::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.6);
+          z-index: 1;
+      }
+      .video-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+      .custom-checkbox {
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          border: 2px solid #e2e8f0;
+          border-radius: 4px;
+          position: relative;
+          cursor: pointer;
+      }
+      .custom-checkbox:checked {
+          background-color: #3b82f6;
+          border-color: #3b82f6;
+      }
+      .custom-checkbox:checked::after {
+          content: "";
+          position: absolute;
+          top: 3px;
+          left: 7px;
+          width: 4px;
+          height: 8px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
+      .custom-switch {
+          appearance: none;
+          width: 44px;
+          height: 24px;
+          border-radius: 12px;
+          background-color: #e2e8f0;
+          position: relative;
+          cursor: pointer;
+          transition: background-color 0.3s;
+      }
+      .custom-switch::after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: white;
+          transition: transform 0.3s;
+      }
+      .custom-switch:checked {
+          background-color: #3b82f6;
+      }
+      .custom-switch:checked::after {
+          transform: translateX(20px);
+      }
+      .custom-range {
+          appearance: none;
+          width: 100%;
+          height: 6px;
+          background: #e2e8f0;
+          border-radius: 3px;
+          outline: none;
+      }
+      .custom-range::-webkit-slider-thumb {
+          appearance: none;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: #3b82f6;
+          cursor: pointer;
+      }
+      .tab-content {
+          display: none;
+      }
+      .tab-content.active {
+          display: block;
+      }
+      .accordion-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
+      }
+      .accordion-content.active {
+          max-height: 500px;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary">logo</a>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#programs"
+              class="text-gray-700 hover:text-primary font-medium"
+              >Programs</a
+            >
+            <a
+              href="#instructors"
+              class="text-gray-700 hover:text-primary font-medium"
+              >Instructors</a
+            >
+            <a
+              href="#vehicles"
+              class="text-gray-700 hover:text-primary font-medium"
+              >Vehicles</a
+            >
+            <a
+              href="#pricing"
+              class="text-gray-700 hover:text-primary font-medium"
+              >Pricing</a
+            >
+            <a href="#faq" class="text-gray-700 hover:text-primary font-medium"
+              >FAQ</a
+            >
+            <a
+              href="#contact"
+              class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap"
+              >Contact Us</a
+            >
+          </div>
+          <div class="md:hidden flex items-center">
+            <button
+              type="button"
+              class="text-gray-700 hover:text-primary w-10 h-10 flex items-center justify-center"
+            >
+              <i class="ri-menu-line ri-lg"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="video-container mt-16">
+      <div
+        style="background-image: url('https://readdy.ai/api/search-image?query=Professional%20driving%20instructor%20teaching%20student%20in%20a%20clean%20modern%20car%2C%20driving%20school%20scene%2C%20professional%20training%2C%20high%20quality%2C%20photorealistic%2C%20bright%20daylight%2C%20modern%20driving%20school%20vehicles%2C%20student%20learning%20to%20drive&width=1920&height=1080&seq=1&orientation=landscape');"
+        class="video-bg"
+      ></div>
+      <div class="absolute inset-0 z-10 flex items-center justify-center">
+        <div class="text-center px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+          >
+            Your Road to Confidence Starts Here
+          </h1>
+          <p class="text-xl text-white mb-8">
+            Professional driving instruction with a 98% first-time pass rate.
+            Learn from the best and drive with confidence.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="#book"
+              class="bg-primary text-white px-6 py-3 !rounded-button font-medium shadow-lg hover:bg-blue-600 transition whitespace-nowrap"
+              >Book First Lesson</a
+            >
+            <a
+              href="#check"
+              class="bg-transparent border-2 border-white text-white px-6 py-3 !rounded-button font-medium hover:bg-white hover:text-gray-900 transition whitespace-nowrap"
+              >Free Eligibility Check</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="py-12 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-white p-6 rounded shadow-sm flex items-start">
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-4"
+            >
+              <i class="ri-verified-badge-line ri-2x"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">
+                DMV-Certified Instructors
+              </h3>
+              <p class="text-gray-600">
+                All our instructors are certified and regularly evaluated
+              </p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded shadow-sm flex items-start">
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-4"
+            >
+              <i class="ri-percent-line ri-2x"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">
+                98% First-Time Pass Rate
+              </h3>
+              <p class="text-gray-600">
+                Our students consistently pass their driving tests on the first
+                attempt
+              </p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded shadow-sm flex items-start">
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-4"
+            >
+              <i class="ri-calendar-line ri-2x"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">Flexible Scheduling</h3>
+              <p class="text-gray-600">
+                Book lessons that fit your schedule, including evenings and
+                weekends
+              </p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded shadow-sm flex items-start">
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-4"
+            >
+              <i class="ri-translate-2 ri-2x"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">Bilingual Instruction</h3>
+              <p class="text-gray-600">
+                Lessons available in English, Spanish, Mandarin, and more
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Matrix -->
+    <section id="programs" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">
+            Driving Programs for Every Need
+          </h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Whether you're a first-time driver, need a refresher, or want to
+            improve specific skills, we have a program designed for you.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+          <div class="flex border-b">
+            <button
+              class="tab-button flex-1 py-4 px-1 text-center font-medium border-b-2 border-primary text-primary"
+              data-tab="teen"
+            >
+              <div
+                class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-100 rounded-full text-primary mb-2"
+              >
+                <i class="ri-user-star-line ri-2x"></i>
+              </div>
+              Teen Courses
+            </button>
+            <button
+              class="tab-button flex-1 py-4 px-1 text-center font-medium border-b-2 border-transparent text-gray-500"
+              data-tab="adult"
+            >
+              <div
+                class="w-12 h-12 mx-auto flex items-center justify-center bg-gray-100 rounded-full text-gray-500 mb-2"
+              >
+                <i class="ri-user-settings-line ri-2x"></i>
+              </div>
+              Adult Refreshers
+            </button>
+            <button
+              class="tab-button flex-1 py-4 px-1 text-center font-medium border-b-2 border-transparent text-gray-500"
+              data-tab="senior"
+            >
+              <div
+                class="w-12 h-12 mx-auto flex items-center justify-center bg-gray-100 rounded-full text-gray-500 mb-2"
+              >
+                <i class="ri-user-heart-line ri-2x"></i>
+              </div>
+              Senior Drivers
+            </button>
+          </div>
+
+          <div class="tab-content active p-6" id="teen-content">
+            <div class="flex flex-col md:flex-row gap-6">
+              <div class="flex-1 bg-gray-50 p-6 rounded">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mb-4"
+                >
+                  <i class="ri-file-list-3-line ri-2x"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Permit Preparation</h3>
+                <p class="text-gray-600 mb-4">
+                  Comprehensive classroom training to help you ace your permit
+                  test on the first try.
+                </p>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>30 hours of instruction</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Practice tests included</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Digital study materials</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="flex items-center justify-center text-gray-400">
+                <i class="ri-arrow-right-line ri-2x"></i>
+              </div>
+              <div class="flex-1 bg-gray-50 p-6 rounded">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mb-4"
+                >
+                  <i class="ri-steering-2-line ri-2x"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Road Practice</h3>
+                <p class="text-gray-600 mb-4">
+                  Hands-on driving lessons with patient, experienced instructors
+                  in real traffic conditions.
+                </p>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>6-hour packages available</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Pick-up and drop-off service</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Progress tracking system</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="flex items-center justify-center text-gray-400">
+                <i class="ri-arrow-right-line ri-2x"></i>
+              </div>
+              <div class="flex-1 bg-gray-50 p-6 rounded">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mb-4"
+                >
+                  <i class="ri-award-line ri-2x"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">License Test Package</h3>
+                <p class="text-gray-600 mb-4">
+                  Final preparation and vehicle rental for your DMV driving
+                  test.
+                </p>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Pre-test warm-up lesson</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Vehicle rental for test</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>DMV appointment assistance</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content p-6" id="adult-content">
+            <div class="flex flex-col md:flex-row gap-6">
+              <div class="flex-1 bg-gray-50 p-6 rounded">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mb-4"
+                >
+                  <i class="ri-road-map-line ri-2x"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Highway Confidence</h3>
+                <p class="text-gray-600 mb-4">
+                  Specialized training to help you feel comfortable and safe on
+                  highways and freeways.
+                </p>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Merging techniques</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Lane changing practice</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>High-speed driving skills</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="flex items-center justify-center text-gray-400">
+                <i class="ri-arrow-right-line ri-2x"></i>
+              </div>
+              <div class="flex-1 bg-gray-50 p-6 rounded">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mb-4"
+                >
+                  <i class="ri-parking-box-line ri-2x"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">
+                  Parallel Parking Focus
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Master the art of parallel parking with our specialized
+                  training sessions.
+                </p>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Step-by-step technique</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Practice in tight spaces</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Confidence building exercises</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content p-6" id="senior-content">
+            <div class="flex flex-col md:flex-row gap-6">
+              <div class="flex-1 bg-gray-50 p-6 rounded">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mb-4"
+                >
+                  <i class="ri-health-book-line ri-2x"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Safety Assessments</h3>
+                <p class="text-gray-600 mb-4">
+                  Comprehensive evaluation of your driving skills with
+                  personalized recommendations.
+                </p>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Vision and reaction testing</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Driving habits evaluation</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Detailed assessment report</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="flex items-center justify-center text-gray-400">
+                <i class="ri-arrow-right-line ri-2x"></i>
+              </div>
+              <div class="flex-1 bg-gray-50 p-6 rounded">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mb-4"
+                >
+                  <i class="ri-shield-check-line ri-2x"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Defensive Driving</h3>
+                <p class="text-gray-600 mb-4">
+                  Learn advanced techniques to stay safe on today's busy roads.
+                </p>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Hazard perception training</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Modern traffic navigation</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                    <span>Emergency maneuver practice</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Instructor Showcase -->
+    <section id="instructors" class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Meet Our Expert Instructors</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Our team of certified instructors brings decades of experience and
+            specialized expertise to help you become a confident driver.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20male%20driving%20instructor%20in%20his%2040s%2C%20friendly%20smile%2C%20professional%20attire%2C%20headshot%20portrait%2C%20high%20quality%2C%20photorealistic&width=600&height=600&seq=2&orientation=squarish"
+                alt="Instructor Alex"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-1">Alex Richardson</h3>
+              <p class="text-gray-500 mb-3">10+ Years Experience</p>
+              <div class="flex items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-sm px-3 py-1 rounded-full"
+                  >Specializes in Nervous Drivers</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                "My goal is to help you feel comfortable behind the wheel. We'll
+                take it at your pace until you're confident."
+              </p>
+              <div class="flex items-center text-yellow-500">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <span class="ml-2 text-gray-600">256 reviews</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20female%20driving%20instructor%20in%20her%2030s%2C%20confident%20smile%2C%20professional%20attire%2C%20headshot%20portrait%2C%20high%20quality%2C%20photorealistic&width=600&height=600&seq=3&orientation=squarish"
+                alt="Instructor Sarah"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-1">Sarah Johnson</h3>
+              <p class="text-gray-500 mb-3">8 Years Experience</p>
+              <div class="flex items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-sm px-3 py-1 rounded-full"
+                  >Teen Specialist</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                "I love helping teens build good driving habits from the start.
+                Safety and confidence are my priorities."
+              </p>
+              <div class="flex items-center text-yellow-500">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-half-fill"></i>
+                <span class="ml-2 text-gray-600">189 reviews</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20male%20driving%20instructor%20in%20his%2050s%2C%20former%20police%20officer%2C%20confident%20pose%2C%20professional%20attire%2C%20headshot%20portrait%2C%20high%20quality%2C%20photorealistic&width=600&height=600&seq=4&orientation=squarish"
+                alt="Instructor Sam"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-1">Sam Martinez</h3>
+              <p class="text-gray-500 mb-3">15 Years Experience</p>
+              <div class="flex items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-sm px-3 py-1 rounded-full"
+                  >Former Traffic Officer</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                "With my background in traffic enforcement, I know exactly what
+                test examiners look for. I'll help you pass with flying colors."
+              </p>
+              <div class="flex items-center text-yellow-500">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <span class="ml-2 text-gray-600">312 reviews</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20female%20driving%20instructor%20in%20her%2040s%2C%20warm%20smile%2C%20multilingual%2C%20professional%20attire%2C%20headshot%20portrait%2C%20high%20quality%2C%20photorealistic&width=600&height=600&seq=5&orientation=squarish"
+                alt="Instructor Maria"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-1">Maria Rodriguez</h3>
+              <p class="text-gray-500 mb-3">12 Years Experience</p>
+              <div class="flex items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-sm px-3 py-1 rounded-full"
+                  >Bilingual (English/Spanish)</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                "I specialize in helping international drivers adapt to US roads
+                and rules. Instruction available in English or Spanish."
+              </p>
+              <div class="flex items-center text-yellow-500">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-half-fill"></i>
+                <span class="ml-2 text-gray-600">278 reviews</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Vehicle Fleet -->
+    <section id="vehicles" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Our Training Vehicle Fleet</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Learn in modern, well-maintained vehicles equipped with dual
+            controls for safety. We use the same models that are commonly used
+            in DMV driving tests.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=Modern%20compact%20sedan%20driving%20school%20car%20with%20dual%20controls%2C%20clean%20exterior%2C%20driving%20school%20logo%20on%20door%2C%20high%20quality%2C%20photorealistic%2C%20white%20background&width=800&height=600&seq=6&orientation=landscape"
+                alt="Compact Sedan"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm"
+              >
+                Most Popular
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">Compact Sedan</h3>
+              <p class="text-gray-600 mb-4">
+                Our Toyota Corolla models are perfect for new drivers. Easy to
+                maneuver with excellent visibility.
+              </p>
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-steering-fill"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700"
+                    >Dual controls for instructor safety</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-camera-line"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700"
+                    >Backup camera for parking practice</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-car-line"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700">Automatic transmission</span>
+                </div>
+              </div>
+              <div class="bg-blue-50 p-3 rounded text-center">
+                <span class="text-primary font-medium"
+                  >Same model used in DMV tests</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=Modern%20SUV%20driving%20school%20car%20with%20dual%20controls%2C%20clean%20exterior%2C%20driving%20school%20logo%20on%20door%2C%20high%20quality%2C%20photorealistic%2C%20white%20background&width=800&height=600&seq=7&orientation=landscape"
+                alt="Crossover SUV"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">Crossover SUV</h3>
+              <p class="text-gray-600 mb-4">
+                Our Honda CR-V models provide a higher seating position and
+                excellent visibility for confident driving.
+              </p>
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-steering-fill"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700"
+                    >Dual controls for instructor safety</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-sensor-line"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700"
+                    >Parking sensors for easier maneuvering</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-car-line"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700">Automatic transmission</span>
+                </div>
+              </div>
+              <div class="bg-blue-50 p-3 rounded text-center">
+                <span class="text-primary font-medium"
+                  >Perfect for larger vehicle practice</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=Modern%20hybrid%20driving%20school%20car%20with%20dual%20controls%2C%20clean%20exterior%2C%20driving%20school%20logo%20on%20door%2C%20high%20quality%2C%20photorealistic%2C%20white%20background&width=800&height=600&seq=8&orientation=landscape"
+                alt="Hybrid Sedan"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">Hybrid Sedan</h3>
+              <p class="text-gray-600 mb-4">
+                Our Toyota Prius models are fuel-efficient and feature the
+                latest safety technology.
+              </p>
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-steering-fill"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700"
+                    >Dual controls for instructor safety</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-battery-2-charge-line"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700"
+                    >Hybrid technology experience</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-car-line"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700">Automatic transmission</span>
+                </div>
+              </div>
+              <div class="bg-blue-50 p-3 rounded text-center">
+                <span class="text-primary font-medium"
+                  >Learn with eco-friendly technology</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <p class="text-gray-600 mb-6">
+            All vehicles are professionally maintained and sanitized between
+            lessons for your safety and comfort.
+          </p>
+          <a
+            href="#book"
+            class="bg-primary text-white px-6 py-3 !rounded-button font-medium shadow-lg hover:bg-blue-600 transition whitespace-nowrap"
+            >Schedule a Lesson</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Transparent Pricing</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            We believe in clear, upfront pricing with no hidden fees. Choose the
+            package that fits your needs and budget.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-6 border-b">
+              <h3 class="font-bold text-xl mb-2">Starter Package</h3>
+              <div class="flex items-end mb-4">
+                <span class="text-4xl font-bold">$299</span>
+                <span class="text-gray-500 ml-2">/ 5 lessons</span>
+              </div>
+              <p class="text-gray-600">
+                Perfect for beginners or those needing a quick refresher.
+              </p>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>5 behind-the-wheel lessons (2 hours each)</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Pick-up and drop-off service</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Digital progress tracking</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Basic skills development</span>
+                </li>
+                <li class="flex items-start text-gray-400">
+                  <i class="ri-close-line mt-1 mr-2"></i>
+                  <span>DMV test preparation</span>
+                </li>
+                <li class="flex items-start text-gray-400">
+                  <i class="ri-close-line mt-1 mr-2"></i>
+                  <span>Vehicle rental for test</span>
+                </li>
+              </ul>
+              <a
+                href="#book"
+                class="block w-full bg-white border border-primary text-primary text-center px-6 py-3 !rounded-button font-medium hover:bg-primary hover:text-white transition whitespace-nowrap"
+                >Select Package</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform scale-105"
+          >
+            <div class="bg-primary text-white text-center py-2">
+              <span class="font-medium">Most Popular</span>
+            </div>
+            <div class="p-6 border-b">
+              <h3 class="font-bold text-xl mb-2">Complete Course</h3>
+              <div class="flex items-end mb-4">
+                <span class="text-4xl font-bold">$599</span>
+                <span class="text-gray-500 ml-2">/ full course</span>
+              </div>
+              <div class="flex items-center">
+                <span class="line-through text-gray-400 mr-2">$699</span>
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded"
+                  >Save $100</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>10 behind-the-wheel lessons (2 hours each)</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Pick-up and drop-off service</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Digital progress tracking</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Advanced skills development</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>DMV test preparation</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Vehicle rental for test</span>
+                </li>
+              </ul>
+              <a
+                href="#book"
+                class="block w-full bg-primary text-white text-center px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+                >Select Package</a
+              >
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-6 border-b">
+              <h3 class="font-bold text-xl mb-2">Premium Package</h3>
+              <div class="flex items-end mb-4">
+                <span class="text-4xl font-bold">$899</span>
+                <span class="text-gray-500 ml-2">/ comprehensive</span>
+              </div>
+              <p class="text-gray-600">
+                Our most comprehensive package for complete confidence.
+              </p>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>15 behind-the-wheel lessons (2 hours each)</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Pick-up and drop-off service</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Digital progress tracking</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Master all driving skills</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>DMV test preparation</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Vehicle rental for test + retake if needed</span>
+                </li>
+              </ul>
+              <a
+                href="#book"
+                class="block w-full bg-white border border-primary text-primary text-center px-6 py-3 !rounded-button font-medium hover:bg-primary hover:text-white transition whitespace-nowrap"
+                >Select Package</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 bg-blue-50 p-6 rounded-lg">
+          <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-6 md:mb-0">
+              <h3 class="font-bold text-xl mb-2">
+                Special Discounts Available
+              </h3>
+              <p class="text-gray-600">
+                We offer discounts for military personnel, students, and
+                seniors. Contact us to learn more.
+              </p>
+            </div>
+            <div class="flex space-x-4">
+              <div class="flex items-center bg-white p-3 rounded shadow-sm">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-government-line ri-2x"></i>
+                </div>
+                <span class="ml-2 font-medium">Military</span>
+              </div>
+              <div class="flex items-center bg-white p-3 rounded shadow-sm">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-graduation-cap-line ri-2x"></i>
+                </div>
+                <span class="ml-2 font-medium">Student</span>
+              </div>
+              <div class="flex items-center bg-white p-3 rounded shadow-sm">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-user-heart-line ri-2x"></i>
+                </div>
+                <span class="ml-2 font-medium">Senior</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">
+            Success Stories from Our Students
+          </h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Hear from real students who have transformed their driving
+            confidence with our expert instruction.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="relative h-48 bg-gray-100">
+              <img
+                src="https://readdy.ai/api/search-image?query=Happy%20young%20woman%20in%20her%2020s%20holding%20a%20drivers%20license%2C%20excited%20expression%2C%20just%20passed%20driving%20test%2C%20high%20quality%2C%20photorealistic&width=600&height=400&seq=9&orientation=landscape"
+                alt="Testimonial 1"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+              >
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-90 rounded-full text-white"
+                >
+                  <i class="ri-play-fill ri-2x"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-yellow-500 mb-3">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+              </div>
+              <h3 class="font-bold text-xl mb-2">
+                Failed Twice Before - Passed After 3 Lessons!
+              </h3>
+              <p class="text-gray-600 mb-4">
+                "After failing my driving test twice with another school, I was
+                ready to give up. Then I found Drive Right Academy. My
+                instructor Alex was patient and identified exactly what I was
+                doing wrong. After just 3 lessons focusing on my weak points, I
+                passed with flying colors!"
+              </p>
+              <div class="flex items-center">
+                <div class="font-medium">Jennifer L.</div>
+                <div class="mx-2 text-gray-300">|</div>
+                <div class="text-gray-500">New Driver</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="relative h-48 bg-gray-100">
+              <img
+                src="https://readdy.ai/api/search-image?query=Middle-aged%20woman%20driving%20confidently%20with%20children%20in%20the%20back%20seat%2C%20grandmother%20driving%20grandchildren%2C%20happy%20family%20in%20car%2C%20high%20quality%2C%20photorealistic&width=600&height=400&seq=10&orientation=landscape"
+                alt="Testimonial 2"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+              >
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-90 rounded-full text-white"
+                >
+                  <i class="ri-play-fill ri-2x"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-yellow-500 mb-3">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+              </div>
+              <h3 class="font-bold text-xl mb-2">
+                Mom Finally Feels Safe Driving Grandkids
+              </h3>
+              <p class="text-gray-600 mb-4">
+                "I've had my license for 30 years but always felt nervous on
+                highways and avoided driving my grandchildren. After taking the
+                senior refresher course, I feel confident and safe. Now I can
+                pick up my grandkids from school and take them on day trips
+                without anxiety!"
+              </p>
+              <div class="flex items-center">
+                <div class="font-medium">Patricia M.</div>
+                <div class="mx-2 text-gray-300">|</div>
+                <div class="text-gray-500">Senior Driver</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="relative h-48 bg-gray-100">
+              <img
+                src="https://readdy.ai/api/search-image?query=Young%20man%20in%20his%2030s%20parallel%20parking%20perfectly%20in%20a%20tight%20space%20in%20the%20city%2C%20confident%20expression%2C%20urban%20setting%2C%20high%20quality%2C%20photorealistic&width=600&height=400&seq=11&orientation=landscape"
+                alt="Testimonial 3"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+              >
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-90 rounded-full text-white"
+                >
+                  <i class="ri-play-fill ri-2x"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-yellow-500 mb-3">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-half-fill"></i>
+              </div>
+              <h3 class="font-bold text-xl mb-2">
+                Finally Mastered Parallel Parking!
+              </h3>
+              <p class="text-gray-600 mb-4">
+                "I've been driving for years but always avoided parallel parking
+                at all costs. After taking the specialized parallel parking
+                course, I can now confidently park in tight spaces that I would
+                have driven past before. The step-by-step technique they taught
+                me works every time!"
+              </p>
+              <div class="flex items-center">
+                <div class="font-medium">Michael T.</div>
+                <div class="mx-2 text-gray-300">|</div>
+                <div class="text-gray-500">Experienced Driver</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- License Test Prep -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">License Test Preparation</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            We provide comprehensive resources to help you ace your DMV written
+            and road tests.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-6 border-b">
+              <h3 class="font-bold text-xl mb-2">Sample DMV Questions</h3>
+              <p class="text-gray-600">
+                Test your knowledge with our practice questions based on the
+                actual DMV test.
+              </p>
+            </div>
+            <div class="p-6">
+              <div class="mb-6">
+                <p class="font-medium mb-3">
+                  1. When approaching a school bus with flashing red lights from
+                  either direction, you must:
+                </p>
+                <div class="space-y-2">
+                  <label class="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="question1"
+                      class="custom-checkbox"
+                    />
+                    <span class="ml-2">Slow down and proceed with caution</span>
+                  </label>
+                  <label class="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="question1"
+                      class="custom-checkbox"
+                    />
+                    <span class="ml-2"
+                      >Stop at least 10 feet away until the lights stop
+                      flashing</span
+                    >
+                  </label>
+                  <label class="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="question1"
+                      class="custom-checkbox"
+                    />
+                    <span class="ml-2">Stop only if children are present</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <p class="font-medium mb-3">
+                  2. What does a solid yellow line in the center of the road
+                  mean?
+                </p>
+                <div class="space-y-2">
+                  <label class="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="question2"
+                      class="custom-checkbox"
+                    />
+                    <span class="ml-2">No passing allowed</span>
+                  </label>
+                  <label class="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="question2"
+                      class="custom-checkbox"
+                    />
+                    <span class="ml-2">Passing allowed when safe</span>
+                  </label>
+                  <label class="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="question2"
+                      class="custom-checkbox"
+                    />
+                    <span class="ml-2">Carpool lane</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <p class="font-medium mb-3">
+                  3. When making a right turn on a red light, you should:
+                </p>
+                <div class="space-y-2">
+                  <label class="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="question3"
+                      class="custom-checkbox"
+                    />
+                    <span class="ml-2"
+                      >Come to a complete stop, yield to traffic and
+                      pedestrians, then turn</span
+                    >
+                  </label>
+                  <label class="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="question3"
+                      class="custom-checkbox"
+                    />
+                    <span class="ml-2"
+                      >Slow down, check for traffic, then turn</span
+                    >
+                  </label>
+                  <label class="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="question3"
+                      class="custom-checkbox"
+                    />
+                    <span class="ml-2">Wait for the light to turn green</span>
+                  </label>
+                </div>
+              </div>
+
+              <a
+                href="#"
+                class="block w-full bg-primary text-white text-center px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+                >Try Full Practice Test</a
+              >
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-6 border-b">
+              <h3 class="font-bold text-xl mb-2">Test Route Videos</h3>
+              <p class="text-gray-600">
+                Watch videos of actual DMV test routes to familiarize yourself
+                before your test.
+              </p>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="relative rounded overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=Driving%20on%20a%20typical%20DMV%20test%20route%2C%20view%20from%20inside%20car%2C%20suburban%20area%20with%20intersections%2C%20stop%20signs%2C%20and%20traffic%20lights%2C%20high%20quality%2C%20photorealistic&width=400&height=250&seq=12&orientation=landscape"
+                    alt="Route 1"
+                    class="w-full h-40 object-cover"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+                  >
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-90 rounded-full text-white"
+                    >
+                      <i class="ri-play-fill"></i>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-2"
+                  >
+                    <div class="text-sm font-medium">Main Street DMV Route</div>
+                  </div>
+                </div>
+
+                <div class="relative rounded overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=Driving%20on%20a%20typical%20DMV%20test%20route%2C%20view%20from%20inside%20car%2C%20residential%20area%20with%20school%20zones%20and%20four-way%20stops%2C%20high%20quality%2C%20photorealistic&width=400&height=250&seq=13&orientation=landscape"
+                    alt="Route 2"
+                    class="w-full h-40 object-cover"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+                  >
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-90 rounded-full text-white"
+                    >
+                      <i class="ri-play-fill"></i>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-2"
+                  >
+                    <div class="text-sm font-medium">Westside DMV Route</div>
+                  </div>
+                </div>
+
+                <div class="relative rounded overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=Driving%20on%20a%20typical%20DMV%20test%20route%2C%20view%20from%20inside%20car%2C%20highway%20entrance%20and%20exit%20ramps%2C%20merging%20traffic%2C%20high%20quality%2C%20photorealistic&width=400&height=250&seq=14&orientation=landscape"
+                    alt="Route 3"
+                    class="w-full h-40 object-cover"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+                  >
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-90 rounded-full text-white"
+                    >
+                      <i class="ri-play-fill"></i>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-2"
+                  >
+                    <div class="text-sm font-medium">Highway Access Route</div>
+                  </div>
+                </div>
+
+                <div class="relative rounded overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=Driving%20on%20a%20typical%20DMV%20test%20route%2C%20view%20from%20inside%20car%2C%20parallel%20parking%20demonstration%20on%20city%20street%2C%20high%20quality%2C%20photorealistic&width=400&height=250&seq=15&orientation=landscape"
+                    alt="Route 4"
+                    class="w-full h-40 object-cover"
+                  />
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+                  >
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-90 rounded-full text-white"
+                    >
+                      <i class="ri-play-fill"></i>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-2"
+                  >
+                    <div class="text-sm font-medium">Parallel Parking Test</div>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="#"
+                class="block w-full bg-primary text-white text-center px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+                >View All Test Routes</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Find answers to common questions about our driving lessons and test
+            preparation.
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="space-y-4">
+            <div class="border rounded overflow-hidden">
+              <button
+                class="accordion-button w-full flex items-center justify-between bg-white p-4 text-left font-medium focus:outline-none"
+              >
+                <span>What if I make mistakes during my lessons?</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+              <div class="accordion-content px-4 pb-4">
+                <p class="text-gray-600">
+                  Making mistakes is a natural part of the learning process! Our
+                  instructors create a supportive environment where you can
+                  learn from errors without judgment. We'll help you understand
+                  what went wrong and how to improve. Remember, it's better to
+                  make mistakes during lessons than during your actual test or
+                  when driving alone.
+                </p>
+              </div>
+            </div>
+
+            <div class="border rounded overflow-hidden">
+              <button
+                class="accordion-button w-full flex items-center justify-between bg-white p-4 text-left font-medium focus:outline-none"
+              >
+                <span>Can I use your car for my DMV driving test?</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+              <div class="accordion-content px-4 pb-4">
+                <p class="text-gray-600">
+                  Yes! We offer vehicle rental for your DMV driving test. Our
+                  Complete Course and Premium Package include this service. If
+                  you've purchased another package, you can add vehicle rental
+                  for an additional fee. Using a familiar car for your test can
+                  help reduce anxiety and increase your chances of passing.
+                </p>
+              </div>
+            </div>
+
+            <div class="border rounded overflow-hidden">
+              <button
+                class="accordion-button w-full flex items-center justify-between bg-white p-4 text-left font-medium focus:outline-none"
+              >
+                <span>How quickly can I get licensed?</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+              <div class="accordion-content px-4 pb-4">
+                <p class="text-gray-600">
+                  The timeline varies depending on your starting skill level,
+                  how frequently you take lessons, and how much you practice
+                  between lessons. Many of our students complete their training
+                  and pass their test within 4-8 weeks. We offer accelerated
+                  programs for those with tight deadlines, but we never
+                  compromise on ensuring you're truly ready to drive safely.
+                </p>
+              </div>
+            </div>
+
+            <div class="border rounded overflow-hidden">
+              <button
+                class="accordion-button w-full flex items-center justify-between bg-white p-4 text-left font-medium focus:outline-none"
+              >
+                <span>Do you offer pick-up and drop-off service?</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+              <div class="accordion-content px-4 pb-4">
+                <p class="text-gray-600">
+                  Yes, we offer convenient pick-up and drop-off service within
+                  our service area. Your instructor can pick you up from home,
+                  work, or school and drop you off at your desired location
+                  after the lesson. This service is included in all our packages
+                  at no additional cost.
+                </p>
+              </div>
+            </div>
+
+            <div class="border rounded overflow-hidden">
+              <button
+                class="accordion-button w-full flex items-center justify-between bg-white p-4 text-left font-medium focus:outline-none"
+              >
+                <span>What if I'm extremely nervous about driving?</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+              <div class="accordion-content px-4 pb-4">
+                <p class="text-gray-600">
+                  We specialize in helping nervous drivers! Several of our
+                  instructors, including Alex, specifically focus on anxiety
+                  reduction techniques. We'll start in quiet areas and progress
+                  at your comfort level. Many of our most successful students
+                  began with severe driving anxiety. We can also arrange for you
+                  to meet your instructor before your first lesson to help ease
+                  your concerns.
+                </p>
+              </div>
+            </div>
+
+            <div class="border rounded overflow-hidden">
+              <button
+                class="accordion-button w-full flex items-center justify-between bg-white p-4 text-left font-medium focus:outline-none"
+              >
+                <span>How do I schedule or reschedule a lesson?</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+              <div class="accordion-content px-4 pb-4">
+                <p class="text-gray-600">
+                  You can schedule or reschedule lessons through our online
+                  booking system, mobile app, or by calling our office. We
+                  request at least 24 hours' notice for rescheduling to avoid
+                  cancellation fees. Our flexible scheduling includes evenings
+                  and weekends to accommodate your busy life.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 text-center">
+            <p class="text-gray-600 mb-4">
+              Don't see your question here? Contact us directly and we'll be
+              happy to help.
+            </p>
+            <a
+              href="#contact"
+              class="inline-block bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Urgency Elements -->
+    <section class="py-12 bg-blue-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+          <div class="p-8">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+              <div class="mb-6 md:mb-0 md:mr-8">
+                <div
+                  class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium mb-3"
+                >
+                  Limited Spring Enrollment
+                </div>
+                <h3 class="font-bold text-2xl mb-3">Spots Filling Up Fast!</h3>
+                <p class="text-gray-600 mb-4">
+                  Our spring session is in high demand. Secure your spot before
+                  all slots are filled. New students are being accepted until
+                  May 15th or until we reach capacity.
+                </p>
+                <div class="flex items-center text-gray-500 text-sm">
+                  <span>Only 8 spots remaining this month</span>
+                  <div
+                    class="ml-2 w-24 h-2 bg-gray-200 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="bg-primary h-full rounded-full"
+                      style="width: 25%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-blue-100 p-6 rounded-lg">
+                <div class="text-center mb-4">
+                  <div class="text-primary font-bold text-xl mb-2">
+                    Spring Special Offer
+                  </div>
+                  <p class="text-gray-700">Book 10 Lessons, Get 11th Free!</p>
+                </div>
+                <div id="countdown" class="flex justify-center space-x-4 mb-6">
+                  <div class="text-center">
+                    <div
+                      class="bg-primary text-white w-12 h-12 flex items-center justify-center rounded font-bold text-xl"
+                    >
+                      05
+                    </div>
+                    <div class="text-xs mt-1">Days</div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="bg-primary text-white w-12 h-12 flex items-center justify-center rounded font-bold text-xl"
+                    >
+                      12
+                    </div>
+                    <div class="text-xs mt-1">Hours</div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="bg-primary text-white w-12 h-12 flex items-center justify-center rounded font-bold text-xl"
+                    >
+                      45
+                    </div>
+                    <div class="text-xs mt-1">Minutes</div>
+                  </div>
+                </div>
+                <a
+                  href="#book"
+                  class="block w-full bg-primary text-white text-center px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+                  >Claim Offer Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Process Timeline -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Your Path to Driving Freedom</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Our proven process takes you from beginner to confident driver in
+            four simple steps.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div
+            class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -translate-y-1/2"
+          ></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="relative">
+              <div
+                class="md:absolute md:top-0 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-16 h-16 flex items-center justify-center bg-primary rounded-full text-white text-xl font-bold z-10 mx-auto mb-4 md:mb-0"
+              >
+                1
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm text-center mt-8">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mx-auto mb-4"
+                >
+                  <i class="ri-clipboard-line ri-2x"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Free Assessment</h3>
+                <p class="text-gray-600">
+                  We evaluate your current skills and create a personalized
+                  learning plan based on your goals and experience level.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div
+                class="md:absolute md:top-0 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-16 h-16 flex items-center justify-center bg-primary rounded-full text-white text-xl font-bold z-10 mx-auto mb-4 md:mb-0"
+              >
+                2
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm text-center mt-8">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mx-auto mb-4"
+                >
+                  <i class="ri-route-line ri-2x"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Custom Plan</h3>
+                <p class="text-gray-600">
+                  Your instructor develops a tailored curriculum focusing on the
+                  skills you need to master for safe, confident driving.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div
+                class="md:absolute md:top-0 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-16 h-16 flex items-center justify-center bg-primary rounded-full text-white text-xl font-bold z-10 mx-auto mb-4 md:mb-0"
+              >
+                3
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm text-center mt-8">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mx-auto mb-4"
+                >
+                  <i class="ri-steering-2-line ri-2x"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Mock Tests</h3>
+                <p class="text-gray-600">
+                  Practice real-world driving scenarios and take simulated DMV
+                  tests to ensure you're fully prepared for the real thing.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div
+                class="md:absolute md:top-0 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-16 h-16 flex items-center justify-center bg-primary rounded-full text-white text-xl font-bold z-10 mx-auto mb-4 md:mb-0"
+              >
+                4
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm text-center mt-8">
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-primary mx-auto mb-4"
+                >
+                  <i class="ri-award-line ri-2x"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">License!</h3>
+                <p class="text-gray-600">
+                  Pass your test with confidence and join our community of
+                  successful drivers who have earned their freedom on the road.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 text-center">
+          <a
+            href="#book"
+            class="inline-block bg-primary text-white px-8 py-4 !rounded-button font-medium text-lg hover:bg-blue-600 transition whitespace-nowrap"
+            >Start Your Journey Today</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact/Booking Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Book your first lesson or contact us with any questions. We're here
+            to help you become a confident, safe driver.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-6 border-b">
+              <h3 class="font-bold text-xl mb-2">Book Your First Lesson</h3>
+              <p class="text-gray-600">
+                Fill out the form below to schedule your first driving lesson or
+                free assessment.
+              </p>
+            </div>
+            <div class="p-6">
+              <form>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label for="firstName" class="block text-gray-700 mb-1"
+                      >First Name</label
+                    >
+                    <input
+                      type="text"
+                      id="firstName"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label for="lastName" class="block text-gray-700 mb-1"
+                      >Last Name</label
+                    >
+                    <input
+                      type="text"
+                      id="lastName"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label for="email" class="block text-gray-700 mb-1"
+                      >Email</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label for="phone" class="block text-gray-700 mb-1"
+                      >Phone</label
+                    >
+                    <input
+                      type="tel"
+                      id="phone"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label for="program" class="block text-gray-700 mb-1"
+                    >Program Interest</label
+                  >
+                  <div class="relative">
+                    <select
+                      id="program"
+                      class="w-full px-4 py-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-8"
+                    >
+                      <option value="">Select a program</option>
+                      <option value="teen">Teen Driving Course</option>
+                      <option value="adult">Adult Refresher</option>
+                      <option value="senior">Senior Driver Program</option>
+                      <option value="test">License Test Preparation</option>
+                      <option value="assessment">
+                        Free Driving Assessment
+                      </option>
+                    </select>
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                    >
+                      <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label for="message" class="block text-gray-700 mb-1"
+                    >Additional Information</label
+                  >
+                  <textarea
+                    id="message"
+                    rows="4"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  ></textarea>
+                </div>
+
+                <div class="mb-6">
+                  <label class="flex items-center cursor-pointer">
+                    <input type="checkbox" class="custom-checkbox" />
+                    <span class="ml-2 text-gray-700"
+                      >I agree to receive text messages about my lessons and
+                      appointments</span
+                    >
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+                >
+                  Schedule My Lesson
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div>
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-8">
+              <div class="p-6 border-b">
+                <h3 class="font-bold text-xl mb-2">Contact Information</h3>
+                <p class="text-gray-600">
+                  Reach out directly with any questions or special requests.
+                </p>
+              </div>
+              <div class="p-6">
+                <div class="space-y-4">
+                  <div class="flex items-start">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-4"
+                    >
+                      <i class="ri-map-pin-line"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium">Main Office</h4>
+                      <p class="text-gray-600">
+                        1234 Driving Avenue, Suite 100<br />San Francisco, CA
+                        94110
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-4"
+                    >
+                      <i class="ri-phone-line"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium">Phone</h4>
+                      <p class="text-gray-600">(555) 123-4567</p>
+                      <p class="text-gray-500 text-sm">
+                        Mon-Fri: 8am-8pm, Sat: 9am-5pm
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-4"
+                    >
+                      <i class="ri-mail-line"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium">Email</h4>
+                      <p class="text-gray-600">info@driverightacademy.com</p>
+                      <p class="text-gray-500 text-sm">
+                        We respond within 24 hours
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-4"
+                    >
+                      <i class="ri-message-2-line"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium">Text Us</h4>
+                      <p class="text-gray-600">(555) 987-6543</p>
+                      <p class="text-gray-500 text-sm">
+                        For quick questions and scheduling
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6 pt-6 border-t">
+                  <h4 class="font-medium mb-3">Follow Us</h4>
+                  <div class="flex space-x-4">
+                    <a
+                      href="#"
+                      class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition"
+                    >
+                      <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a
+                      href="#"
+                      class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition"
+                    >
+                      <i class="ri-instagram-line"></i>
+                    </a>
+                    <a
+                      href="#"
+                      class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition"
+                    >
+                      <i class="ri-twitter-x-line"></i>
+                    </a>
+                    <a
+                      href="#"
+                      class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition"
+                    >
+                      <i class="ri-youtube-line"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="p-6 border-b">
+                <h3 class="font-bold text-xl mb-2">Service Area</h3>
+                <p class="text-gray-600">
+                  We provide driving lessons throughout the greater San
+                  Francisco Bay Area.
+                </p>
+              </div>
+              <div class="p-0">
+                <div class="h-64 bg-gray-100 relative">
+                  <div
+                    style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-position: center; background-size: cover; width: 100%; height: 100%;"
+                  ></div>
+                  <div
+                    class="absolute top-4 right-4 bg-white p-2 rounded shadow-sm"
+                  >
+                    <div class="flex items-center text-sm text-gray-600">
+                      <div class="w-3 h-3 bg-primary rounded-full mr-2"></div>
+                      <span>Main Office</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600 mt-1">
+                      <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                      <span>Service Area</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div>
+            <div class="text-3xl font-['Pacifico'] text-white mb-4">logo</div>
+            <p class="text-gray-400 mb-6">
+              Professional driving instruction with a 98% first-time pass rate.
+              Learn from the best and drive with confidence.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="ri-facebook-fill ri-lg"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="ri-instagram-line ri-lg"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="ri-twitter-x-line ri-lg"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="ri-youtube-line ri-lg"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Programs</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Teen Driving Courses</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Adult Refresher Courses</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Senior Driver Programs</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >License Test Preparation</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >International Driver Training</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Corporate Fleet Training</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Resources</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >DMV Requirements</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Practice Tests</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Driving Tips Blog</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Student Portal</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Instructor Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >FAQs</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Contact</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="ri-map-pin-line mt-1 mr-2"></i>
+                <span
+                  >1234 Driving Avenue, Suite 100<br />San Francisco, CA
+                  94110</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="ri-phone-line mr-2"></i>
+                <span>(555) 123-4567</span>
+              </li>
+              <li class="flex items-center">
+                <i class="ri-mail-line mr-2"></i>
+                <span>info@driverightacademy.com</span>
+              </li>
+              <li class="flex items-center">
+                <i class="ri-time-line mr-2"></i>
+                <span>Mon-Fri: 8am-8pm, Sat: 9am-5pm</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-gray-800">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+              <p class="text-gray-400 text-sm">
+                © 2025 Drive Right Academy. All rights reserved.
+              </p>
+              <p class="text-gray-500 text-xs mt-1">
+                DMV License #DR12345678 | Certified Instructor #CI98765432
+              </p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition"
+                >Privacy Policy</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition"
+                >Terms of Service</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition"
+                >Accessibility</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition"
+                >Sitemap</a
+              >
+            </div>
+            <div class="mt-4 md:mt-0 flex items-center space-x-4">
+              <span class="text-gray-400 text-sm">Payment Methods:</span>
+              <i class="ri-visa-fill ri-lg"></i>
+              <i class="ri-mastercard-fill ri-lg"></i>
+              <i class="ri-paypal-fill ri-lg"></i>
+              <i class="ri-apple-fill ri-lg"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div
+      class="fixed bottom-0 left-0 right-0 bg-white shadow-lg md:hidden p-4 z-50"
+    >
+      <div class="flex justify-between items-center">
+        <a
+          href="tel:5551234567"
+          class="flex items-center justify-center bg-white border border-primary text-primary px-4 py-2 !rounded-button whitespace-nowrap"
+        >
+          <i class="ri-phone-line mr-2"></i>
+          Call Us
+        </a>
+        <a
+          href="#book"
+          class="flex items-center justify-center bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap"
+        >
+          <i class="ri-message-2-line mr-2"></i>
+          Text to Start
+        </a>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tab switching
+        const tabButtons = document.querySelectorAll(".tab-button");
+        tabButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Remove active class from all buttons and content
+            tabButtons.forEach((btn) => {
+              btn.classList.remove("border-primary", "text-primary");
+              btn.classList.add("border-transparent", "text-gray-500");
+
+              const iconContainer = btn.querySelector(".w-12");
+              iconContainer.classList.remove("bg-blue-100", "text-primary");
+              iconContainer.classList.add("bg-gray-100", "text-gray-500");
+            });
+
+            document.querySelectorAll(".tab-content").forEach((content) => {
+              content.classList.remove("active");
+            });
+
+            // Add active class to clicked button and its content
+            button.classList.remove("border-transparent", "text-gray-500");
+            button.classList.add("border-primary", "text-primary");
+
+            const iconContainer = button.querySelector(".w-12");
+            iconContainer.classList.remove("bg-gray-100", "text-gray-500");
+            iconContainer.classList.add("bg-blue-100", "text-primary");
+
+            const tabId = button.getAttribute("data-tab");
+            document.getElementById(`${tabId}-content`).classList.add("active");
+          });
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Accordion functionality
+        const accordionButtons = document.querySelectorAll(".accordion-button");
+        accordionButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const content = button.nextElementSibling;
+            content.classList.toggle("active");
+
+            // Toggle icon
+            const icon = button.querySelector("i");
+            if (content.classList.contains("active")) {
+              icon.classList.remove("ri-arrow-down-s-line");
+              icon.classList.add("ri-arrow-up-s-line");
+            } else {
+              icon.classList.remove("ri-arrow-up-s-line");
+              icon.classList.add("ri-arrow-down-s-line");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EventMaster - Stress-Free Events, Unforgettable Memories</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#6366f1", secondary: "#f59e0b" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Poppins', sans-serif;
+          overflow-x: hidden;
+      }
+      .hero-heading {
+          font-family: 'Playfair Display', serif;
+      }
+      .video-container {
+          position: relative;
+          width: 100%;
+          height: 100vh;
+          overflow: hidden;
+      }
+      .video-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          color: white;
+      }
+      .custom-checkbox {
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          border: 2px solid #d1d5db;
+          border-radius: 4px;
+          position: relative;
+          cursor: pointer;
+          transition: all 0.2s;
+      }
+      .custom-checkbox:checked {
+          background-color: #6366f1;
+          border-color: #6366f1;
+      }
+      .custom-checkbox:checked::after {
+          content: '';
+          position: absolute;
+          top: 4px;
+          left: 7px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
+      .custom-switch {
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          height: 26px;
+      }
+      .custom-switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          transition: .4s;
+          border-radius: 34px;
+      }
+      .slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+      }
+      input:checked + .slider {
+          background-color: #6366f1;
+      }
+      input:checked + .slider:before {
+          transform: translateX(24px);
+      }
+      .portfolio-filter-active {
+          color: #6366f1;
+          border-bottom: 2px solid #6366f1;
+      }
+      .testimonial-container {
+          overflow: hidden;
+          position: relative;
+      }
+      .testimonial-slider {
+          display: flex;
+          transition: transform 0.5s ease;
+      }
+      .testimonial-slide {
+          min-width: 100%;
+      }
+      .faq-item {
+          border-bottom: 1px solid #e5e7eb;
+      }
+      .faq-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+      }
+      .faq-content.active {
+          max-height: 500px;
+      }
+      .availability-calendar {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          gap: 4px;
+      }
+      .calendar-day {
+          aspect-ratio: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+      .calendar-day.available {
+          background-color: #f0fdf4;
+          color: #166534;
+      }
+      .calendar-day.unavailable {
+          background-color: #fef2f2;
+          color: #991b1b;
+          text-decoration: line-through;
+          opacity: 0.7;
+      }
+      .calendar-day.selected {
+          background-color: #6366f1;
+          color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="fixed top-0 left-0 w-full bg-white bg-opacity-95 shadow-sm z-50"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a href="#" class="font-['Pacifico'] text-3xl text-primary">logo</a>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a
+            href="#services"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >Services</a
+          >
+          <a
+            href="#portfolio"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >Portfolio</a
+          >
+          <a
+            href="#process"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >Process</a
+          >
+          <a
+            href="#pricing"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >Pricing</a
+          >
+          <a
+            href="#faq"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >FAQ</a
+          >
+        </nav>
+        <div class="flex items-center space-x-4">
+          <a
+            href="#contact"
+            class="hidden md:block px-6 py-2 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition"
+            >Contact Us</a
+          >
+          <button
+            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700"
+            id="mobile-menu-button"
+          >
+            <i class="ri-menu-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        class="md:hidden hidden bg-white absolute w-full left-0 top-full shadow-md"
+        id="mobile-menu"
+      >
+        <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          <a
+            href="#services"
+            class="text-gray-700 hover:text-primary font-medium py-2 transition"
+            >Services</a
+          >
+          <a
+            href="#portfolio"
+            class="text-gray-700 hover:text-primary font-medium py-2 transition"
+            >Portfolio</a
+          >
+          <a
+            href="#process"
+            class="text-gray-700 hover:text-primary font-medium py-2 transition"
+            >Process</a
+          >
+          <a
+            href="#pricing"
+            class="text-gray-700 hover:text-primary font-medium py-2 transition"
+            >Pricing</a
+          >
+          <a
+            href="#faq"
+            class="text-gray-700 hover:text-primary font-medium py-2 transition"
+            >FAQ</a
+          >
+          <a
+            href="#contact"
+            class="px-6 py-2 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition text-center"
+            >Contact Us</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section with Video Background -->
+    <section class="video-container">
+      <div
+        style="background-image: url('https://readdy.ai/api/search-image?query=Elegant%20event%20venue%20with%20soft%20lighting%2C%20decorated%20tables%20with%20floral%20centerpieces%2C%20and%20a%20dance%20floor.%20The%20atmosphere%20is%20glamorous%20and%20festive%2C%20with%20warm%20ambient%20lighting%20creating%20a%20magical%20ambiance.%20The%20scene%20captures%20the%20essence%20of%20a%20high-end%20celebration%20with%20attention%20to%20detail%20in%20decor%20and%20arrangement.&width=1920&height=1080&seq=1&orientation=landscape'); background-size: cover; background-position: center; width: 100%; height: 100%;"
+      ></div>
+      <div class="video-overlay">
+        <div class="container mx-auto px-4">
+          <h1
+            class="hero-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+          >
+            Stress-Free Events,<br />Unforgettable Memories
+          </h1>
+          <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+            We transform your vision into flawlessly executed celebrations while
+            you enjoy every moment.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="#consultation"
+              class="px-8 py-3 bg-primary text-white font-medium text-lg !rounded-button whitespace-nowrap hover:bg-opacity-90 transition"
+              >Get a Free Consultation</a
+            >
+            <a
+              href="#portfolio"
+              class="px-8 py-3 bg-white text-gray-800 font-medium text-lg !rounded-button whitespace-nowrap hover:bg-opacity-90 transition"
+              >View Our Portfolio</a
+            >
+          </div>
+        </div>
+        <div
+          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        >
+          <div class="w-10 h-10 flex items-center justify-center text-white">
+            <i class="ri-arrow-down-line ri-xl"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="flex flex-col items-center text-center p-6 rounded-lg bg-gray-50"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-calendar-check-line ri-2x"></i>
+            </div>
+            <h3 class="text-4xl font-bold mb-2">500+</h3>
+            <p class="text-gray-600">Successful Events Completed</p>
+          </div>
+          <div
+            class="flex flex-col items-center text-center p-6 rounded-lg bg-gray-50"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-award-line ri-2x"></i>
+            </div>
+            <h3 class="text-4xl font-bold mb-2">#1</h3>
+            <p class="text-gray-600">Voted Best Event Planner 2024</p>
+          </div>
+          <div
+            class="flex flex-col items-center text-center p-6 rounded-lg bg-gray-50"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-star-line ri-2x"></i>
+            </div>
+            <h3 class="text-4xl font-bold mb-2">4.9/5</h3>
+            <p class="text-gray-600">Average Client Rating</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain-Solver Bullets -->
+    <section class="py-16 bg-gray-50" id="services">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
+          We Solve Your Event Planning Challenges
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center text-primary bg-indigo-50 rounded-full mb-6"
+            >
+              <i class="ri-money-dollar-circle-line ri-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Full Budget Transparency</h3>
+            <p class="text-gray-600">
+              No hidden costs or surprise fees. We provide detailed cost
+              breakdowns and work within your budget constraints.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center text-primary bg-indigo-50 rounded-full mb-6"
+            >
+              <i class="ri-team-line ri-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">
+              Vendor Connections You Can Trust
+            </h3>
+            <p class="text-gray-600">
+              Access our network of vetted, reliable vendors who consistently
+              deliver exceptional service at preferential rates.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center text-primary bg-indigo-50 rounded-full mb-6"
+            >
+              <i class="ri-alarm-warning-line ri-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Last-Minute Rescue Services</h3>
+            <p class="text-gray-600">
+              Facing an event emergency? Our rapid response team can step in
+              with as little as 72 hours notice to save your event.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Types -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+          Event Types We Specialize In
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-16">
+          From intimate gatherings to grand celebrations, we bring your vision
+          to life with meticulous attention to detail.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Elegant%20wedding%20venue%20with%20white%20floral%20arrangements%2C%20soft%20lighting%2C%20and%20a%20beautifully%20decorated%20altar.%20The%20scene%20captures%20a%20romantic%20atmosphere%20with%20attention%20to%20detail%20in%20every%20aspect%20of%20the%20decor.%20The%20color%20palette%20is%20soft%20and%20romantic%20with%20whites%2C%20creams%2C%20and%20subtle%20accent%20colors.&width=600&height=800&seq=2&orientation=portrait'); background-size: cover; background-position: center; height: 320px;"
+            ></div>
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+              <div class="p-6 w-full">
+                <h3 class="text-xl font-bold text-white mb-2">Weddings</h3>
+                <div
+                  class="h-0 overflow-hidden group-hover:h-auto transition-all duration-300"
+                >
+                  <ul class="text-white space-y-1 mt-2">
+                    <li>• Elegant Ballroom</li>
+                    <li>• Rustic Outdoor</li>
+                    <li>• Intimate Garden</li>
+                    <li>• Destination</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Professional%20corporate%20event%20setup%20with%20modern%20conference%20tables%2C%20presentation%20screens%2C%20and%20networking%20areas.%20The%20space%20is%20designed%20for%20business%20meetings%20with%20clean%20lines%20and%20professional%20atmosphere.%20Lighting%20is%20bright%20and%20even%2C%20creating%20a%20productive%20environment.&width=600&height=800&seq=3&orientation=portrait'); background-size: cover; background-position: center; height: 320px;"
+            ></div>
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+              <div class="p-6 w-full">
+                <h3 class="text-xl font-bold text-white mb-2">Corporate</h3>
+                <div
+                  class="h-0 overflow-hidden group-hover:h-auto transition-all duration-300"
+                >
+                  <ul class="text-white space-y-1 mt-2">
+                    <li>• Conferences</li>
+                    <li>• Team Building</li>
+                    <li>• Product Launches</li>
+                    <li>• Award Ceremonies</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Colorful%20birthday%20celebration%20setup%20with%20balloons%2C%20cake%2C%20and%20festive%20decorations.%20The%20atmosphere%20is%20joyful%20and%20playful%20with%20bright%20colors%20and%20party%20elements.%20The%20setting%20includes%20thoughtful%20details%20that%20create%20a%20happy%20celebration%20environment.&width=600&height=800&seq=4&orientation=portrait'); background-size: cover; background-position: center; height: 320px;"
+            ></div>
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+              <div class="p-6 w-full">
+                <h3 class="text-xl font-bold text-white mb-2">Birthdays</h3>
+                <div
+                  class="h-0 overflow-hidden group-hover:h-auto transition-all duration-300"
+                >
+                  <ul class="text-white space-y-1 mt-2">
+                    <li>• Themed Parties</li>
+                    <li>• Milestone Celebrations</li>
+                    <li>• Children's Parties</li>
+                    <li>• Surprise Parties</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Luxurious%20gala%20event%20with%20elegant%20table%20settings%2C%20chandeliers%2C%20and%20formal%20decor.%20The%20atmosphere%20is%20sophisticated%20and%20high-end%20with%20attention%20to%20fine%20details.%20The%20color%20scheme%20is%20rich%20and%20opulent%2C%20creating%20a%20sense%20of%20exclusivity%20and%20glamour.&width=600&height=800&seq=5&orientation=portrait'); background-size: cover; background-position: center; height: 320px;"
+            ></div>
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+              <div class="p-6 w-full">
+                <h3 class="text-xl font-bold text-white mb-2">Social Galas</h3>
+                <div
+                  class="h-0 overflow-hidden group-hover:h-auto transition-all duration-300"
+                >
+                  <ul class="text-white space-y-1 mt-2">
+                    <li>• Charity Fundraisers</li>
+                    <li>• Black Tie Events</li>
+                    <li>• Award Ceremonies</li>
+                    <li>• Seasonal Celebrations</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Portfolio Gallery -->
+    <section class="py-16 bg-gray-50" id="portfolio">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+          Our Event Portfolio
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Browse through our collection of stunning events we've brought to
+          life.
+        </p>
+
+        <div class="flex justify-center mb-10">
+          <div class="inline-flex border-b">
+            <button
+              class="px-6 py-3 text-lg font-medium portfolio-filter-active"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button
+              class="px-6 py-3 text-lg font-medium text-gray-500"
+              data-filter="decor"
+            >
+              Decor
+            </button>
+            <button
+              class="px-6 py-3 text-lg font-medium text-gray-500"
+              data-filter="lighting"
+            >
+              Lighting
+            </button>
+            <button
+              class="px-6 py-3 text-lg font-medium text-gray-500"
+              data-filter="tablescapes"
+            >
+              Tablescapes
+            </button>
+            <button
+              class="px-6 py-3 text-lg font-medium text-gray-500"
+              data-filter="entertainment"
+            >
+              Entertainment
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="portfolio-item decor rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Elegant%20wedding%20reception%20decor%20with%20lush%20floral%20arrangements%2C%20crystal%20chandeliers%2C%20and%20sophisticated%20table%20settings.%20The%20atmosphere%20is%20romantic%20and%20luxurious%20with%20soft%20lighting%20highlighting%20the%20beautiful%20decorative%20elements.%20The%20color%20palette%20is%20harmonious%20with%20whites%2C%20soft%20pinks%2C%20and%20gold%20accents.&width=600&height=400&seq=6&orientation=landscape'); background-size: cover; background-position: center; height: 250px;"
+            ></div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Elegant Garden Wedding</h3>
+              <p class="text-gray-600">Floral-focused outdoor celebration</p>
+            </div>
+          </div>
+
+          <div
+            class="portfolio-item lighting rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Corporate%20event%20with%20dramatic%20lighting%20design%20featuring%20blue%20and%20purple%20uplighting%2C%20spotlights%2C%20and%20projection%20mapping.%20The%20lighting%20creates%20a%20modern%20and%20professional%20atmosphere%20while%20highlighting%20key%20areas%20of%20the%20venue.%20The%20technical%20execution%20is%20flawless%20with%20attention%20to%20creating%20the%20right%20mood.&width=600&height=400&seq=7&orientation=landscape'); background-size: cover; background-position: center; height: 250px;"
+            ></div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Tech Company Launch</h3>
+              <p class="text-gray-600">
+                Dynamic lighting and projection mapping
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="portfolio-item tablescapes rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Luxurious%20table%20setting%20with%20fine%20china%2C%20crystal%20glassware%2C%20silver%20cutlery%2C%20and%20elegant%20floral%20centerpieces.%20The%20tablescape%20is%20meticulously%20arranged%20with%20attention%20to%20every%20detail.%20Soft%20candlelight%20creates%20a%20warm%20and%20inviting%20atmosphere%20around%20the%20perfectly%20set%20dining%20table.&width=600&height=400&seq=8&orientation=landscape'); background-size: cover; background-position: center; height: 250px;"
+            ></div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Luxury Gala Dinner</h3>
+              <p class="text-gray-600">Gold-accented formal table settings</p>
+            </div>
+          </div>
+
+          <div
+            class="portfolio-item entertainment rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Live%20band%20performing%20at%20an%20elegant%20event%20with%20dancers%20on%20the%20dance%20floor.%20The%20entertainment%20setup%20includes%20professional%20lighting%2C%20sound%20equipment%2C%20and%20a%20stage%20area.%20The%20atmosphere%20is%20energetic%20and%20festive%20with%20guests%20enjoying%20the%20high-quality%20entertainment.&width=600&height=400&seq=9&orientation=landscape'); background-size: cover; background-position: center; height: 250px;"
+            ></div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Corporate Anniversary</h3>
+              <p class="text-gray-600">
+                Live band and interactive performances
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="portfolio-item decor rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Birthday%20celebration%20with%20colorful%20balloon%20installations%2C%20custom%20signage%2C%20and%20themed%20decorative%20elements.%20The%20decor%20is%20playful%20yet%20sophisticated%20with%20attention%20to%20creating%20a%20festive%20atmosphere.%20The%20design%20incorporates%20personalized%20touches%20that%20make%20the%20event%20unique%20and%20special.&width=600&height=400&seq=10&orientation=landscape'); background-size: cover; background-position: center; height: 250px;"
+            ></div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">30th Birthday Bash</h3>
+              <p class="text-gray-600">
+                Modern tropical theme with custom elements
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="portfolio-item lighting rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+          >
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Outdoor%20evening%20event%20with%20string%20lights%2C%20lanterns%2C%20and%20ambient%20lighting%20creating%20a%20magical%20atmosphere.%20The%20lighting%20design%20transforms%20the%20space%20into%20an%20enchanting%20environment%20as%20darkness%20falls.%20The%20warm%20glow%20creates%20depth%20and%20dimension%20while%20highlighting%20natural%20elements%20of%20the%20venue.&width=600&height=400&seq=11&orientation=landscape'); background-size: cover; background-position: center; height: 250px;"
+            ></div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Twilight Forest Wedding</h3>
+              <p class="text-gray-600">
+                String lights and lantern installation
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <a
+            href="#"
+            class="px-8 py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition"
+            >View Full Gallery</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2">
+            <div
+              style="background-image: url('https://readdy.ai/api/search-image?query=Professional%20event%20planner%20coordinating%20with%20staff%20and%20checking%20details%20at%20an%20elegant%20event%20venue.%20The%20scene%20shows%20the%20behind-the-scenes%20work%20that%20goes%20into%20creating%20a%20flawless%20event.%20The%20planner%20is%20well-dressed%20and%20confident%2C%20demonstrating%20expertise%20and%20attention%20to%20detail.&width=600&height=600&seq=12&orientation=squarish'); background-size: cover; background-position: center; height: 500px; border-radius: 8px;"
+            ></div>
+          </div>
+          <div class="lg:w-1/2">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+              Why Choose Our Event Planning Services
+            </h2>
+            <p class="text-gray-600 mb-8">
+              We don't just plan events – we create experiences that exceed
+              expectations and leave lasting impressions.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary bg-indigo-50 rounded-full flex-shrink-0 mt-1"
+                >
+                  <i class="ri-check-line ri-lg"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">
+                    360° Planning (From Invites to Cleanup)
+                  </h3>
+                  <p class="text-gray-600">
+                    We handle every aspect of your event, from the initial
+                    concept to the final cleanup, ensuring a seamless
+                    experience.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary bg-indigo-50 rounded-full flex-shrink-0 mt-1"
+                >
+                  <i class="ri-shield-check-line ri-lg"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">
+                    On-the-Day Crisis Management
+                  </h3>
+                  <p class="text-gray-600">
+                    Our experienced team anticipates challenges and resolves
+                    issues before they impact your event, giving you peace of
+                    mind.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary bg-indigo-50 rounded-full flex-shrink-0 mt-1"
+                >
+                  <i class="ri-percent-line ri-lg"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">
+                    Exclusive Vendor Discounts
+                  </h3>
+                  <p class="text-gray-600">
+                    Our long-standing relationships with top vendors mean you
+                    get premium services at preferential rates, maximizing your
+                    budget.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planning Process -->
+    <section class="py-16 bg-gray-50" id="process">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+          Our Planning Process
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-16">
+          We follow a proven methodology to transform your vision into reality.
+        </p>
+
+        <div class="relative">
+          <div
+            class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2"
+          ></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="relative flex flex-col items-center text-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary text-white rounded-full mb-6 z-10"
+              >
+                <span class="text-xl font-bold">1</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Vision Call</h3>
+              <p class="text-gray-600">
+                We discuss your goals, preferences, and budget to understand
+                your unique vision.
+              </p>
+            </div>
+
+            <div class="relative flex flex-col items-center text-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary text-white rounded-full mb-6 z-10"
+              >
+                <span class="text-xl font-bold">2</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Mood Board</h3>
+              <p class="text-gray-600">
+                We create detailed design concepts that bring your vision to
+                life visually.
+              </p>
+            </div>
+
+            <div class="relative flex flex-col items-center text-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary text-white rounded-full mb-6 z-10"
+              >
+                <span class="text-xl font-bold">3</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Vendor Booking</h3>
+              <p class="text-gray-600">
+                We secure the perfect team of professionals to execute every
+                aspect of your event.
+              </p>
+            </div>
+
+            <div class="relative flex flex-col items-center text-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary text-white rounded-full mb-6 z-10"
+              >
+                <span class="text-xl font-bold">4</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Execution</h3>
+              <p class="text-gray-600">
+                We manage all details on the day, allowing you to fully enjoy
+                your special event.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+          What Our Clients Say
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Don't just take our word for it – hear from those who've experienced
+          our services firsthand.
+        </p>
+
+        <div class="testimonial-container max-w-4xl mx-auto">
+          <div class="testimonial-slider">
+            <div class="testimonial-slide px-4">
+              <div class="bg-gray-50 p-8 rounded-lg">
+                <div class="flex items-center gap-2 mb-4">
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                </div>
+                <blockquote class="text-lg italic mb-6">
+                  "They saved our wedding when our venue canceled just 3 weeks
+                  before our date! Not only did they find us an even better
+                  location, but they handled all the logistics of moving vendors
+                  and notifying guests. Our day was absolutely perfect – you'd
+                  never know there had been any issues!"
+                </blockquote>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden"
+                  >
+                    <div
+                      style="background-image: url('https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20smiling%20woman%20in%20her%20early%2030s%20with%20shoulder-length%20brown%20hair%20and%20a%20warm%2C%20friendly%20expression.%20The%20photo%20has%20good%20lighting%20and%20a%20neutral%20background%2C%20suitable%20for%20a%20testimonial.&width=100&height=100&seq=13&orientation=squarish'); background-size: cover; background-position: center; width: 100%; height: 100%;"
+                    ></div>
+                  </div>
+                  <div>
+                    <h4 class="font-bold">Rebecca Thompson</h4>
+                    <p class="text-gray-600 text-sm">Wedding Client</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide px-4">
+              <div class="bg-gray-50 p-8 rounded-lg">
+                <div class="flex items-center gap-2 mb-4">
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                </div>
+                <blockquote class="text-lg italic mb-6">
+                  "We needed to organize a corporate retreat in just 72 hours
+                  after another company fell through. Their team worked miracles
+                  – securing accommodations, planning activities, and arranging
+                  catering that impressed our entire executive team. They've
+                  become our go-to for all company events."
+                </blockquote>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden"
+                  >
+                    <div
+                      style="background-image: url('https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20man%20with%20short%20dark%20hair%20and%20glasses%20wearing%20a%20business%20suit.%20The%20photo%20has%20good%20lighting%20and%20a%20neutral%20background%2C%20suitable%20for%20a%20corporate%20testimonial.&width=100&height=100&seq=14&orientation=squarish'); background-size: cover; background-position: center; width: 100%; height: 100%;"
+                    ></div>
+                  </div>
+                  <div>
+                    <h4 class="font-bold">Michael Rodriguez</h4>
+                    <p class="text-gray-600 text-sm">
+                      Director of Operations, TechGrowth Inc.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide px-4">
+              <div class="bg-gray-50 p-8 rounded-lg">
+                <div class="flex items-center gap-2 mb-4">
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                </div>
+                <blockquote class="text-lg italic mb-6">
+                  "Planning my daughter's sweet sixteen from overseas seemed
+                  impossible until we found this amazing team. They handled
+                  everything – from venue selection to custom decorations that
+                  perfectly matched her personality. The smile on her face was
+                  priceless, and I didn't have to stress about a single detail."
+                </blockquote>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden"
+                  >
+                    <div
+                      style="background-image: url('https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20woman%20in%20her%2040s%20with%20curly%20hair%20and%20a%20warm%20smile.%20The%20photo%20has%20good%20lighting%20and%20a%20neutral%20background%2C%20suitable%20for%20a%20parent%20testimonial.&width=100&height=100&seq=15&orientation=squarish'); background-size: cover; background-position: center; width: 100%; height: 100%;"
+                    ></div>
+                  </div>
+                  <div>
+                    <h4 class="font-bold">Olivia Patel</h4>
+                    <p class="text-gray-600 text-sm">Birthday Party Client</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-center mt-8 gap-2">
+            <button
+              class="w-3 h-3 rounded-full bg-primary"
+              id="testimonial-dot-0"
+            ></button>
+            <button
+              class="w-3 h-3 rounded-full bg-gray-300"
+              id="testimonial-dot-1"
+            ></button>
+            <button
+              class="w-3 h-3 rounded-full bg-gray-300"
+              id="testimonial-dot-2"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Guide -->
+    <section class="py-16 bg-gray-50" id="pricing">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+          Investment in Your Perfect Event
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Transparent pricing tailored to your needs and budget.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <h3 class="text-2xl font-bold mb-4">Basic Package</h3>
+            <div class="text-3xl font-bold mb-6">$1,500</div>
+            <p class="text-gray-600 mb-8">
+              Perfect for clients who need guidance but plan to handle most
+              details themselves.
+            </p>
+
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Initial consultation (2 hours)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Comprehensive planning checklist</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Vendor recommendations</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Budget planning assistance</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-gray-300 mt-0.5"
+                >
+                  <i class="ri-close-line"></i>
+                </div>
+                <span class="text-gray-400">Day-of coordination</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-gray-300 mt-0.5"
+                >
+                  <i class="ri-close-line"></i>
+                </div>
+                <span class="text-gray-400">Vendor management</span>
+              </li>
+            </ul>
+
+            <a
+              href="#consultation"
+              class="block w-full py-3 text-center bg-white border border-primary text-primary font-medium !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition"
+              >Get Started</a
+            >
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition relative"
+          >
+            <div
+              class="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-sm font-medium rounded-tr-lg rounded-bl-lg"
+            >
+              Most Popular
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Premium Package</h3>
+            <div class="text-3xl font-bold mb-6">$4,500</div>
+            <p class="text-gray-600 mb-8">
+              Comprehensive planning and coordination for a stress-free
+              experience.
+            </p>
+
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Everything in Basic Package</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Full planning & design services</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Vendor selection & management</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Complete day-of coordination (10 hours)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Timeline creation & management</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-primary mt-0.5"
+                >
+                  <i class="ri-check-line"></i>
+                </div>
+                <span>Emergency kit & on-site problem solving</span>
+              </li>
+            </ul>
+
+            <a
+              href="#consultation"
+              class="block w-full py-3 text-center bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition"
+              >Get Started</a
+            >
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <p class="text-lg font-medium mb-4">
+            Need something more customized?
+          </p>
+          <a
+            href="#consultation"
+            class="px-8 py-3 bg-white border border-primary text-primary font-medium !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition"
+            >Request a Custom Quote</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white" id="faq">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Find answers to common questions about our event planning services.
+        </p>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="faq-item py-5">
+            <div
+              class="flex justify-between items-center cursor-pointer faq-toggle"
+            >
+              <h3 class="text-xl font-bold">
+                How early should I book your services?
+              </h3>
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </div>
+            <div class="faq-content pt-4">
+              <p class="text-gray-600">
+                For weddings and large-scale events, we recommend booking 9-12
+                months in advance to ensure availability and allow adequate
+                planning time. For smaller events, 3-6 months is typically
+                sufficient. However, we also offer last-minute planning services
+                for urgent situations – just know that some premium venues and
+                vendors may already be booked.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item py-5">
+            <div
+              class="flex justify-between items-center cursor-pointer faq-toggle"
+            >
+              <h3 class="text-xl font-bold">
+                What's your cancellation policy?
+              </h3>
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </div>
+            <div class="faq-content pt-4">
+              <p class="text-gray-600">
+                Our standard policy includes a non-refundable deposit (25% of
+                the total fee) to secure your date. Cancellations made more than
+                90 days before the event date receive a 50% refund of any
+                additional payments made. Cancellations within 90 days are
+                non-refundable due to the work already completed and
+                opportunities declined. We do offer the option to reschedule
+                once within 12 months for a small administrative fee.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item py-5">
+            <div
+              class="flex justify-between items-center cursor-pointer faq-toggle"
+            >
+              <h3 class="text-xl font-bold">
+                Do you handle destination events?
+              </h3>
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </div>
+            <div class="faq-content pt-4">
+              <p class="text-gray-600">
+                Yes! We specialize in both local and destination events. For
+                destinations, we either work with trusted local partners or
+                travel to the location ourselves, depending on the event's
+                scope. Travel and accommodation costs are additional to our
+                standard packages for destination events. We've successfully
+                planned events across North America, Europe, and the Caribbean.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item py-5">
+            <div
+              class="flex justify-between items-center cursor-pointer faq-toggle"
+            >
+              <h3 class="text-xl font-bold">How do payments work?</h3>
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </div>
+            <div class="faq-content pt-4">
+              <p class="text-gray-600">
+                We typically structure payments in three installments: a 25%
+                deposit to secure your date, 50% due midway through the planning
+                process, and the final 25% due two weeks before your event. For
+                vendor payments, we can either manage them on your behalf (with
+                a management fee) or provide you with a payment schedule to
+                handle directly. We accept credit cards, bank transfers, and
+                digital payment methods.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item py-5">
+            <div
+              class="flex justify-between items-center cursor-pointer faq-toggle"
+            >
+              <h3 class="text-xl font-bold">
+                What if I only need help on the day of my event?
+              </h3>
+              <div
+                class="w-8 h-8 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </div>
+            <div class="faq-content pt-4">
+              <p class="text-gray-600">
+                We offer day-of coordination services for clients who've handled
+                the planning themselves but want professional support during the
+                event. This includes a detailed planning meeting 2-4 weeks
+                before, creation of a comprehensive timeline, vendor
+                confirmation, and 8-10 hours of on-site coordination on the day.
+                This service starts at $1,200, depending on event size and
+                complexity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Limited Availability Alert -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="bg-white p-8 rounded-lg shadow-sm max-w-4xl mx-auto">
+          <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2">
+              <h2 class="text-3xl font-bold mb-4">
+                Limited Availability for 2025
+              </h2>
+              <div
+                class="flex items-center gap-2 text-red-500 font-medium mb-6"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-alarm-warning-fill"></i>
+                </div>
+                <span>Only 5 premium dates remaining!</span>
+              </div>
+              <p class="text-gray-600 mb-6">
+                Our calendar is filling up quickly for the upcoming season.
+                Secure your preferred date before it's gone.
+              </p>
+              <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Select your event type:</label
+                >
+                <div class="relative">
+                  <select
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg appearance-none bg-white pr-8 focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option>Wedding</option>
+                    <option>Corporate Event</option>
+                    <option>Birthday Celebration</option>
+                    <option>Social Gala</option>
+                    <option>Other</option>
+                  </select>
+                  <div
+                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                  >
+                    <i class="ri-arrow-down-s-line"></i>
+                  </div>
+                </div>
+              </div>
+              <a
+                href="#consultation"
+                class="block w-full py-3 text-center bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition"
+                >Check Date Availability</a
+              >
+            </div>
+
+            <div class="md:w-1/2">
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h3 class="text-lg font-bold mb-4 text-center">
+                  Available Dates - May 2025
+                </h3>
+                <div class="grid grid-cols-7 gap-1 text-center text-sm mb-2">
+                  <div>Sun</div>
+                  <div>Mon</div>
+                  <div>Tue</div>
+                  <div>Wed</div>
+                  <div>Thu</div>
+                  <div>Fri</div>
+                  <div>Sat</div>
+                </div>
+                <div class="availability-calendar">
+                  <div class="calendar-day text-gray-400">28</div>
+                  <div class="calendar-day text-gray-400">29</div>
+                  <div class="calendar-day text-gray-400">30</div>
+                  <div class="calendar-day text-gray-400">1</div>
+                  <div class="calendar-day text-gray-400">2</div>
+                  <div class="calendar-day unavailable">3</div>
+                  <div class="calendar-day unavailable">4</div>
+                  <div class="calendar-day unavailable">5</div>
+                  <div class="calendar-day available">6</div>
+                  <div class="calendar-day unavailable">7</div>
+                  <div class="calendar-day unavailable">8</div>
+                  <div class="calendar-day unavailable">9</div>
+                  <div class="calendar-day unavailable">10</div>
+                  <div class="calendar-day unavailable">11</div>
+                  <div class="calendar-day unavailable">12</div>
+                  <div class="calendar-day unavailable">13</div>
+                  <div class="calendar-day available">14</div>
+                  <div class="calendar-day unavailable">15</div>
+                  <div class="calendar-day unavailable">16</div>
+                  <div class="calendar-day unavailable">17</div>
+                  <div class="calendar-day unavailable">18</div>
+                  <div class="calendar-day unavailable">19</div>
+                  <div class="calendar-day available">20</div>
+                  <div class="calendar-day unavailable">21</div>
+                  <div class="calendar-day unavailable">22</div>
+                  <div class="calendar-day unavailable">23</div>
+                  <div class="calendar-day available">24</div>
+                  <div class="calendar-day unavailable">25</div>
+                  <div class="calendar-day unavailable">26</div>
+                  <div class="calendar-day unavailable">27</div>
+                  <div class="calendar-day available">28</div>
+                  <div class="calendar-day unavailable">29</div>
+                  <div class="calendar-day unavailable">30</div>
+                  <div class="calendar-day unavailable">31</div>
+                  <div class="calendar-day text-gray-400">1</div>
+                </div>
+                <div class="mt-4 text-center text-sm text-gray-500">
+                  <span
+                    class="inline-block w-3 h-3 bg-green-100 rounded-sm mr-1"
+                  ></span>
+                  Available
+                  <span
+                    class="inline-block w-3 h-3 bg-red-100 rounded-sm ml-4 mr-1"
+                  ></span>
+                  Booked
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Consultation Form -->
+    <section class="py-16 bg-white" id="consultation">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+          Get Your Free Consultation
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Take the first step toward your dream event. Fill out the form below,
+          and we'll be in touch within 24 hours.
+        </p>
+
+        <div class="max-w-3xl mx-auto">
+          <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="name"
+                >Full Name *</label
+              >
+              <input
+                type="text"
+                id="name"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="email"
+                >Email Address *</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="phone"
+                >Phone Number *</label
+              >
+              <input
+                type="tel"
+                id="phone"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              />
+            </div>
+
+            <div>
+              <label
+                class="block text-gray-700 font-medium mb-2"
+                for="event-date"
+                >Event Date</label
+              >
+              <input
+                type="date"
+                id="event-date"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div>
+              <label
+                class="block text-gray-700 font-medium mb-2"
+                for="event-type"
+                >Event Type *</label
+              >
+              <div class="relative">
+                <select
+                  id="event-type"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg appearance-none bg-white pr-8 focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Event Type</option>
+                  <option>Wedding</option>
+                  <option>Corporate Event</option>
+                  <option>Birthday Celebration</option>
+                  <option>Social Gala</option>
+                  <option>Other</option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                >
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="block text-gray-700 font-medium mb-2"
+                for="guest-count"
+                >Estimated Guest Count</label
+              >
+              <input
+                type="number"
+                id="guest-count"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="block text-gray-700 font-medium mb-2" for="message"
+                >Tell us about your event vision *</label
+              >
+              <textarea
+                id="message"
+                rows="5"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              ></textarea>
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="flex items-start gap-2 cursor-pointer">
+                <input type="checkbox" class="custom-checkbox mt-1" />
+                <span class="text-gray-600"
+                  >I agree to receive emails about event planning tips and
+                  promotional offers. You can unsubscribe at any time.</span
+                >
+              </label>
+            </div>
+
+            <div class="md:col-span-2 text-center">
+              <button
+                type="submit"
+                class="px-8 py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition"
+              >
+                Submit Request
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer with Social Proof -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div class="md:col-span-2">
+            <a href="#" class="font-['Pacifico'] text-3xl text-white mb-4 block"
+              >logo</a
+            >
+            <p class="text-gray-400 mb-6 max-w-md">
+              Creating stress-free events and unforgettable memories since 2015.
+              We transform your vision into flawlessly executed celebrations.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-pinterest-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-linkedin-fill"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  class="text-gray-400 hover:text-white transition"
+                  >Portfolio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#pricing"
+                  class="text-gray-400 hover:text-white transition"
+                  >Pricing</a
+                >
+              </li>
+              <li>
+                <a href="#faq" class="text-gray-400 hover:text-white transition"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-gray-400 mt-0.5"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <span class="text-gray-400"
+                  >123 Event Avenue, Suite 500<br />New York, NY 10001</span
+                >
+              </li>
+              <li class="flex items-center gap-3">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-gray-400"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <span class="text-gray-400">(212) 555-7890</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-gray-400"
+                >
+                  <i class="ri-mail-line"></i>
+                </div>
+                <span class="text-gray-400">hello@eventplanner.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-gray-800">
+          <div class="mb-6">
+            <h3 class="text-lg font-bold mb-4 text-center">As Seen In</h3>
+            <div class="flex flex-wrap justify-center gap-8">
+              <div
+                class="w-24 h-12 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-vogue-fill ri-2x"></i>
+              </div>
+              <div
+                class="w-24 h-12 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-netflix-fill ri-2x"></i>
+              </div>
+              <div
+                class="w-24 h-12 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-microsoft-fill ri-2x"></i>
+              </div>
+              <div
+                class="w-24 h-12 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-amazon-fill ri-2x"></i>
+              </div>
+              <div
+                class="w-24 h-12 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-apple-fill ri-2x"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-500 text-sm">
+              © 2025 Event Planning Company. All rights reserved.
+            </p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+              <a
+                href="#"
+                class="text-gray-500 text-sm hover:text-white transition"
+                >Privacy Policy</a
+              >
+              <a
+                href="#"
+                class="text-gray-500 text-sm hover:text-white transition"
+                >Terms of Service</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Portfolio Filter
+        const filterButtons = document.querySelectorAll("[data-filter]");
+        const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const filter = this.getAttribute("data-filter");
+
+            // Update active button
+            filterButtons.forEach((btn) => {
+              btn.classList.remove("portfolio-filter-active");
+              btn.classList.add("text-gray-500");
+            });
+            this.classList.add("portfolio-filter-active");
+            this.classList.remove("text-gray-500");
+
+            // Filter items
+            if (filter === "all") {
+              portfolioItems.forEach((item) => {
+                item.style.display = "block";
+              });
+            } else {
+              portfolioItems.forEach((item) => {
+                if (item.classList.contains(filter)) {
+                  item.style.display = "block";
+                } else {
+                  item.style.display = "none";
+                }
+              });
+            }
+          });
+        });
+
+        // Testimonial Slider
+        const testimonialSlider = document.querySelector(".testimonial-slider");
+        const testimonialSlides = document.querySelectorAll(".testimonial-slide");
+        const testimonialDots = document.querySelectorAll('[id^="testimonial-dot-"]');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+          testimonialSlider.style.transform = `translateX(-${index * 100}%)`;
+
+          testimonialDots.forEach((dot, i) => {
+            if (i === index) {
+              dot.classList.remove("bg-gray-300");
+              dot.classList.add("bg-primary");
+            } else {
+              dot.classList.remove("bg-primary");
+              dot.classList.add("bg-gray-300");
+            }
+          });
+
+          currentSlide = index;
+        }
+
+        testimonialDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            showSlide(index);
+          });
+        });
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+          currentSlide = (currentSlide + 1) % testimonialSlides.length;
+          showSlide(currentSlide);
+        }, 5000);
+
+        // FAQ Accordion
+        const faqToggles = document.querySelectorAll(".faq-toggle");
+
+        faqToggles.forEach((toggle) => {
+          toggle.addEventListener("click", function () {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector(".faq-icon");
+
+            content.classList.toggle("active");
+
+            if (content.classList.contains("active")) {
+              icon.classList.remove("ri-add-line");
+              icon.classList.add("ri-subtract-line");
+            } else {
+              icon.classList.remove("ri-subtract-line");
+              icon.classList.add("ri-add-line");
+            }
+          });
+        });
+
+        // Calendar Day Selection
+        const calendarDays = document.querySelectorAll(".calendar-day");
+
+        calendarDays.forEach((day) => {
+          if (day.classList.contains("available")) {
+            day.addEventListener("click", function () {
+              calendarDays.forEach((d) => {
+                if (d.classList.contains("available")) {
+                  d.classList.remove("selected");
+                }
+              });
+              this.classList.add("selected");
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

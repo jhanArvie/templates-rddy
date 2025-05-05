@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Touch With Faith - Massage Service</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#4a6baf", secondary: "#e87b9e" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+      }
+      .hero-section {
+      background-image: url('https://readdy.ai/api/search-image?query=Professional%2520massage%2520therapy%2520room%2520with%2520soft%2520lighting%252C%2520relaxing%2520atmosphere%252C%2520massage%2520table%2520with%2520clean%2520white%2520sheets%252C%2520essential%2520oils%252C%2520and%2520calming%2520decor.%2520The%2520image%2520should%2520convey%2520tranquility%252C%2520professionalism%252C%2520and%2520healing.%2520The%2520left%2520side%2520of%2520the%2520image%2520should%2520be%2520lighter%2520in%2520color%2520to%2520allow%2520text%2520to%2520be%2520readable.&width=1200&height=600&seq=12345&orientation=landscape');
+      background-size: cover;
+      background-position: center;
+      }
+      .hero-overlay {
+      background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.4) 100%);
+      }
+      .benefits-card {
+      transition: transform 0.3s ease;
+      }
+      .benefits-card:hover {
+      transform: translateY(-5px);
+      }
+      input:focus, textarea:focus {
+      outline: none;
+      border-color: #4a6baf;
+      }
+      .custom-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #4a6baf;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      }
+      .custom-checkbox:checked {
+      background-color: #4a6baf;
+      }
+      .custom-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 6px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <span class="text-3xl font-['Pacifico'] text-primary"
+            >Touch With Faith</span
+          >
+          <span class="ml-2 text-gray-600">Massage Service</span>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#home" class="text-gray-700 hover:text-primary font-medium"
+            >Home</a
+          >
+          <a
+            href="#services"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Services</a
+          >
+          <a
+            href="#therapists"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Our Therapists</a
+          >
+          <a
+            href="#benefits"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Benefits</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Contact</a
+          >
+        </nav>
+        <div class="md:hidden flex items-center">
+          <button class="text-gray-700 hover:text-primary">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-menu-line ri-lg"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section relative">
+      <div class="hero-overlay w-full h-full absolute inset-0"></div>
+      <div class="container mx-auto px-4 py-20 relative z-10">
+        <div class="max-w-2xl">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Experience the Healing Power of Touch
+          </h1>
+          <p class="text-lg text-gray-700 mb-8">
+            Touch With Faith offers exceptional massage therapy services
+            provided by our highly skilled blind therapists, whose heightened
+            sense of touch delivers a uniquely intuitive and therapeutic
+            experience.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#services"
+              class="bg-primary text-white py-3 px-6 rounded-button font-medium hover:bg-opacity-90 transition duration-300 text-center whitespace-nowrap"
+              >Our Services</a
+            >
+            <a
+              href="#contact"
+              class="bg-white text-primary py-3 px-6 rounded-button font-medium border border-primary hover:bg-gray-50 transition duration-300 text-center whitespace-nowrap"
+              >Book Appointment</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="md:w-1/2">
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%2520blind%2520massage%2520therapist%2520providing%2520treatment%2520to%2520a%2520client%2520on%2520a%2520massage%2520table.%2520The%2520therapist%2520is%2520shown%2520using%2520their%2520hands%2520with%2520expert%2520precision%2520and%2520care.%2520The%2520scene%2520conveys%2520professionalism%252C%2520skill%252C%2520and%2520the%2520special%2520connection%2520between%2520therapist%2520and%2520client.%2520The%2520room%2520has%2520soft%2520lighting%2520and%2520a%2520calming%2520atmosphere.&width=600&height=400&seq=12346&orientation=landscape"
+              alt="Massage therapist providing treatment"
+              class="rounded-lg shadow-lg object-cover w-full h-full object-top"
+            />
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+              Our Unique Approach
+            </h2>
+            <p class="text-gray-700 mb-4">
+              At Touch With Faith, we believe in the extraordinary power of
+              touch to heal, relax, and rejuvenate. Our massage therapists, who
+              are visually impaired, possess an enhanced tactile sensitivity
+              that allows them to perceive muscle tension and physical
+              imbalances with remarkable precision.
+            </p>
+            <p class="text-gray-700 mb-6">
+              This unique ability enables our therapists to provide personalized
+              treatments that address your specific needs, whether you're
+              seeking relief from chronic pain, stress reduction, or simply a
+              moment of tranquility in your busy life.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+                >
+                  <i class="ri-award-line ri-lg"></i>
+                </div>
+                <span class="font-medium">Certified Therapists</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+                >
+                  <i class="ri-heart-line ri-lg"></i>
+                </div>
+                <span class="font-medium">Personalized Care</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Services</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We offer a variety of massage techniques tailored to meet your
+            specific needs, from relaxation to therapeutic treatments.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Bed Massage Services -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Bed Massage</h3>
+            <div class="space-y-4">
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Whole Body (1 Hour)</h4>
+                  <p class="text-sm text-gray-600">
+                    Complete relaxation experience
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 500</span>
+              </div>
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Half Body (30 mins)</h4>
+                  <p class="text-sm text-gray-600">
+                    Focused treatment for specific areas
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 300</span>
+              </div>
+            </div>
+          </div>
+          <!-- Chair Massage Services -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Chair Massage</h3>
+            <div class="space-y-4">
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Whole Body (1 Hour)</h4>
+                  <p class="text-sm text-gray-600">
+                    Comprehensive seated massage
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 400</span>
+              </div>
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Half Body (30 mins)</h4>
+                  <p class="text-sm text-gray-600">
+                    Quick relief for busy schedules
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 250</span>
+              </div>
+            </div>
+          </div>
+          <!-- Specialized Treatments -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">
+              Specialized Treatments
+            </h3>
+            <div class="space-y-4">
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Ventosa</h4>
+                  <p class="text-sm text-gray-600">
+                    Cupping therapy for deep tissue relief
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 260</span>
+              </div>
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Foot Massage (30 mins)</h4>
+                  <p class="text-sm text-gray-600">
+                    Reflexology for total body wellness
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 270</span>
+              </div>
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Hand & Foot Reflex (1 Hour)</h4>
+                  <p class="text-sm text-gray-600">
+                    Comprehensive reflexology treatment
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 400</span>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Services -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">
+              Additional Services
+            </h3>
+            <div class="space-y-4">
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Taas Matris, Hilot Pilay</h4>
+                  <p class="text-sm text-gray-600">
+                    Traditional Filipino healing techniques
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 300</span>
+              </div>
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Sprain, Stiff Neck Treatment</h4>
+                  <p class="text-sm text-gray-600">
+                    Targeted therapy for injuries
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 300</span>
+              </div>
+              <div
+                class="flex justify-between items-center pb-2 border-b border-gray-100"
+              >
+                <div>
+                  <h4 class="font-medium">Home Service</h4>
+                  <p class="text-sm text-gray-600">
+                    Massage therapy in the comfort of your home
+                  </p>
+                </div>
+                <span class="text-primary font-bold">₱ 800</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">
+            Massage Techniques We Offer
+          </h3>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="p-4 bg-primary bg-opacity-5 rounded-lg text-center">
+              <div
+                class="w-12 h-12 mx-auto mb-2 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+              >
+                <i class="ri-hand-heart-line ri-lg"></i>
+              </div>
+              <h4 class="font-medium">Swedish</h4>
+            </div>
+            <div class="p-4 bg-primary bg-opacity-5 rounded-lg text-center">
+              <div
+                class="w-12 h-12 mx-auto mb-2 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+              >
+                <i class="ri-fingerprint-line ri-lg"></i>
+              </div>
+              <h4 class="font-medium">Shiatzu</h4>
+            </div>
+            <div class="p-4 bg-primary bg-opacity-5 rounded-lg text-center">
+              <div
+                class="w-12 h-12 mx-auto mb-2 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+              >
+                <i class="ri-focus-3-line ri-lg"></i>
+              </div>
+              <h4 class="font-medium">Accupressure</h4>
+            </div>
+            <div class="p-4 bg-primary bg-opacity-5 rounded-lg text-center">
+              <div
+                class="w-12 h-12 mx-auto mb-2 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+              >
+                <i class="ri-foot-print-line ri-lg"></i>
+              </div>
+              <h4 class="font-medium">Reflex</h4>
+            </div>
+            <div class="p-4 bg-primary bg-opacity-5 rounded-lg text-center">
+              <div
+                class="w-12 h-12 mx-auto mb-2 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+              >
+                <i class="ri-bubble-chart-line ri-lg"></i>
+              </div>
+              <h4 class="font-medium">Ventoss</h4>
+            </div>
+            <div class="p-4 bg-primary bg-opacity-5 rounded-lg text-center">
+              <div
+                class="w-12 h-12 mx-auto mb-2 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+              >
+                <i class="ri-heart-pulse-line ri-lg"></i>
+              </div>
+              <h4 class="font-medium">Hilot</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Therapists Section -->
+    <section id="therapists" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Our Skilled Therapists
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Meet our team of certified massage therapists who bring years of
+            experience and exceptional skill to every session.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%2520blind%2520massage%2520therapist%2520portrait%2520with%2520a%2520warm%2520smile%252C%2520wearing%2520professional%2520uniform%252C%2520standing%2520in%2520a%2520massage%2520therapy%2520room%2520with%2520soft%2520lighting.%2520The%2520image%2520should%2520convey%2520confidence%252C%2520expertise%252C%2520and%2520approachability.%2520The%2520background%2520should%2520be%2520simple%2520and%2520professional.&width=400&height=500&seq=12347&orientation=portrait"
+              alt="Massage Therapist"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800">Maria Santos</h3>
+              <p class="text-primary font-medium mb-3">
+                Senior Massage Therapist
+              </p>
+              <p class="text-gray-600 mb-4">
+                Specializing in Swedish and deep tissue massage with over 8
+                years of experience helping clients find relief from chronic
+                pain.
+              </p>
+              <div class="flex items-center gap-2">
+                <div
+                  class="w-8 h-8 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+                >
+                  <i class="ri-award-line"></i>
+                </div>
+                <span class="text-sm text-gray-600"
+                  >Certified in Multiple Techniques</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%2520blind%2520male%2520massage%2520therapist%2520portrait%2520with%2520a%2520confident%2520expression%252C%2520wearing%2520professional%2520uniform%252C%2520standing%2520in%2520a%2520massage%2520therapy%2520room%2520with%2520soft%2520lighting.%2520The%2520image%2520should%2520convey%2520professionalism%252C%2520skill%252C%2520and%2520trustworthiness.%2520The%2520background%2520should%2520be%2520simple%2520and%2520clean.&width=400&height=500&seq=12348&orientation=portrait"
+              alt="Massage Therapist"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800">Antonio Reyes</h3>
+              <p class="text-primary font-medium mb-3">
+                Reflexology Specialist
+              </p>
+              <p class="text-gray-600 mb-4">
+                With expertise in foot and hand reflexology, Antonio helps
+                clients achieve balance and wellness through targeted pressure
+                techniques.
+              </p>
+              <div class="flex items-center gap-2">
+                <div
+                  class="w-8 h-8 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+                >
+                  <i class="ri-award-line"></i>
+                </div>
+                <span class="text-sm text-gray-600"
+                  >Advanced Reflexology Certification</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%2520blind%2520female%2520massage%2520therapist%2520portrait%2520with%2520a%2520gentle%2520smile%252C%2520wearing%2520professional%2520uniform%252C%2520standing%2520in%2520a%2520massage%2520therapy%2520room%2520with%2520soft%2520lighting.%2520The%2520image%2520should%2520convey%2520warmth%252C%2520expertise%252C%2520and%2520compassion.%2520The%2520background%2520should%2520be%2520simple%2520and%2520calming.&width=400&height=500&seq=12349&orientation=portrait"
+              alt="Massage Therapist"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800">Elena Mendoza</h3>
+              <p class="text-primary font-medium mb-3">
+                Traditional Hilot Practitioner
+              </p>
+              <p class="text-gray-600 mb-4">
+                Specializing in traditional Filipino healing techniques, Elena
+                combines ancient wisdom with modern therapeutic approaches.
+              </p>
+              <div class="flex items-center gap-2">
+                <div
+                  class="w-8 h-8 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+                >
+                  <i class="ri-award-line"></i>
+                </div>
+                <span class="text-sm text-gray-600"
+                  >Traditional Healing Arts Certified</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Benefits of Massage
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Discover how regular massage therapy can improve your overall health
+            and well-being across multiple body systems.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Circulatory System -->
+          <div class="bg-white p-6 rounded-lg shadow-sm benefits-card">
+            <div
+              class="w-12 h-12 mb-4 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center text-secondary"
+            >
+              <i class="ri-heart-pulse-line ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Circulatory System
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Dilates blood vessels</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Improves blood circulation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Decreases blood pressure</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Reduces heart and pulse rates</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Increases red & white blood cell count</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Muscular System -->
+          <div class="bg-white p-6 rounded-lg shadow-sm benefits-card">
+            <div
+              class="w-12 h-12 mb-4 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center text-secondary"
+            >
+              <i class="ri-muscle-line ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Muscular System
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Relieves muscular tension</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Reduces muscle soreness and fatigue</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Manually separates muscle fibers</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Increases range of motion</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Improves posture and flexibility</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Nervous System -->
+          <div class="bg-white p-6 rounded-lg shadow-sm benefits-card">
+            <div
+              class="w-12 h-12 mb-4 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center text-secondary"
+            >
+              <i class="ri-brain-line ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Nervous System</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Reduces stress and anxiety</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Promotes relaxation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Reduces beta wave activity</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Increases delta wave activity</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Activates sensory receptors</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Lymphatic System -->
+          <div class="bg-white p-6 rounded-lg shadow-sm benefits-card">
+            <div
+              class="w-12 h-12 mb-4 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center text-secondary"
+            >
+              <i class="ri-drop-line ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Lymphatic System
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Promotes lymph circulation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Reduces edema (fluid accumulation)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span
+                  >Decreases the circumference of areas affected with
+                  edema</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Decreases weight in patients with edema</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Respiratory System -->
+          <div class="bg-white p-6 rounded-lg shadow-sm benefits-card">
+            <div
+              class="w-12 h-12 mb-4 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center text-secondary"
+            >
+              <i class="ri-lungs-line ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Respiratory System
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Reduces respiratory rate</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Strengthens respiratory muscles</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Decreases asthma attacks</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Increases fluid discharge from lungs</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Digestive System -->
+          <div class="bg-white p-6 rounded-lg shadow-sm benefits-card">
+            <div
+              class="w-12 h-12 mb-4 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center text-secondary"
+            >
+              <i class="ri-capsule-line ri-lg"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Digestive System
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Promotes evacuation of the colon</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Relieves constipation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Relieves colic and intestinal gas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-secondary"
+                >
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <span>Stimulates digestion</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Hours Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row gap-12">
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+              Business Hours
+            </h2>
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-time-line ri-lg"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-800">Hours</h3>
+                  <p class="text-secondary">Open today</p>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div
+                  class="flex justify-between items-center pb-2 border-b border-gray-200"
+                >
+                  <span class="font-medium">Monday</span>
+                  <span>10:00 AM - 9:00 PM</span>
+                </div>
+                <div
+                  class="flex justify-between items-center pb-2 border-b border-gray-200"
+                >
+                  <span class="font-medium">Tuesday</span>
+                  <span>10:00 AM - 9:00 PM</span>
+                </div>
+                <div
+                  class="flex justify-between items-center pb-2 border-b border-gray-200"
+                >
+                  <span class="font-medium">Wednesday</span>
+                  <span>10:00 AM - 9:00 PM</span>
+                </div>
+                <div
+                  class="flex justify-between items-center pb-2 border-b border-gray-200"
+                >
+                  <span class="font-medium">Thursday</span>
+                  <span>10:00 AM - 9:00 PM</span>
+                </div>
+                <div
+                  class="flex justify-between items-center pb-2 border-b border-gray-200"
+                >
+                  <span class="font-medium">Friday</span>
+                  <span>10:00 AM - 9:00 PM</span>
+                </div>
+                <div
+                  class="flex justify-between items-center pb-2 border-b border-gray-200"
+                >
+                  <span class="font-medium">Saturday</span>
+                  <span>10:00 AM - 9:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center pb-2">
+                  <span class="font-medium">Sunday</span>
+                  <span>10:00 AM - 9:00 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Location</h2>
+            <div class="bg-gray-50 p-6 rounded-lg h-full">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-map-pin-line ri-lg"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-800">Address</h3>
+                  <p class="text-gray-600">
+                    4-F, Robinsons Place Malolos, Malolos, Philippines
+                  </p>
+                </div>
+              </div>
+              <div class="rounded-lg overflow-hidden h-64 relative">
+                <div
+                  class="absolute inset-0"
+                  style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;"
+                ></div>
+              </div>
+              <div class="mt-4 flex items-center gap-3">
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-phone-line ri-lg"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-800">Contact</h3>
+                  <p class="text-gray-600">0926 315 7294</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Booking Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Book Your Appointment
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Schedule your massage session today and experience the healing power
+            of touch.
+          </p>
+        </div>
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm">
+          <form>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label for="name" class="block text-gray-700 font-medium mb-2"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  class="w-full px-4 py-3 rounded border border-gray-300 focus:border-primary"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label for="phone" class="block text-gray-700 font-medium mb-2"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  class="w-full px-4 py-3 rounded border border-gray-300 focus:border-primary"
+                  placeholder="Your phone number"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-gray-700 font-medium mb-2"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-3 rounded border border-gray-300 focus:border-primary"
+                  placeholder="Your email address"
+                />
+              </div>
+              <div>
+                <label for="date" class="block text-gray-700 font-medium mb-2"
+                  >Preferred Date</label
+                >
+                <input
+                  type="date"
+                  id="date"
+                  class="w-full px-4 py-3 rounded border border-gray-300 focus:border-primary"
+                />
+              </div>
+              <div>
+                <label for="time" class="block text-gray-700 font-medium mb-2"
+                  >Preferred Time</label
+                >
+                <input
+                  type="time"
+                  id="time"
+                  class="w-full px-4 py-3 rounded border border-gray-300 focus:border-primary"
+                />
+              </div>
+              <div>
+                <label
+                  for="service"
+                  class="block text-gray-700 font-medium mb-2"
+                  >Service Type</label
+                >
+                <div class="relative">
+                  <select
+                    id="service"
+                    class="w-full px-4 py-3 rounded border border-gray-300 focus:border-primary appearance-none pr-8"
+                  >
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="whole_body">
+                      Whole Body Massage (1 Hour)
+                    </option>
+                    <option value="half_body">
+                      Half Body Massage (30 mins)
+                    </option>
+                    <option value="foot">Foot Massage (30 mins)</option>
+                    <option value="ventosa">Ventosa</option>
+                    <option value="reflex">Hand & Foot Reflex (1 Hour)</option>
+                    <option value="hilot">Taas Matris, Hilot Pilay</option>
+                    <option value="home">Home Service</option>
+                  </select>
+                  <div
+                    class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
+                  >
+                    <i class="ri-arrow-down-s-line text-gray-500"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-6">
+              <label for="message" class="block text-gray-700 font-medium mb-2"
+                >Special Requests or Health Concerns</label
+              >
+              <textarea
+                id="message"
+                rows="4"
+                class="w-full px-4 py-3 rounded border border-gray-300 focus:border-primary"
+                placeholder="Please let us know if you have any specific health concerns or preferences"
+              ></textarea>
+            </div>
+            <div class="mb-6">
+              <label class="flex items-start gap-2 cursor-pointer">
+                <input type="checkbox" class="custom-checkbox mt-1" />
+                <span class="text-gray-600"
+                  >I agree to receive appointment confirmations and reminders
+                  via email or SMS.</span
+                >
+              </label>
+            </div>
+            <button
+              type="submit"
+              class="bg-primary text-white py-3 px-6 rounded-button font-medium hover:bg-opacity-90 transition duration-300 whitespace-nowrap"
+            >
+              Book Appointment
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            What Our Clients Say
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Hear from those who have experienced the exceptional care and skill
+            of our massage therapists.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="flex items-center gap-2 text-yellow-400 mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "I've been dealing with chronic back pain for years, and the
+              therapists at Touch With Faith have been incredible. Their ability
+              to find and release tension points is remarkable. I leave each
+              session feeling renewed."
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+              >
+                <i class="ri-user-line ri-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Isabelle Reyes</h4>
+                <p class="text-sm text-gray-600">Regular client for 2 years</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="flex items-center gap-2 text-yellow-400 mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "The foot reflexology at Touch With Faith is absolutely amazing.
+              Their therapists have an intuitive understanding of pressure
+              points that I've never experienced elsewhere. Highly recommend for
+              anyone with foot pain or just needing relaxation."
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+              >
+                <i class="ri-user-line ri-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Miguel Fernandez</h4>
+                <p class="text-sm text-gray-600">Monthly client</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="flex items-center gap-2 text-yellow-400 mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "As someone who works long hours at a computer, I've developed
+              serious neck and shoulder issues. The therapists at Touch With
+              Faith have been life-changing. Their ability to locate and release
+              tension is remarkable. I'm sleeping better and have less pain."
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary"
+              >
+                <i class="ri-user-line ri-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Camille Santos</h4>
+                <p class="text-sm text-gray-600">Weekly client</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Find answers to common questions about our massage services.
+          </p>
+        </div>
+        <div class="max-w-3xl mx-auto space-y-4">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <button
+              class="flex justify-between items-center w-full text-left"
+              onclick="toggleFaq(this)"
+            >
+              <h3 class="font-bold text-gray-800">
+                What should I expect during my first visit?
+              </h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </button>
+            <div class="faq-content hidden mt-4">
+              <p class="text-gray-600">
+                During your first visit, you'll complete a brief health
+                questionnaire. Your therapist will discuss your specific needs
+                and concerns before beginning the session. They'll explain the
+                process and ensure your comfort throughout the treatment. Feel
+                free to communicate any preferences regarding pressure or areas
+                that need special attention.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <button
+              class="flex justify-between items-center w-full text-left"
+              onclick="toggleFaq(this)"
+            >
+              <h3 class="font-bold text-gray-800">
+                How should I prepare for my massage?
+              </h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </button>
+            <div class="faq-content hidden mt-4">
+              <p class="text-gray-600">
+                For the best experience, arrive 10-15 minutes before your
+                scheduled appointment. Wear comfortable, loose-fitting clothing.
+                Avoid heavy meals just before your session, and ensure you're
+                well-hydrated. If possible, avoid caffeine and alcohol on the
+                day of your massage. After your session, drink plenty of water
+                to help flush toxins released during the massage.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <button
+              class="flex justify-between items-center w-full text-left"
+              onclick="toggleFaq(this)"
+            >
+              <h3 class="font-bold text-gray-800">
+                What are the unique benefits of receiving massage from a blind
+                therapist?
+              </h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </button>
+            <div class="faq-content hidden mt-4">
+              <p class="text-gray-600">
+                Our blind therapists possess an enhanced sense of touch that
+                allows them to detect subtle muscle tensions and imbalances that
+                might be missed by others. This heightened tactile sensitivity
+                enables them to provide more precise and effective treatments,
+                identifying problem areas and applying the perfect amount of
+                pressure. Many clients report deeper relaxation and more
+                targeted relief from our therapists.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <button
+              class="flex justify-between items-center w-full text-left"
+              onclick="toggleFaq(this)"
+            >
+              <h3 class="font-bold text-gray-800">
+                How often should I get a massage?
+              </h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </button>
+            <div class="faq-content hidden mt-4">
+              <p class="text-gray-600">
+                The frequency of massage therapy depends on your individual
+                needs and goals. For chronic pain or specific health conditions,
+                weekly sessions may be beneficial. For stress management and
+                general wellness, bi-weekly or monthly sessions are often
+                recommended. Our therapists can help create a personalized
+                treatment plan based on your specific situation and health
+                objectives.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <button
+              class="flex justify-between items-center w-full text-left"
+              onclick="toggleFaq(this)"
+            >
+              <h3 class="font-bold text-gray-800">
+                Do you offer gift certificates?
+              </h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-primary"
+              >
+                <i class="ri-add-line faq-icon"></i>
+              </div>
+            </button>
+            <div class="faq-content hidden mt-4">
+              <p class="text-gray-600">
+                Yes, we offer gift certificates for all our services. They make
+                perfect presents for birthdays, anniversaries, or any special
+                occasion. Gift certificates can be purchased in-person at our
+                location or by phone. They're valid for six months from the date
+                of purchase and can be used for any of our massage services.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Call to Action -->
+    <section class="py-16 bg-primary bg-opacity-5">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">
+          Experience the Healing Power of Touch Today
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+          Book your appointment now and discover the unique benefits of massage
+          therapy from our skilled therapists.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            class="bg-primary text-white py-3 px-8 rounded-button font-medium hover:bg-opacity-90 transition duration-300 whitespace-nowrap"
+            >Book Appointment</a
+          >
+          <a
+            href="tel:09263157294"
+            class="bg-white text-primary py-3 px-8 rounded-button font-medium border border-primary hover:bg-gray-50 transition duration-300 whitespace-nowrap"
+            >Call Us: 0926 315 7294</a
+          >
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-['Pacifico'] mb-4">Touch With Faith</h3>
+            <p class="text-gray-300 mb-4">
+              Exceptional massage therapy services provided by skilled blind
+              therapists with an enhanced sense of touch.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.facebook.com/TouchWithFaith/"
+                class="text-gray-300 hover:text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="w-8 h-8 flex items-center justify-center">
+                  <i class="ri-facebook-fill ri-lg"></i>
+                </div>
+              </a>
+              <a href="#" class="text-gray-300 hover:text-white">
+                <div class="w-8 h-8 flex items-center justify-center">
+                  <i class="ri-instagram-line ri-lg"></i>
+                </div>
+              </a>
+              <a href="#" class="text-gray-300 hover:text-white">
+                <div class="w-8 h-8 flex items-center justify-center">
+                  <i class="ri-twitter-x-line ri-lg"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#home" class="text-gray-300 hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="#services" class="text-gray-300 hover:text-white"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="#therapists" class="text-gray-300 hover:text-white"
+                  >Our Therapists</a
+                >
+              </li>
+              <li>
+                <a href="#benefits" class="text-gray-300 hover:text-white"
+                  >Benefits</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="text-gray-300 hover:text-white"
+                  >Book Appointment</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Services</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#services" class="text-gray-300 hover:text-white"
+                  >Swedish Massage</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="text-gray-300 hover:text-white"
+                  >Shiatzu</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="text-gray-300 hover:text-white"
+                  >Accupressure</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="text-gray-300 hover:text-white"
+                  >Reflexology</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="text-gray-300 hover:text-white"
+                  >Ventosa</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="text-gray-300 hover:text-white"
+                  >Traditional Hilot</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-gray-300"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <span class="text-gray-300"
+                  >4-F, Robinsons Place Malolos, Malolos, Philippines</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-gray-300"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <span class="text-gray-300">0926 315 7294</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center mt-0.5 text-gray-300"
+                >
+                  <i class="ri-time-line"></i>
+                </div>
+                <span class="text-gray-300"
+                  >Open Daily: 10:00 AM - 9:00 PM</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>
+            &copy; 2025 Touch With Faith Massage Service. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector(".md\\:hidden button");
+        const nav = document.querySelector("nav");
+        if (mobileMenuButton && nav) {
+          mobileMenuButton.addEventListener("click", function () {
+            nav.classList.toggle("hidden");
+            nav.classList.toggle("flex");
+            nav.classList.toggle("flex-col");
+            nav.classList.toggle("absolute");
+            nav.classList.toggle("top-16");
+            nav.classList.toggle("right-4");
+            nav.classList.toggle("bg-white");
+            nav.classList.toggle("p-4");
+            nav.classList.toggle("rounded");
+            nav.classList.toggle("shadow-lg");
+            nav.classList.toggle("z-50");
+          });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+
+              // Close mobile menu if open
+              if (!nav.classList.contains("hidden")) {
+                nav.classList.add("hidden");
+              }
+            }
+          });
+        });
+      });
+      function toggleFaq(element) {
+        const content = element.nextElementSibling;
+        const icon = element.querySelector(".faq-icon");
+        if (content.classList.contains("hidden")) {
+          content.classList.remove("hidden");
+          icon.classList.remove("ri-add-line");
+          icon.classList.add("ri-subtract-line");
+        } else {
+          content.classList.add("hidden");
+          icon.classList.remove("ri-subtract-line");
+          icon.classList.add("ri-add-line");
+        }
+      }
+    </script>
+  </body>
+</html>

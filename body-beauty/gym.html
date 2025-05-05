@@ -1,0 +1,2704 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitForce Gym - Transform Your Body in 30 Days</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#f97316" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Montserrat', sans-serif;
+      }
+      .video-container {
+          position: relative;
+          overflow: hidden;
+          height: 100vh;
+          max-height: 800px;
+      }
+      .video-container::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 1;
+      }
+      .video-content {
+          position: relative;
+          z-index: 2;
+      }
+      .program-tab {
+          transition: all 0.3s ease;
+      }
+      .program-tab.active {
+          background-color: #3b82f6;
+          color: white;
+      }
+      .program-content {
+          display: none;
+      }
+      .program-content.active {
+          display: block;
+      }
+      .custom-checkbox {
+          appearance: none;
+          -webkit-appearance: none;
+          width: 20px;
+          height: 20px;
+          border: 2px solid #3b82f6;
+          border-radius: 4px;
+          outline: none;
+          cursor: pointer;
+          position: relative;
+      }
+      .custom-checkbox:checked {
+          background-color: #3b82f6;
+      }
+      .custom-checkbox:checked::after {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 6px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
+      .custom-switch {
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          height: 24px;
+      }
+      .custom-switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      .switch-slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          transition: .4s;
+          border-radius: 34px;
+      }
+      .switch-slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+      }
+      input:checked + .switch-slider {
+          background-color: #3b82f6;
+      }
+      input:checked + .switch-slider:before {
+          transform: translateX(26px);
+      }
+      .custom-range {
+          appearance: none;
+          width: 100%;
+          height: 6px;
+          border-radius: 5px;
+          background: #e5e7eb;
+          outline: none;
+      }
+      .custom-range::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: #3b82f6;
+          cursor: pointer;
+      }
+      .custom-range::-moz-range-thumb {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: #3b82f6;
+          cursor: pointer;
+          border: none;
+      }
+      .before-after {
+          position: relative;
+          overflow: hidden;
+      }
+      .before-after .before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50%;
+          height: 100%;
+          overflow: hidden;
+      }
+      .before-after .slider {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          width: 4px;
+          background: white;
+          z-index: 10;
+          cursor: ew-resize;
+      }
+      .before-after .slider::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 30px;
+          height: 30px;
+          background: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .faq-item {
+          border-bottom: 1px solid #e5e7eb;
+      }
+      .faq-question {
+          cursor: pointer;
+          position: relative;
+      }
+      .faq-answer {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+      }
+      .faq-answer.active {
+          max-height: 500px;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+      <div
+        class="container mx-auto px-6 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center">
+          <a href="#" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#programs"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Programs</a
+          >
+          <a
+            href="#coaches"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Coaches</a
+          >
+          <a
+            href="#results"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Results</a
+          >
+          <a
+            href="#amenities"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Amenities</a
+          >
+          <a
+            href="#schedule"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Schedule</a
+          >
+          <a
+            href="#pricing"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Pricing</a
+          >
+        </div>
+        <div class="flex items-center">
+          <a
+            href="#free-trial"
+            class="bg-primary text-white px-6 py-2 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+            >Start Free Trial</a
+          >
+          <button
+            class="ml-4 md:hidden w-8 h-8 flex items-center justify-center"
+          >
+            <i class="ri-menu-line text-gray-700 ri-lg"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="video-container">
+      <div
+        style="background-image: url('https://readdy.ai/api/search-image?query=Modern%20gym%20interior%20with%20high-end%20equipment%2C%20people%20working%20out%20intensely%2C%20bright%20lighting%2C%20clean%20environment%2C%20energetic%20atmosphere%2C%20professional%20fitness%20setting%2C%20multiple%20workout%20stations%2C%20motivational%20environment&width=1920&height=1080&seq=1&orientation=landscape');"
+        class="absolute inset-0 bg-cover bg-center"
+      ></div>
+      <div class="video-content flex items-center h-full">
+        <div class="container mx-auto px-6 py-24 mt-16">
+          <div class="max-w-3xl">
+            <h1
+              class="text-5xl md:text-6xl font-bold text-white leading-tight mb-6"
+            >
+              Transform Your Body in 30 Days - Guaranteed
+            </h1>
+            <p class="text-xl text-white mb-8 max-w-2xl">
+              Join the most effective fitness program in the city with expert
+              coaches and state-of-the-art facilities designed to help you reach
+              your goals.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="#free-trial"
+                class="bg-primary text-white px-8 py-4 !rounded-button font-semibold text-lg whitespace-nowrap hover:bg-blue-600 transition flex items-center justify-center"
+              >
+                <i class="ri-gift-line mr-2 ri-lg"></i>
+                Claim Free Week
+              </a>
+              <a
+                href="#testimonials"
+                class="bg-transparent border-2 border-white text-white px-8 py-4 !rounded-button font-semibold text-lg whitespace-nowrap hover:bg-white/10 transition flex items-center justify-center"
+              >
+                <i class="ri-play-circle-line mr-2 ri-lg"></i>
+                Watch Success Stories
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain-Point Solutions -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Why Choose Us?</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            We understand the challenges you face on your fitness journey.
+            Here's how we solve them.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full mb-6"
+            >
+              <i class="ri-calendar-check-line text-primary ri-2x"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">
+              Struggle to Stay Consistent? We Fix That
+            </h3>
+            <p class="text-gray-600">
+              Our accountability system keeps you on track with check-ins,
+              progress tracking, and a supportive community that celebrates your
+              wins.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full mb-6"
+            >
+              <i class="ri-time-line text-primary ri-2x"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">
+              30-Minute Science-Backed Workouts
+            </h3>
+            <p class="text-gray-600">
+              Our efficient workout protocols deliver maximum results in minimum
+              time. Perfect for busy professionals who can't spend hours in the
+              gym.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full mb-6"
+            >
+              <i class="ri-file-list-3-line text-primary ri-2x"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">
+              No More Guesswork - Expert Programming
+            </h3>
+            <p class="text-gray-600">
+              Every workout is designed by certified professionals based on your
+              goals, fitness level, and progress. Just show up and follow the
+              plan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Matrix -->
+    <section id="programs" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">
+            Programs Tailored to Your Goals
+          </h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Select the program that aligns with your fitness objectives and see
+            what we have to offer.
+          </p>
+        </div>
+
+        <div class="program-tabs flex flex-wrap justify-center mb-8">
+          <button
+            class="program-tab active px-8 py-3 !rounded-button m-2 font-semibold whitespace-nowrap"
+            data-tab="fat-loss"
+          >
+            Fat Loss
+          </button>
+          <button
+            class="program-tab px-8 py-3 !rounded-button m-2 bg-gray-100 font-semibold whitespace-nowrap"
+            data-tab="muscle-gain"
+          >
+            Muscle Gain
+          </button>
+          <button
+            class="program-tab px-8 py-3 !rounded-button m-2 bg-gray-100 font-semibold whitespace-nowrap"
+            data-tab="sports"
+          >
+            Sports Performance
+          </button>
+          <button
+            class="program-tab px-8 py-3 !rounded-button m-2 bg-gray-100 font-semibold whitespace-nowrap"
+            data-tab="senior"
+          >
+            Senior Fitness
+          </button>
+        </div>
+
+        <div class="program-content active" id="fat-loss">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3">
+              <div class="p-8 border-r border-gray-200">
+                <h3 class="text-2xl font-bold mb-4">Fat Loss Program</h3>
+                <p class="text-gray-600 mb-6">
+                  Our scientifically designed fat loss program combines HIIT,
+                  strength training, and nutrition guidance to maximize calorie
+                  burn and preserve muscle.
+                </p>
+                <div class="mb-6">
+                  <h4 class="font-semibold mb-2">Average Results:</h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>8-12 lbs lost in first month</span>
+                    </li>
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>15-20% increase in energy levels</span>
+                    </li>
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>Visible definition within 6 weeks</span>
+                    </li>
+                  </ul>
+                </div>
+                <a
+                  href="#free-trial"
+                  class="inline-block bg-primary text-white px-6 py-2 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+                  >Start This Program</a
+                >
+              </div>
+              <div class="p-8 border-r border-gray-200">
+                <h4 class="font-semibold mb-4">Sample Workout</h4>
+                <div class="space-y-4">
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">HIIT Circuit</span>
+                      <span class="text-gray-500">20 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Battle ropes, kettlebell swings, box jumps, burpees
+                    </p>
+                  </div>
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Strength Training</span>
+                      <span class="text-gray-500">15 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Compound movements: squats, deadlifts, push-ups
+                    </p>
+                  </div>
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Metabolic Finisher</span>
+                      <span class="text-gray-500">5 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Tabata intervals: 20 sec work, 10 sec rest
+                    </p>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Cool Down</span>
+                      <span class="text-gray-500">5 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Stretching and mobility work
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-8">
+                <h4 class="font-semibold mb-4">Coach Notes</h4>
+                <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                  <p class="text-gray-700 italic">
+                    "The key to our fat loss program is consistency and
+                    progressive overload. We focus on creating sustainable
+                    habits rather than quick fixes that don't last."
+                  </p>
+                  <div class="flex items-center mt-4">
+                    <img
+                      src="https://readdy.ai/api/search-image?query=Professional%20female%20fitness%20coach%20with%20athletic%20build%2C%20confident%20smile%2C%20wearing%20stylish%20workout%20clothes%2C%20in%20a%20modern%20gym%20setting%2C%20natural%20lighting%2C%20professional%20headshot&width=100&height=100&seq=2&orientation=squarish"
+                      alt="Coach Emma"
+                      class="w-10 h-10 rounded-full object-cover object-top"
+                    />
+                    <div class="ml-3">
+                      <p class="font-semibold text-sm">Coach Emma</p>
+                      <p class="text-xs text-gray-500">Fat Loss Specialist</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <i class="ri-user-star-line text-primary mr-2"></i>
+                    <span class="text-sm">Suitable for all fitness levels</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-calendar-line text-primary mr-2"></i>
+                    <span class="text-sm"
+                      >3-4 sessions per week recommended</span
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-heart-pulse-line text-primary mr-2"></i>
+                    <span class="text-sm">Includes heart rate monitoring</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="program-content" id="muscle-gain">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3">
+              <div class="p-8 border-r border-gray-200">
+                <h3 class="text-2xl font-bold mb-4">Muscle Gain Program</h3>
+                <p class="text-gray-600 mb-6">
+                  Our hypertrophy-focused program utilizes progressive overload
+                  principles, optimal training frequency, and nutrition
+                  strategies to maximize muscle growth.
+                </p>
+                <div class="mb-6">
+                  <h4 class="font-semibold mb-2">Average Results:</h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>3-5 lbs of lean muscle in first month</span>
+                    </li>
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>20-30% strength increase in key lifts</span>
+                    </li>
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>Improved body composition within 8 weeks</span>
+                    </li>
+                  </ul>
+                </div>
+                <a
+                  href="#free-trial"
+                  class="inline-block bg-primary text-white px-6 py-2 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+                  >Start This Program</a
+                >
+              </div>
+              <div class="p-8 border-r border-gray-200">
+                <h4 class="font-semibold mb-4">Sample Workout</h4>
+                <div class="space-y-4">
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Compound Movements</span>
+                      <span class="text-gray-500">25 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Barbell bench press, squats, deadlifts (4 sets, 8-12 reps)
+                    </p>
+                  </div>
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Isolation Work</span>
+                      <span class="text-gray-500">20 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Bicep curls, tricep extensions, lateral raises (3 sets,
+                      10-15 reps)
+                    </p>
+                  </div>
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Superset Finisher</span>
+                      <span class="text-gray-500">10 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Cable flyes + face pulls, leg extensions + hamstring curls
+                    </p>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Cool Down</span>
+                      <span class="text-gray-500">5 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Static stretching and foam rolling
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-8">
+                <h4 class="font-semibold mb-4">Coach Notes</h4>
+                <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                  <p class="text-gray-700 italic">
+                    "Muscle growth requires both training stimulus and recovery.
+                    Our program balances intense workouts with proper nutrition
+                    and rest periods to optimize your results."
+                  </p>
+                  <div class="flex items-center mt-4">
+                    <img
+                      src="https://readdy.ai/api/search-image?query=Professional%20male%20fitness%20coach%20with%20muscular%20build%2C%20confident%20expression%2C%20wearing%20athletic%20shirt%2C%20in%20a%20modern%20gym%20setting%2C%20natural%20lighting%2C%20professional%20headshot&width=100&height=100&seq=3&orientation=squarish"
+                      alt="Coach Jason"
+                      class="w-10 h-10 rounded-full object-cover object-top"
+                    />
+                    <div class="ml-3">
+                      <p class="font-semibold text-sm">Coach Jason</p>
+                      <p class="text-xs text-gray-500">Hypertrophy Expert</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <i class="ri-user-star-line text-primary mr-2"></i>
+                    <span class="text-sm"
+                      >Best for intermediate+ fitness levels</span
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-calendar-line text-primary mr-2"></i>
+                    <span class="text-sm"
+                      >4-5 sessions per week recommended</span
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-heart-pulse-line text-primary mr-2"></i>
+                    <span class="text-sm">Includes nutrition planning</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="program-content" id="sports">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3">
+              <div class="p-8 border-r border-gray-200">
+                <h3 class="text-2xl font-bold mb-4">
+                  Sports Performance Program
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Designed for athletes looking to enhance sport-specific
+                  performance through power, agility, speed, and functional
+                  strength training.
+                </p>
+                <div class="mb-6">
+                  <h4 class="font-semibold mb-2">Average Results:</h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>15-20% increase in explosive power</span>
+                    </li>
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>10-15% improvement in agility tests</span>
+                    </li>
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>Enhanced recovery between training sessions</span>
+                    </li>
+                  </ul>
+                </div>
+                <a
+                  href="#free-trial"
+                  class="inline-block bg-primary text-white px-6 py-2 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+                  >Start This Program</a
+                >
+              </div>
+              <div class="p-8 border-r border-gray-200">
+                <h4 class="font-semibold mb-4">Sample Workout</h4>
+                <div class="space-y-4">
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Dynamic Warm-up</span>
+                      <span class="text-gray-500">10 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Movement prep, activation exercises, dynamic stretching
+                    </p>
+                  </div>
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Power Development</span>
+                      <span class="text-gray-500">20 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Olympic lifts, plyometrics, medicine ball throws
+                    </p>
+                  </div>
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Speed & Agility</span>
+                      <span class="text-gray-500">15 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Sprint work, change of direction drills, ladder exercises
+                    </p>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Recovery</span>
+                      <span class="text-gray-500">10 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Mobility work, foam rolling, contrast therapy
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-8">
+                <h4 class="font-semibold mb-4">Coach Notes</h4>
+                <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                  <p class="text-gray-700 italic">
+                    "Our sports performance program is periodized to align with
+                    your competitive season. We focus on building a foundation
+                    in off-season and maintaining peak performance during
+                    competition."
+                  </p>
+                  <div class="flex items-center mt-4">
+                    <img
+                      src="https://readdy.ai/api/search-image?query=Athletic%20male%20coach%20with%20sporty%20build%2C%20confident%20posture%2C%20wearing%20performance%20training%20gear%2C%20in%20a%20modern%20sports%20facility%2C%20natural%20lighting%2C%20professional%20headshot&width=100&height=100&seq=4&orientation=squarish"
+                      alt="Coach Marcus"
+                      class="w-10 h-10 rounded-full object-cover object-top"
+                    />
+                    <div class="ml-3">
+                      <p class="font-semibold text-sm">Coach Marcus</p>
+                      <p class="text-xs text-gray-500">
+                        Performance Specialist
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <i class="ri-user-star-line text-primary mr-2"></i>
+                    <span class="text-sm">For competitive athletes</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-calendar-line text-primary mr-2"></i>
+                    <span class="text-sm"
+                      >3-5 sessions per week based on season</span
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-heart-pulse-line text-primary mr-2"></i>
+                    <span class="text-sm">Includes performance testing</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="program-content" id="senior">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3">
+              <div class="p-8 border-r border-gray-200">
+                <h3 class="text-2xl font-bold mb-4">Senior Fitness Program</h3>
+                <p class="text-gray-600 mb-6">
+                  Our senior program focuses on functional movement, balance,
+                  mobility, and strength to enhance quality of life and maintain
+                  independence.
+                </p>
+                <div class="mb-6">
+                  <h4 class="font-semibold mb-2">Average Results:</h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>30% improvement in balance tests</span>
+                    </li>
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>Increased range of motion in major joints</span>
+                    </li>
+                    <li class="flex items-center">
+                      <i class="ri-check-line text-green-500 mr-2"></i>
+                      <span>Enhanced daily functional capacity</span>
+                    </li>
+                  </ul>
+                </div>
+                <a
+                  href="#free-trial"
+                  class="inline-block bg-primary text-white px-6 py-2 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+                  >Start This Program</a
+                >
+              </div>
+              <div class="p-8 border-r border-gray-200">
+                <h4 class="font-semibold mb-4">Sample Workout</h4>
+                <div class="space-y-4">
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Gentle Warm-up</span>
+                      <span class="text-gray-500">10 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Seated and standing mobility exercises, light cardio
+                    </p>
+                  </div>
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Functional Strength</span>
+                      <span class="text-gray-500">20 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Chair squats, wall push-ups, resistance band work
+                    </p>
+                  </div>
+                  <div class="pb-4 border-b border-gray-100">
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Balance & Stability</span>
+                      <span class="text-gray-500">15 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Single-leg stands, stability ball exercises, walking
+                      drills
+                    </p>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-1">
+                      <span class="font-medium">Flexibility</span>
+                      <span class="text-gray-500">10 min</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      Gentle stretching for major muscle groups
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-8">
+                <h4 class="font-semibold mb-4">Coach Notes</h4>
+                <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                  <p class="text-gray-700 italic">
+                    "Our senior fitness program is about maintaining
+                    independence and quality of life. We focus on functional
+                    movements that translate to daily activities while ensuring
+                    safety and proper form."
+                  </p>
+                  <div class="flex items-center mt-4">
+                    <img
+                      src="https://readdy.ai/api/search-image?query=Mature%20female%20fitness%20instructor%20with%20friendly%20smile%2C%20professional%20appearance%2C%20wearing%20comfortable%20fitness%20attire%2C%20in%20a%20bright%20gym%20setting%2C%20natural%20lighting%2C%20professional%20headshot&width=100&height=100&seq=5&orientation=squarish"
+                      alt="Coach Barbara"
+                      class="w-10 h-10 rounded-full object-cover object-top"
+                    />
+                    <div class="ml-3">
+                      <p class="font-semibold text-sm">Coach Barbara</p>
+                      <p class="text-xs text-gray-500">
+                        Senior Fitness Specialist
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <i class="ri-user-star-line text-primary mr-2"></i>
+                    <span class="text-sm">Designed for ages 60+</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-calendar-line text-primary mr-2"></i>
+                    <span class="text-sm"
+                      >2-3 sessions per week recommended</span
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-heart-pulse-line text-primary mr-2"></i>
+                    <span class="text-sm">Includes health monitoring</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Virtual Tour -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Take a Virtual Tour</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Explore our state-of-the-art facility before you visit. Click on the
+            hotspots to discover our premium equipment and amenities.
+          </p>
+        </div>
+
+        <div
+          class="relative rounded-lg overflow-hidden shadow-xl h-[600px]"
+          style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;"
+        >
+          <div class="absolute inset-0 bg-black/20"></div>
+
+          <!-- Hotspot 1 -->
+          <div class="absolute top-[30%] left-[25%] z-10">
+            <div class="relative group">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary rounded-full animate-pulse cursor-pointer"
+              >
+                <i class="ri-add-line text-white ri-lg"></i>
+              </div>
+              <div
+                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 bg-white p-4 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+              >
+                <h4 class="font-bold text-lg mb-2">Olympic Lifting Platform</h4>
+                <p class="text-sm text-gray-600 mb-2">
+                  Professional-grade platforms with bumper plates and Olympic
+                  bars for serious strength training.
+                </p>
+                <img
+                  src="https://readdy.ai/api/search-image?query=Olympic%20lifting%20platform%20in%20modern%20gym%2C%20with%20bumper%20plates%2C%20barbells%2C%20clean%20environment%2C%20professional%20setup%2C%20rubber%20flooring%2C%20bright%20lighting&width=240&height=120&seq=6&orientation=landscape"
+                  alt="Olympic Lifting Platform"
+                  class="w-full h-auto rounded object-cover object-top"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Hotspot 2 -->
+          <div class="absolute top-[45%] left-[60%] z-10">
+            <div class="relative group">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary rounded-full animate-pulse cursor-pointer"
+              >
+                <i class="ri-add-line text-white ri-lg"></i>
+              </div>
+              <div
+                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 bg-white p-4 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+              >
+                <h4 class="font-bold text-lg mb-2">Cryo Chamber</h4>
+                <p class="text-sm text-gray-600 mb-2">
+                  State-of-the-art cryotherapy chamber for rapid recovery,
+                  reduced inflammation, and improved performance.
+                </p>
+                <img
+                  src="https://readdy.ai/api/search-image?query=Modern%20cryotherapy%20chamber%20in%20high-end%20gym%2C%20sleek%20design%2C%20blue%20lighting%2C%20recovery%20area%2C%20clean%20environment%2C%20professional%20setup&width=240&height=120&seq=7&orientation=landscape"
+                  alt="Cryo Chamber"
+                  class="w-full h-auto rounded object-cover object-top"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Hotspot 3 -->
+          <div class="absolute top-[65%] left-[40%] z-10">
+            <div class="relative group">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary rounded-full animate-pulse cursor-pointer"
+              >
+                <i class="ri-add-line text-white ri-lg"></i>
+              </div>
+              <div
+                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 bg-white p-4 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+              >
+                <h4 class="font-bold text-lg mb-2">Functional Training Zone</h4>
+                <p class="text-sm text-gray-600 mb-2">
+                  Open space with TRX, kettlebells, battle ropes, and more for
+                  dynamic, full-body workouts.
+                </p>
+                <img
+                  src="https://readdy.ai/api/search-image?query=Functional%20training%20area%20in%20modern%20gym%20with%20TRX%20straps%2C%20kettlebells%2C%20battle%20ropes%2C%20open%20space%2C%20rubber%20flooring%2C%20bright%20lighting&width=240&height=120&seq=8&orientation=landscape"
+                  alt="Functional Training Zone"
+                  class="w-full h-auto rounded object-cover object-top"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute bottom-6 right-6 z-10">
+            <a
+              href="#free-trial"
+              class="bg-white text-primary px-6 py-3 !rounded-button font-semibold whitespace-nowrap hover:bg-gray-100 transition flex items-center"
+            >
+              <i class="ri-map-pin-line mr-2"></i>
+              Visit In Person
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coach Showcase -->
+    <section id="coaches" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Meet Our Expert Coaches</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Our certified professionals are dedicated to helping you achieve
+            your fitness goals with personalized guidance and support.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Coach 1 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:-translate-y-2"
+          >
+            <div class="h-80 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20male%20fitness%20coach%20with%20athletic%20build%2C%20confident%20smile%2C%20wearing%20stylish%20workout%20clothes%2C%20in%20a%20modern%20gym%20setting%2C%20natural%20lighting%2C%20professional%20portrait%20shot&width=400&height=500&seq=9&orientation=portrait"
+                alt="Coach Michael"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Michael Johnson</h3>
+              <div class="flex items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs px-2 py-1 rounded mr-2"
+                  >NASM Certified</span
+                >
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >12+ Years</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Specializes in strength training and body composition
+                transformation. Michael has helped over 500 clients achieve
+                their dream physique.
+              </p>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="flex">
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                  </div>
+                  <p class="text-sm text-gray-500">128 reviews</p>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Coach 2 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:-translate-y-2"
+          >
+            <div class="h-80 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20female%20fitness%20coach%20with%20athletic%20build%2C%20confident%20smile%2C%20wearing%20stylish%20workout%20clothes%2C%20in%20a%20modern%20gym%20setting%2C%20natural%20lighting%2C%20professional%20portrait%20shot&width=400&height=500&seq=10&orientation=portrait"
+                alt="Coach Sarah"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Sarah Williams</h3>
+              <div class="flex items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs px-2 py-1 rounded mr-2"
+                  >ACE Certified</span
+                >
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >8+ Years</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Specializes in HIIT training and nutrition coaching. Sarah's
+                holistic approach focuses on sustainable lifestyle changes.
+              </p>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="flex">
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-half-fill text-yellow-400"></i>
+                  </div>
+                  <p class="text-sm text-gray-500">97 reviews</p>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Coach 3 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:-translate-y-2"
+          >
+            <div class="h-80 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20male%20fitness%20coach%20with%20muscular%20build%2C%20serious%20expression%2C%20wearing%20athletic%20clothes%2C%20in%20a%20modern%20gym%20setting%2C%20natural%20lighting%2C%20professional%20portrait%20shot&width=400&height=500&seq=11&orientation=portrait"
+                alt="Coach David"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">David Chen</h3>
+              <div class="flex items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs px-2 py-1 rounded mr-2"
+                  >CSCS Certified</span
+                >
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >10+ Years</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Specializes in sports performance and athletic development.
+                Former college athlete who understands what it takes to excel.
+              </p>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="flex">
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                  </div>
+                  <p class="text-sm text-gray-500">142 reviews</p>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Coach 4 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:-translate-y-2"
+          >
+            <div class="h-80 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20female%20fitness%20coach%20with%20toned%20physique%2C%20friendly%20smile%2C%20wearing%20stylish%20workout%20clothes%2C%20in%20a%20modern%20gym%20setting%2C%20natural%20lighting%2C%20professional%20portrait%20shot&width=400&height=500&seq=12&orientation=portrait"
+                alt="Coach Emily"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Emily Rodriguez</h3>
+              <div class="flex items-center mb-4">
+                <span
+                  class="bg-blue-100 text-primary text-xs px-2 py-1 rounded mr-2"
+                  >ACSM Certified</span
+                >
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >7+ Years</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Specializes in post-rehab training and corrective exercise.
+                Emily helps clients overcome injuries and prevent future ones.
+              </p>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="flex">
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-line text-yellow-400"></i>
+                  </div>
+                  <p class="text-sm text-gray-500">86 reviews</p>
+                </div>
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="#"
+            class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition"
+          >
+            View All Coaches
+            <i class="ri-arrow-right-line ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Real Member Results -->
+    <section id="results" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">
+            Real Results from Real Members
+          </h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Don't just take our word for it. See the transformations our members
+            have achieved with dedication and our proven programs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+          <!-- Before/After 1 -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="relative h-96 before-after">
+              <div class="absolute inset-0">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Fit%20athletic%20woman%20in%20workout%20clothes%20showing%20toned%20body%2C%20confident%20pose%2C%20in%20gym%20setting%2C%20after%20fitness%20transformation%2C%20bright%20lighting&width=600&height=400&seq=13&orientation=landscape"
+                  alt="After"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="before">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Woman%20with%20excess%20weight%20in%20casual%20clothes%2C%20neutral%20expression%2C%20same%20pose%20as%20after%20photo%2C%20before%20fitness%20transformation%2C%20neutral%20background&width=600&height=400&seq=14&orientation=landscape"
+                  alt="Before"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="slider"></div>
+              <div
+                class="absolute top-4 left-4 bg-white/80 px-3 py-1 rounded-full text-sm font-semibold text-gray-700"
+              >
+                Before
+              </div>
+              <div
+                class="absolute top-4 right-4 bg-primary/80 px-3 py-1 rounded-full text-sm font-semibold text-white"
+              >
+                After
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">
+                Jessica's 90-Day Transformation
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Lost 28 lbs and 15% body fat following our Fat Loss Program with
+                Coach Sarah.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >No Fad Diets</span
+                >
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >3x Weekly Workouts</span
+                >
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >Sustainable Approach</span
+                >
+              </div>
+              <div class="flex items-center">
+                <a
+                  href="#"
+                  class="text-primary font-semibold flex items-center hover:text-blue-700 transition"
+                >
+                  <i class="ri-play-circle-line mr-2 ri-lg"></i>
+                  Watch Jessica's Story
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Before/After 2 -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="relative h-96 before-after">
+              <div class="absolute inset-0">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Fit%20athletic%20man%20with%20muscular%20physique%20in%20workout%20clothes%2C%20confident%20pose%2C%20in%20gym%20setting%2C%20after%20fitness%20transformation%2C%20bright%20lighting&width=600&height=400&seq=15&orientation=landscape"
+                  alt="After"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="before">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Man%20with%20excess%20weight%20in%20casual%20clothes%2C%20neutral%20expression%2C%20same%20pose%20as%20after%20photo%2C%20before%20fitness%20transformation%2C%20neutral%20background&width=600&height=400&seq=16&orientation=landscape"
+                  alt="Before"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="slider"></div>
+              <div
+                class="absolute top-4 left-4 bg-white/80 px-3 py-1 rounded-full text-sm font-semibold text-gray-700"
+              >
+                Before
+              </div>
+              <div
+                class="absolute top-4 right-4 bg-primary/80 px-3 py-1 rounded-full text-sm font-semibold text-white"
+              >
+                After
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Mark's 6-Month Journey</h3>
+              <p class="text-gray-600 mb-4">
+                Gained 15 lbs of muscle and doubled his strength following our
+                Muscle Gain Program.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >4x Weekly Training</span
+                >
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >Nutrition Plan</span
+                >
+                <span class="bg-blue-100 text-primary text-xs px-2 py-1 rounded"
+                  >Progressive Overload</span
+                >
+              </div>
+              <div class="flex items-center">
+                <a
+                  href="#"
+                  class="text-primary font-semibold flex items-center hover:text-blue-700 transition"
+                >
+                  <i class="ri-play-circle-line mr-2 ri-lg"></i>
+                  Watch Mark's Story
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Testimonials -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="relative h-48">
+              <img
+                src="https://readdy.ai/api/search-image?query=Happy%20female%20gym%20member%20in%20workout%20clothes%2C%20smiling%20at%20camera%2C%20in%20modern%20gym%20setting%2C%20bright%20lighting%2C%20testimonial%20video%20thumbnail&width=400&height=225&seq=17&orientation=landscape"
+                alt="Testimonial 1"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-black/30 flex items-center justify-center"
+              >
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-primary/90 rounded-full"
+                >
+                  <i class="ri-play-fill text-white ri-2x"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="flex">
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                </div>
+                <span class="ml-2 text-sm text-gray-500">5.0</span>
+              </div>
+              <p class="text-gray-600 italic mb-4">
+                "I've tried many gyms before, but the personalized approach here
+                is what finally helped me achieve results. The coaches truly
+                care about your progress."
+              </p>
+              <div class="flex items-center">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20smiling%20woman%20in%20her%2030s%2C%20casual%20business%20attire%2C%20neutral%20background%2C%20natural%20lighting&width=50&height=50&seq=18&orientation=squarish"
+                  alt="Amanda"
+                  class="w-10 h-10 rounded-full object-cover object-top"
+                />
+                <div class="ml-3">
+                  <p class="font-semibold">Amanda K.</p>
+                  <p class="text-xs text-gray-500">Member for 8 months</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="relative h-48">
+              <img
+                src="https://readdy.ai/api/search-image?query=Fit%20male%20gym%20member%20in%20workout%20clothes%2C%20smiling%20at%20camera%2C%20in%20modern%20gym%20setting%2C%20bright%20lighting%2C%20testimonial%20video%20thumbnail&width=400&height=225&seq=19&orientation=landscape"
+                alt="Testimonial 2"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-black/30 flex items-center justify-center"
+              >
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-primary/90 rounded-full"
+                >
+                  <i class="ri-play-fill text-white ri-2x"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="flex">
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-half-fill text-yellow-400"></i>
+                </div>
+                <span class="ml-2 text-sm text-gray-500">4.5</span>
+              </div>
+              <p class="text-gray-600 italic mb-4">
+                "As someone who travels frequently for work, the flexible
+                scheduling and efficient workouts have been game-changers. I'm
+                in the best shape of my life at 45."
+              </p>
+              <div class="flex items-center">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20smiling%20man%20in%20his%2040s%2C%20business%20casual%20attire%2C%20neutral%20background%2C%20natural%20lighting&width=50&height=50&seq=20&orientation=squarish"
+                  alt="Robert"
+                  class="w-10 h-10 rounded-full object-cover object-top"
+                />
+                <div class="ml-3">
+                  <p class="font-semibold">Robert T.</p>
+                  <p class="text-xs text-gray-500">Member for 1 year</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="relative h-48">
+              <img
+                src="https://readdy.ai/api/search-image?query=Senior%20female%20gym%20member%20in%20workout%20clothes%2C%20smiling%20at%20camera%2C%20in%20modern%20gym%20setting%2C%20bright%20lighting%2C%20testimonial%20video%20thumbnail&width=400&height=225&seq=21&orientation=landscape"
+                alt="Testimonial 3"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-black/30 flex items-center justify-center"
+              >
+                <div
+                  class="w-16 h-16 flex items-center justify-center bg-primary/90 rounded-full"
+                >
+                  <i class="ri-play-fill text-white ri-2x"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="flex">
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                  <i class="ri-star-fill text-yellow-400"></i>
+                </div>
+                <span class="ml-2 text-sm text-gray-500">5.0</span>
+              </div>
+              <p class="text-gray-600 italic mb-4">
+                "At 67, I was worried about starting a fitness program, but the
+                Senior Fitness classes have improved my balance and energy. I
+                feel 20 years younger!"
+              </p>
+              <div class="flex items-center">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20smiling%20senior%20woman%20in%20her%2060s%2C%20casual%20elegant%20attire%2C%20neutral%20background%2C%20natural%20lighting&width=50&height=50&seq=22&orientation=squarish"
+                  alt="Patricia"
+                  class="w-10 h-10 rounded-full object-cover object-top"
+                />
+                <div class="ml-3">
+                  <p class="font-semibold">Patricia L.</p>
+                  <p class="text-xs text-gray-500">Member for 6 months</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unique Amenities -->
+    <section id="amenities" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Premium Amenities</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Experience fitness at a higher level with our exclusive amenities
+            designed for performance and comfort.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <!-- Amenity 1 -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Luxury%20recovery%20lounge%20in%20high-end%20gym%20with%20Normatec%20compression%20boots%2C%20red%20light%20therapy%20panels%2C%20comfortable%20seating%2C%20modern%20design%2C%20clean%20environment&width=500&height=300&seq=23&orientation=landscape"
+                alt="Recovery Lounge"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full"
+                >
+                  <i class="ri-rest-time-line text-primary ri-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold ml-4">Recovery Lounge</h3>
+              </div>
+              <p class="text-gray-600 mb-4">
+                Accelerate your recovery with our state-of-the-art recovery
+                tools including Normatec compression therapy, red light therapy,
+                and percussion massage guns.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <i class="ri-check-line text-green-500 mr-2"></i>
+                  <span class="text-sm">Normatec Compression Boots</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="ri-check-line text-green-500 mr-2"></i>
+                  <span class="text-sm">Red Light Therapy Panels</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="ri-check-line text-green-500 mr-2"></i>
+                  <span class="text-sm">Percussion Massage Therapy</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Amenity 2 -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=High-tech%20body%20scan%20technology%20in%20modern%20gym%2C%203D%20body%20scanner%2C%20digital%20display%20showing%20body%20composition%20analysis%2C%20clean%20clinical%20environment&width=500&height=300&seq=24&orientation=landscape"
+                alt="Body Scan Technology"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full"
+                >
+                  <i class="ri-body-scan-line text-primary ri-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold ml-4">Body Scan Technology</h3>
+              </div>
+              <p class="text-gray-600 mb-4">
+                Track your progress with precision using our 3D body scanning
+                technology that measures body composition, posture, and provides
+                detailed reports.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <i class="ri-check-line text-green-500 mr-2"></i>
+                  <span class="text-sm"
+                    >Detailed Body Composition Analysis</span
+                  >
+                </li>
+                <li class="flex items-center">
+                  <i class="ri-check-line text-green-500 mr-2"></i>
+                  <span class="text-sm">Posture Assessment</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="ri-check-line text-green-500 mr-2"></i>
+                  <span class="text-sm">Progress Tracking Over Time</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Amenity 3 -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="h-64 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Luxury%20shower%20facilities%20in%20high-end%20gym%2C%20modern%20design%2C%20clean%20tiled%20walls%2C%20glass%20shower%20doors%2C%20premium%20toiletries%2C%20well-lit%20environment&width=500&height=300&seq=25&orientation=landscape"
+                alt="Luxury Showers"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full"
+                >
+                  <i class="ri-shower-line text-primary ri-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold ml-4">Luxury Showers</h3>
+              </div>
+              <p class="text-gray-600 mb-4">
+                Refresh after your workout in our spa-quality shower facilities
+                featuring rainfall showerheads, premium toiletries, and plush
+                towels.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <i class="ri-check-line text-green-500 mr-2"></i>
+                  <span class="text-sm">Rainfall Showerheads</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="ri-check-line text-green-500 mr-2"></i>
+                  <span class="text-sm">Complimentary Premium Toiletries</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="ri-check-line text-green-500 mr-2"></i>
+                  <span class="text-sm">Fresh Towels Provided</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Class Schedule -->
+    <section id="schedule" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Class Schedule</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Join our energizing group classes led by expert instructors. Find
+            the perfect class to fit your schedule and goals.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+          <div class="p-6 border-b border-gray-200">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-bold">This Week's Classes</h3>
+                <p class="text-gray-500">May 4 - May 10, 2025</p>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-primary rounded-full mr-2"></div>
+                  <span class="text-sm">Most Popular</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+                  <span class="text-sm">Beginner Friendly</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-orange-500 rounded-full mr-2"></div>
+                  <span class="text-sm">High Intensity</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="bg-gray-50">
+                  <th
+                    class="py-4 px-6 text-left text-sm font-semibold text-gray-600"
+                  >
+                    Time
+                  </th>
+                  <th
+                    class="py-4 px-6 text-left text-sm font-semibold text-gray-600"
+                  >
+                    Monday
+                  </th>
+                  <th
+                    class="py-4 px-6 text-left text-sm font-semibold text-gray-600"
+                  >
+                    Tuesday
+                  </th>
+                  <th
+                    class="py-4 px-6 text-left text-sm font-semibold text-gray-600"
+                  >
+                    Wednesday
+                  </th>
+                  <th
+                    class="py-4 px-6 text-left text-sm font-semibold text-gray-600"
+                  >
+                    Thursday
+                  </th>
+                  <th
+                    class="py-4 px-6 text-left text-sm font-semibold text-gray-600"
+                  >
+                    Friday
+                  </th>
+                  <th
+                    class="py-4 px-6 text-left text-sm font-semibold text-gray-600"
+                  >
+                    Saturday
+                  </th>
+                  <th
+                    class="py-4 px-6 text-left text-sm font-semibold text-gray-600"
+                  >
+                    Sunday
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-6 text-sm font-medium">6:00 AM</td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">HIIT Circuit</p>
+                      <p class="text-xs">Coach Michael</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-green-500 text-white p-2 rounded">
+                      <p class="font-semibold">Yoga Flow</p>
+                      <p class="text-xs">Coach Emily</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">HIIT Circuit</p>
+                      <p class="text-xs">Coach Michael</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-green-500 text-white p-2 rounded">
+                      <p class="font-semibold">Yoga Flow</p>
+                      <p class="text-xs">Coach Emily</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-orange-500 text-white p-2 rounded">
+                      <p class="font-semibold">Bootcamp</p>
+                      <p class="text-xs">Coach Sarah</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-gray-200 p-2 rounded">
+                      <p class="font-semibold text-gray-400">No Class</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-gray-200 p-2 rounded">
+                      <p class="font-semibold text-gray-400">No Class</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-6 text-sm font-medium">9:00 AM</td>
+                  <td class="py-4 px-6">
+                    <div class="bg-green-500 text-white p-2 rounded">
+                      <p class="font-semibold">Senior Fitness</p>
+                      <p class="text-xs">Coach Barbara</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-orange-500 text-white p-2 rounded">
+                      <p class="font-semibold">Spin Class</p>
+                      <p class="text-xs">Coach David</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-green-500 text-white p-2 rounded">
+                      <p class="font-semibold">Senior Fitness</p>
+                      <p class="text-xs">Coach Barbara</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-orange-500 text-white p-2 rounded">
+                      <p class="font-semibold">Spin Class</p>
+                      <p class="text-xs">Coach David</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-green-500 text-white p-2 rounded">
+                      <p class="font-semibold">Senior Fitness</p>
+                      <p class="text-xs">Coach Barbara</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">Weekend Warrior</p>
+                      <p class="text-xs">Coach Michael</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-green-500 text-white p-2 rounded">
+                      <p class="font-semibold">Yoga Flow</p>
+                      <p class="text-xs">Coach Emily</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-6 text-sm font-medium">12:00 PM</td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">Lunch Express</p>
+                      <p class="text-xs">Coach Sarah</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">Lunch Express</p>
+                      <p class="text-xs">Coach Sarah</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">Lunch Express</p>
+                      <p class="text-xs">Coach Sarah</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">Lunch Express</p>
+                      <p class="text-xs">Coach Sarah</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">Lunch Express</p>
+                      <p class="text-xs">Coach Sarah</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-gray-200 p-2 rounded">
+                      <p class="font-semibold text-gray-400">No Class</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-gray-200 p-2 rounded">
+                      <p class="font-semibold text-gray-400">No Class</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-6 text-sm font-medium">5:30 PM</td>
+                  <td class="py-4 px-6">
+                    <div class="bg-orange-500 text-white p-2 rounded">
+                      <p class="font-semibold">CrossTraining</p>
+                      <p class="text-xs">Coach David</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">HIIT Circuit</p>
+                      <p class="text-xs">Coach Michael</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-orange-500 text-white p-2 rounded">
+                      <p class="font-semibold">CrossTraining</p>
+                      <p class="text-xs">Coach David</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-primary text-white p-2 rounded">
+                      <p class="font-semibold">HIIT Circuit</p>
+                      <p class="text-xs">Coach Michael</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-green-500 text-white p-2 rounded">
+                      <p class="font-semibold">Happy Hour Yoga</p>
+                      <p class="text-xs">Coach Emily</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-gray-200 p-2 rounded">
+                      <p class="font-semibold text-gray-400">No Class</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-gray-200 p-2 rounded">
+                      <p class="font-semibold text-gray-400">No Class</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-6 text-sm font-medium">7:00 PM</td>
+                  <td class="py-4 px-6">
+                    <div class="bg-green-500 text-white p-2 rounded">
+                      <p class="font-semibold">Beginner's Strength</p>
+                      <p class="text-xs">Coach Jason</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-orange-500 text-white p-2 rounded">
+                      <p class="font-semibold">Bootcamp</p>
+                      <p class="text-xs">Coach Sarah</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-green-500 text-white p-2 rounded">
+                      <p class="font-semibold">Beginner's Strength</p>
+                      <p class="text-xs">Coach Jason</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-orange-500 text-white p-2 rounded">
+                      <p class="font-semibold">Bootcamp</p>
+                      <p class="text-xs">Coach Sarah</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-gray-200 p-2 rounded">
+                      <p class="font-semibold text-gray-400">No Class</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-gray-200 p-2 rounded">
+                      <p class="font-semibold text-gray-400">No Class</p>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="bg-gray-200 p-2 rounded">
+                      <p class="font-semibold text-gray-400">No Class</p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <a
+            href="#"
+            class="bg-primary text-white px-6 py-3 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition flex items-center"
+          >
+            <i class="ri-calendar-check-line mr-2"></i>
+            Book a Class
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transparent Pricing -->
+    <section id="pricing" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            No hidden fees or long-term contracts. Choose the plan that works
+            best for your fitness journey.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Plan 1 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:-translate-y-2"
+          >
+            <div class="p-8 border-b border-gray-100">
+              <h3 class="text-2xl font-bold mb-2">Drop-In</h3>
+              <p class="text-gray-600 mb-6">
+                Perfect for occasional visits or trying us out.
+              </p>
+              <div class="flex items-end mb-6">
+                <span class="text-4xl font-bold">$25</span>
+                <span class="text-gray-500 ml-2">/ visit</span>
+              </div>
+              <a
+                href="#free-trial"
+                class="block w-full bg-white border-2 border-primary text-primary text-center px-6 py-3 !rounded-button font-semibold whitespace-nowrap hover:bg-primary hover:text-white transition"
+                >Get Started</a
+              >
+            </div>
+            <div class="p-8">
+              <h4 class="font-semibold mb-4">What's Included:</h4>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Full access to gym facilities</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Access to group classes (subject to availability)</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Use of locker rooms and showers</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-close-line text-red-500 mr-2 mt-1"></i>
+                  <span class="text-gray-400"
+                    >No access to premium amenities</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-close-line text-red-500 mr-2 mt-1"></i>
+                  <span class="text-gray-400"
+                    >No personal training sessions</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Plan 2 -->
+          <div
+            class="bg-white rounded-lg shadow-xl overflow-hidden transform transition hover:-translate-y-2 border-2 border-primary relative"
+          >
+            <div
+              class="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-sm font-semibold"
+            >
+              Most Popular
+            </div>
+            <div class="p-8 border-b border-gray-100">
+              <h3 class="text-2xl font-bold mb-2">10-Session Pass</h3>
+              <p class="text-gray-600 mb-6">
+                Great value for regular gym-goers.
+              </p>
+              <div class="flex items-end mb-6">
+                <span class="text-4xl font-bold">$199</span>
+                <span class="text-gray-500 ml-2">/ 10 sessions</span>
+              </div>
+              <a
+                href="#free-trial"
+                class="block w-full bg-primary text-white text-center px-6 py-3 !rounded-button font-semibold whitespace-nowrap hover:bg-blue-600 transition"
+                >Get Started</a
+              >
+            </div>
+            <div class="p-8">
+              <h4 class="font-semibold mb-4">What's Included:</h4>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Full access to gym facilities</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Priority booking for group classes</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Use of locker rooms and showers</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Access to recovery lounge (1 session)</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>1 complimentary body scan</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Plan 3 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:-translate-y-2"
+          >
+            <div class="p-8 border-b border-gray-100">
+              <h3 class="text-2xl font-bold mb-2">Unlimited Monthly</h3>
+              <p class="text-gray-600 mb-6">
+                Best value for dedicated fitness enthusiasts.
+              </p>
+              <div class="flex items-end mb-6">
+                <span class="text-4xl font-bold">$89</span>
+                <span class="text-gray-500 ml-2">/ month</span>
+              </div>
+              <a
+                href="#free-trial"
+                class="block w-full bg-white border-2 border-primary text-primary text-center px-6 py-3 !rounded-button font-semibold whitespace-nowrap hover:bg-primary hover:text-white transition"
+                >Get Started</a
+              >
+            </div>
+            <div class="p-8">
+              <h4 class="font-semibold mb-4">What's Included:</h4>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Unlimited access to gym facilities</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Unlimited access to all group classes</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Full access to premium amenities</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>Monthly body scan and assessment</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-green-500 mr-2 mt-1"></i>
+                  <span>1 free personal training session/month</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 bg-blue-50 rounded-lg p-8">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <div>
+              <h3 class="text-xl font-bold mb-2">
+                Special Discounts Available
+              </h3>
+              <p class="text-gray-600">
+                We offer special rates for military, first responders, students,
+                and seniors. Contact us for details.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-4">
+              <div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+                <i class="ri-shield-star-line text-primary ri-lg mr-2"></i>
+                <span class="font-medium">Military</span>
+              </div>
+              <div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+                <i class="ri-health-book-line text-primary ri-lg mr-2"></i>
+                <span class="font-medium">First Responders</span>
+              </div>
+              <div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+                <i class="ri-graduation-cap-line text-primary ri-lg mr-2"></i>
+                <span class="font-medium">Students</span>
+              </div>
+              <div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+                <i class="ri-user-heart-line text-primary ri-lg mr-2"></i>
+                <span class="font-medium">Seniors</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Get answers to the most common questions about our gym and programs.
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="faq-item">
+            <div class="faq-question p-6 flex justify-between items-center">
+              <h3 class="text-xl font-semibold">
+                I'm out of shape - will I fit in?
+              </h3>
+              <i class="ri-add-line text-primary ri-lg"></i>
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-gray-600">
+                Absolutely! Our gym welcomes members of all fitness levels. Many
+                of our most successful members started as beginners. Our coaches
+                are trained to provide modifications for all exercises, and our
+                supportive community celebrates progress, not perfection. We
+                offer beginner-friendly classes and programs specifically
+                designed for those just starting their fitness journey.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question p-6 flex justify-between items-center">
+              <h3 class="text-xl font-semibold">
+                What if I don't know how to use the equipment?
+              </h3>
+              <i class="ri-add-line text-primary ri-lg"></i>
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-gray-600">
+                No worries at all! Every new member receives a complimentary
+                equipment orientation session with one of our coaches. They'll
+                show you how to use each piece of equipment safely and
+                effectively. Additionally, our staff is always available on the
+                gym floor to answer questions and provide guidance. We also
+                offer beginner workshops regularly that focus on proper form and
+                technique.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question p-6 flex justify-between items-center">
+              <h3 class="text-xl font-semibold">
+                How often should I work out to see results?
+              </h3>
+              <i class="ri-add-line text-primary ri-lg"></i>
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-gray-600">
+                For most people, consistency is more important than frequency.
+                We typically recommend 3-4 sessions per week with rest days in
+                between to allow for recovery. However, this varies based on
+                your goals, fitness level, and schedule. Our coaches can help
+                create a personalized plan that works for you. Remember,
+                sustainable habits lead to long-term results, so we focus on
+                helping you establish a routine you can maintain.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question p-6 flex justify-between items-center">
+              <h3 class="text-xl font-semibold">
+                Do I need to bring my own towel and water?
+              </h3>
+              <i class="ri-add-line text-primary ri-lg"></i>
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-gray-600">
+                We provide fresh towels for all members at no additional cost.
+                We do recommend bringing your own water bottle, which you can
+                refill at our filtered water stations throughout the facility.
+                For your convenience, we also sell bottled water and premium
+                reusable water bottles at our front desk if you forget yours.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question p-6 flex justify-between items-center">
+              <h3 class="text-xl font-semibold">
+                Can I freeze my membership if I'm traveling?
+              </h3>
+              <i class="ri-add-line text-primary ri-lg"></i>
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-gray-600">
+                Yes, we understand life happens! Monthly members can freeze
+                their membership for up to 30 days per year at no charge. For
+                longer freezes, there's a small monthly maintenance fee. Simply
+                notify us at least 7 days before your planned freeze period, and
+                we'll take care of the rest. Your billing will automatically
+                resume when your freeze period ends.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question p-6 flex justify-between items-center">
+              <h3 class="text-xl font-semibold">
+                Is there a cancellation fee if I need to stop my membership?
+              </h3>
+              <i class="ri-add-line text-primary ri-lg"></i>
+            </div>
+            <div class="faq-answer px-6 pb-6">
+              <p class="text-gray-600">
+                We don't believe in locking you into contracts or charging
+                cancellation fees. You can cancel your monthly membership
+                anytime with 30 days' notice. We simply ask that you complete a
+                quick exit survey to help us improve our services. If you've
+                prepaid for multiple months, we'll refund any unused full
+                months. Our goal is to earn your business every day, not trap
+                you in a contract.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Urgency Builder -->
+    <section class="py-20 bg-primary text-white">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 class="text-3xl font-bold mb-6">Limited Spots Available</h2>
+              <p class="text-lg mb-8">
+                To ensure personalized attention and optimal use of our
+                facilities, we limit our membership capacity. Secure your spot
+                before we reach our limit.
+              </p>
+
+              <div class="bg-white/10 rounded-lg p-6 mb-8">
+                <h3 class="text-xl font-semibold mb-4">Current Availability</h3>
+                <div class="space-y-4">
+                  <div>
+                    <div class="flex justify-between mb-2">
+                      <span>6AM Bootcamp</span>
+                      <span class="font-bold">12 spots left</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                      <div
+                        class="bg-white rounded-full h-2"
+                        style="width: 25%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-2">
+                      <span>New Member Orientation</span>
+                      <span class="font-bold">8 spots left</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                      <div
+                        class="bg-white rounded-full h-2"
+                        style="width: 60%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-2">
+                      <span>Premium Memberships</span>
+                      <span class="font-bold">15 spots left</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                      <div
+                        class="bg-white rounded-full h-2"
+                        style="width: 40%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="free-trial"
+              class="bg-white text-gray-800 rounded-lg p-8 shadow-lg"
+            >
+              <h3 class="text-2xl font-bold mb-2">New Member Special</h3>
+              <p class="text-gray-600 mb-6">
+                Start your fitness journey with a free week trial. No
+                obligation, no pressure.
+              </p>
+
+              <div class="mb-6">
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Offer Expires In:</span>
+                  <div class="flex space-x-2">
+                    <div class="bg-gray-100 px-2 py-1 rounded">
+                      <span class="font-mono font-bold">2</span>
+                      <span class="text-xs">days</span>
+                    </div>
+                    <div class="bg-gray-100 px-2 py-1 rounded">
+                      <span class="font-mono font-bold">18</span>
+                      <span class="text-xs">hrs</span>
+                    </div>
+                    <div class="bg-gray-100 px-2 py-1 rounded">
+                      <span class="font-mono font-bold">45</span>
+                      <span class="text-xs">min</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <form>
+                <div class="space-y-4 mb-6">
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Full Name</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Your email"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="phone"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Phone Number</label
+                    >
+                    <input
+                      type="tel"
+                      id="phone"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Your phone"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Fitness Goal</label
+                    >
+                    <div class="grid grid-cols-2 gap-3">
+                      <label class="flex items-center">
+                        <input type="checkbox" class="custom-checkbox mr-2" />
+                        <span>Weight Loss</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" class="custom-checkbox mr-2" />
+                        <span>Muscle Gain</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" class="custom-checkbox mr-2" />
+                        <span>Strength</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" class="custom-checkbox mr-2" />
+                        <span>Endurance</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-primary text-white py-3 !rounded-button font-semibold hover:bg-blue-600 transition"
+                >
+                  Claim Your Free Week
+                </button>
+
+                <p class="text-xs text-gray-500 mt-4 text-center">
+                  By submitting, you agree to receive communications from us. No
+                  spam, we promise!
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div>
+            <a href="#" class="text-3xl font-['Pacifico'] text-white mb-6 block"
+              >logo</a
+            >
+            <p class="text-gray-400 mb-6">
+              Transform your body and mind with our science-backed fitness
+              programs and supportive community.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-twitter-x-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-youtube-line"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Programs</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Class Schedule</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Pricing</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Coaches</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Success Stories</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Blog</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="ri-map-pin-line mr-3 mt-1"></i>
+                <span class="text-gray-400"
+                  >123 Fitness Avenue<br />New York, NY 10001</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="ri-phone-line mr-3"></i>
+                <span class="text-gray-400">(555) 123-4567</span>
+              </li>
+              <li class="flex items-center">
+                <i class="ri-mail-line mr-3"></i>
+                <span class="text-gray-400">info@fitforcegym.com</span>
+              </li>
+            </ul>
+            <div class="mt-6">
+              <h4 class="font-semibold mb-2">Hours:</h4>
+              <p class="text-gray-400">
+                Mon-Fri: 5am-10pm<br />Sat-Sun: 7am-8pm
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+            <p class="text-gray-400 mb-4">
+              Subscribe to get fitness tips, special offers, and more.
+            </p>
+            <form class="mb-4">
+              <div class="flex">
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  class="px-4 py-2 w-full border-none rounded-l focus:outline-none text-gray-800"
+                />
+                <button
+                  type="submit"
+                  class="bg-primary text-white px-4 !rounded-r-button whitespace-nowrap hover:bg-blue-600 transition"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </form>
+            <div>
+              <h4 class="font-semibold mb-3">We Accept:</h4>
+              <div class="flex space-x-3">
+                <i class="ri-visa-fill text-gray-400 ri-lg"></i>
+                <i class="ri-mastercard-fill text-gray-400 ri-lg"></i>
+                <i class="ri-paypal-fill text-gray-400 ri-lg"></i>
+                <i class="ri-apple-fill text-gray-400 ri-lg"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+          <p class="text-gray-500">
+            © 2025 FitForce Gym. All rights reserved.
+          </p>
+          <div class="flex justify-center space-x-6 mt-4">
+            <a href="#" class="text-gray-500 hover:text-gray-400 text-sm"
+              >Privacy Policy</a
+            >
+            <a href="#" class="text-gray-500 hover:text-gray-400 text-sm"
+              >Terms of Service</a
+            >
+            <a href="#" class="text-gray-500 hover:text-gray-400 text-sm"
+              >Accessibility</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <a
+        href="#free-trial"
+        class="bg-primary text-white px-6 py-3 !rounded-button font-semibold shadow-lg hover:bg-blue-600 transition flex items-center"
+      >
+        <i class="ri-gift-line mr-2"></i>
+        Start Free Trial
+      </a>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Program Tabs
+        const programTabs = document.querySelectorAll(".program-tab");
+        const programContents = document.querySelectorAll(".program-content");
+
+        programTabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            const target = tab.dataset.tab;
+
+            // Remove active class from all tabs and contents
+            programTabs.forEach((t) => t.classList.remove("active"));
+            programContents.forEach((c) => c.classList.remove("active"));
+
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add("active");
+            document.getElementById(target).classList.add("active");
+          });
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll(".faq-question");
+
+        faqQuestions.forEach((question) => {
+          question.addEventListener("click", () => {
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector("i");
+
+            // Toggle active class
+            answer.classList.toggle("active");
+
+            // Change icon
+            if (answer.classList.contains("active")) {
+              icon.classList.remove("ri-add-line");
+              icon.classList.add("ri-subtract-line");
+            } else {
+              icon.classList.remove("ri-subtract-line");
+              icon.classList.add("ri-add-line");
+            }
+          });
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Before/After Slider
+        const sliders = document.querySelectorAll(".slider");
+
+        sliders.forEach((slider) => {
+          const beforeAfter = slider.closest(".before-after");
+          const before = beforeAfter.querySelector(".before");
+
+          // Set initial position
+          before.style.width = "50%";
+          slider.style.left = "50%";
+
+          // Mouse events
+          let isDragging = false;
+
+          slider.addEventListener("mousedown", () => {
+            isDragging = true;
+          });
+
+          document.addEventListener("mouseup", () => {
+            isDragging = false;
+          });
+
+          beforeAfter.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+
+            const rect = beforeAfter.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+
+            before.style.width = `${percent}%`;
+            slider.style.left = `${percent}%`;
+          });
+
+          // Touch events
+          slider.addEventListener("touchstart", () => {
+            isDragging = true;
+          });
+
+          document.addEventListener("touchend", () => {
+            isDragging = false;
+          });
+
+          beforeAfter.addEventListener("touchmove", (e) => {
+            if (!isDragging) return;
+
+            const rect = beforeAfter.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+
+            before.style.width = `${percent}%`;
+            slider.style.left = `${percent}%`;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

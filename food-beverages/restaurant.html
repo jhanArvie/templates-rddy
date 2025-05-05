@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bistro Elegance | Fine Dining Experience</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#8B5A2B", secondary: "#D4AF37" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Poppins', sans-serif;
+      }
+      .heading {
+          font-family: 'Playfair Display', serif;
+      }
+      .hero {
+          background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://readdy.ai/api/search-image?query=Elegant%20restaurant%20interior%20with%20warm%20ambient%20lighting%2C%20wooden%20tables%20with%20white%20tablecloths%2C%20crystal%20glasses%2C%20and%20soft%20candlelight.%20The%20space%20has%20a%20sophisticated%20atmosphere%20with%20dark%20wood%20paneling%2C%20brass%20accents%2C%20and%20lush%20greenery.%20The%20left%20side%20of%20the%20image%20has%20a%20gradient%20fading%20to%20a%20neutral%20tone%20for%20text%20overlay&width=1920&height=1080&seq=restaurant01&orientation=landscape');
+          background-size: cover;
+          background-position: center;
+      }
+      .menu-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .testimonial-card {
+          transition: all 0.3s ease;
+      }
+      .testimonial-card:hover {
+          transform: translateY(-5px);
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator,
+      input[type="time"]::-webkit-calendar-picker-indicator {
+          filter: invert(0.5);
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+      }
+      .custom-checkbox {
+          position: relative;
+          cursor: pointer;
+      }
+      .custom-checkbox input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+      }
+      .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 20px;
+          width: 20px;
+          background-color: #fff;
+          border: 2px solid #e5e7eb;
+          border-radius: 4px;
+      }
+      .custom-checkbox:hover input ~ .checkmark {
+          border-color: #d1d5db;
+      }
+      .custom-checkbox input:checked ~ .checkmark {
+          background-color: #8B5A2B;
+          border-color: #8B5A2B;
+      }
+      .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+      }
+      .custom-checkbox input:checked ~ .checkmark:after {
+          display: block;
+      }
+      .custom-checkbox .checkmark:after {
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header/Hero Section -->
+    <header class="hero h-screen flex flex-col relative">
+      <nav class="w-full py-6 px-8 flex items-center justify-between">
+        <div class="text-white text-3xl font-['Pacifico']">logo</div>
+        <ul class="hidden md:flex space-x-8 text-white">
+          <li>
+            <a href="#" class="hover:text-primary transition-colors">Home</a>
+          </li>
+          <li>
+            <a href="#about" class="hover:text-primary transition-colors"
+              >About</a
+            >
+          </li>
+          <li>
+            <a href="#menu" class="hover:text-primary transition-colors"
+              >Menu</a
+            >
+          </li>
+          <li>
+            <a href="#gallery" class="hover:text-primary transition-colors"
+              >Gallery</a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="hover:text-primary transition-colors"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <div
+          class="md:hidden w-10 h-10 flex items-center justify-center text-white"
+        >
+          <i class="ri-menu-line ri-2x"></i>
+        </div>
+      </nav>
+
+      <div class="w-full flex-1 flex items-center">
+        <div class="container mx-auto px-8 md:px-16 max-w-6xl">
+          <h1
+            class="text-4xl md:text-6xl lg:text-7xl text-white font-bold heading leading-tight mb-6"
+          >
+            Exquisite Dining<br />Experience
+          </h1>
+          <p class="text-white text-lg md:text-xl mb-8 max-w-2xl">
+            Indulge in a culinary journey where tradition meets innovation. Our
+            chef-crafted menu celebrates seasonal ingredients with a modern
+            twist.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button
+              class="bg-primary text-white px-8 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all"
+            >
+              Reserve a Table
+            </button>
+            <button
+              class="bg-transparent border-2 border-white text-white px-8 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-white hover:text-primary transition-all"
+            >
+              View Menu
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-8 max-w-6xl">
+        <div class="flex flex-col md:flex-row gap-12 items-center">
+          <div class="md:w-2/5">
+            <h2
+              class="text-3xl md:text-4xl font-bold heading mb-6 text-gray-800"
+            >
+              Our Story
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Founded in 2010 by award-winning Chef Michael Richardson, Bistro
+              Elegance has been serving exquisite Mediterranean-inspired cuisine
+              with a contemporary flair for over a decade.
+            </p>
+            <p class="text-gray-600 mb-6">
+              We pride ourselves on our commitment to sustainability, sourcing
+              only the freshest local ingredients and supporting ethical farming
+              practices. Every dish tells a story of tradition, passion, and
+              culinary excellence.
+            </p>
+            <div class="flex items-center gap-4 mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary"
+              >
+                <i class="ri-leaf-line ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Farm-to-Table</h3>
+                <p class="text-sm text-gray-600">Locally sourced ingredients</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary"
+              >
+                <i class="ri-award-line ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Award Winning</h3>
+                <p class="text-sm text-gray-600">Michelin star recognition</p>
+              </div>
+            </div>
+          </div>
+          <div class="md:w-3/5 grid grid-cols-2 gap-4">
+            <div>
+              <img
+                src="https://readdy.ai/api/search-image?query=Elegant%20restaurant%20interior%20with%20warm%20lighting%2C%20wooden%20tables%20with%20white%20tablecloths%2C%20crystal%20glasses%2C%20and%20soft%20candlelight.%20The%20space%20has%20a%20sophisticated%20atmosphere%20with%20dark%20wood%20paneling%2C%20brass%20accents%2C%20and%20lush%20greenery.%20Professional%20fine%20dining%20setup%20with%20impeccable%20attention%20to%20detail&width=600&height=800&seq=restaurant02&orientation=portrait"
+                alt="Restaurant Interior"
+                class="rounded-lg shadow-lg object-cover h-full w-full object-top"
+              />
+            </div>
+            <div class="grid grid-rows-2 gap-4">
+              <img
+                src="https://readdy.ai/api/search-image?query=Close-up%20of%20a%20beautifully%20plated%20gourmet%20dish%20with%20microgreens%2C%20edible%20flowers%2C%20and%20artistic%20sauce%20presentation.%20The%20dish%20features%20perfectly%20seared%20scallops%20on%20a%20white%20porcelain%20plate.%20Professional%20food%20photography%20with%20soft%20natural%20lighting%20highlighting%20the%20texture%20and%20colors%20of%20the%20ingredients&width=600&height=400&seq=restaurant03&orientation=landscape"
+                alt="Signature Dish"
+                class="rounded-lg shadow-lg object-cover h-full w-full object-top"
+              />
+              <img
+                src="https://readdy.ai/api/search-image?query=Chef%20in%20white%20uniform%20working%20in%20a%20professional%20kitchen%2C%20carefully%20plating%20a%20gourmet%20dish%20with%20tweezers.%20The%20kitchen%20is%20clean%20and%20modern%20with%20stainless%20steel%20equipment.%20The%20chef%20is%20focused%20and%20precise%2C%20demonstrating%20culinary%20expertise%20and%20attention%20to%20detail&width=600&height=400&seq=restaurant04&orientation=landscape"
+                alt="Our Chef"
+                class="rounded-lg shadow-lg object-cover h-full w-full object-top"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Showcase -->
+    <section id="menu" class="py-20">
+      <div class="container mx-auto px-8 max-w-6xl">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold heading mb-4 text-gray-800">
+            Our Menu
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Explore our carefully crafted menu featuring seasonal ingredients
+            and chef's specialties
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-2 mt-8">
+            <button
+              class="bg-primary text-white px-4 py-2 !rounded-full text-sm whitespace-nowrap"
+            >
+              All
+            </button>
+            <button
+              class="bg-gray-100 text-gray-700 px-4 py-2 !rounded-full text-sm whitespace-nowrap hover:bg-gray-200 transition-colors"
+            >
+              Starters
+            </button>
+            <button
+              class="bg-gray-100 text-gray-700 px-4 py-2 !rounded-full text-sm whitespace-nowrap hover:bg-gray-200 transition-colors"
+            >
+              Main Course
+            </button>
+            <button
+              class="bg-gray-100 text-gray-700 px-4 py-2 !rounded-full text-sm whitespace-nowrap hover:bg-gray-200 transition-colors"
+            >
+              Desserts
+            </button>
+            <button
+              class="bg-gray-100 text-gray-700 px-4 py-2 !rounded-full text-sm whitespace-nowrap hover:bg-gray-200 transition-colors"
+            >
+              Drinks
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Elegant%20appetizer%20plate%20with%20perfectly%20arranged%20bruschetta%20topped%20with%20fresh%20tomatoes%2C%20basil%2C%20and%20balsamic%20glaze.%20The%20dish%20is%20presented%20on%20a%20rustic%20wooden%20board%20with%20garnishes.%20Professional%20food%20photography%20with%20natural%20lighting%20highlighting%20the%20vibrant%20colors%20and%20textures%20of%20the%20ingredients&width=400&height=300&seq=restaurant05&orientation=landscape"
+                alt="Starters"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4"
+              >
+                <i class="ri-restaurant-line ri-lg"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2 heading">Starters</h3>
+              <p class="text-gray-600 mb-4">
+                Begin your culinary journey with our selection of appetizers
+              </p>
+              <a href="#" class="text-primary font-medium flex items-center">
+                View Selection
+                <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Perfectly%20cooked%20medium-rare%20steak%20with%20herb%20butter%20melting%20on%20top%2C%20served%20with%20roasted%20vegetables%20and%20a%20red%20wine%20reduction.%20The%20dish%20is%20presented%20on%20an%20elegant%20black%20plate.%20Professional%20food%20photography%20with%20dramatic%20lighting%20highlighting%20the%20juicy%20texture%20of%20the%20meat%20and%20the%20rich%20colors%20of%20the%20accompaniments&width=400&height=300&seq=restaurant06&orientation=landscape"
+                alt="Main Courses"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4"
+              >
+                <i class="ri-restaurant-2-line ri-lg"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2 heading">Main Courses</h3>
+              <p class="text-gray-600 mb-4">
+                Savor our chef's signature entrées featuring seasonal
+                ingredients
+              </p>
+              <a href="#" class="text-primary font-medium flex items-center">
+                View Selection
+                <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Elegant%20dessert%20plate%20featuring%20a%20chocolate%20souffl%C3%A9%20with%20vanilla%20ice%20cream%20and%20berry%20coulis.%20The%20dessert%20is%20garnished%20with%20mint%20leaves%20and%20edible%20flowers.%20Professional%20food%20photography%20with%20soft%20lighting%20highlighting%20the%20texture%20and%20presentation%20of%20the%20sweet%20treat&width=400&height=300&seq=restaurant07&orientation=landscape"
+                alt="Desserts"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4"
+              >
+                <i class="ri-cake-3-line ri-lg"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2 heading">Desserts</h3>
+              <p class="text-gray-600 mb-4">
+                Indulge in our handcrafted sweet creations to end your meal
+              </p>
+              <a href="#" class="text-primary font-medium flex items-center">
+                View Selection
+                <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Elegant%20cocktail%20in%20a%20crystal%20glass%20with%20garnishes%20like%20citrus%20peel%20and%20herbs.%20The%20drink%20has%20beautiful%20colors%20with%20ice%20cubes%20and%20condensation%20on%20the%20glass.%20Professional%20beverage%20photography%20with%20dramatic%20lighting%20highlighting%20the%20colors%20and%20textures%20of%20the%20drink%20against%20a%20dark%20background&width=400&height=300&seq=restaurant08&orientation=landscape"
+                alt="Drinks"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4"
+              >
+                <i class="ri-goblet-line ri-lg"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2 heading">Drinks</h3>
+              <p class="text-gray-600 mb-4">
+                Complement your meal with our curated wine list and cocktails
+              </p>
+              <a href="#" class="text-primary font-medium flex items-center">
+                View Selection
+                <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <button
+            class="bg-white border border-primary text-primary px-8 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-all"
+          >
+            View Full Menu
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-8 max-w-6xl">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold heading mb-4 text-gray-800">
+            Our Gallery
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            A visual feast of our culinary creations and dining atmosphere
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="relative group overflow-hidden rounded-lg h-64">
+            <img
+              src="https://readdy.ai/api/search-image?query=Beautifully%20plated%20seafood%20dish%20with%20seared%20scallops%2C%20microgreens%2C%20and%20artistic%20sauce%20presentation%20on%20a%20white%20plate.%20Professional%20food%20photography%20with%20natural%20lighting%20highlighting%20the%20textures%20and%20colors%20of%20the%20fresh%20ingredients&width=600&height=400&seq=restaurant09&orientation=landscape"
+              alt="Seafood Dish"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-semibold mb-1">Seared Scallops</h3>
+                <p class="text-sm">With citrus reduction</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative group overflow-hidden rounded-lg h-64 md:h-auto md:row-span-2"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Elegant%20restaurant%20interior%20with%20warm%20ambient%20lighting%2C%20wooden%20tables%20with%20white%20tablecloths%2C%20crystal%20glasses%2C%20and%20soft%20candlelight.%20The%20space%20has%20a%20sophisticated%20atmosphere%20with%20dark%20wood%20paneling%2C%20brass%20accents%2C%20and%20lush%20greenery.%20Professional%20interior%20photography%20showing%20an%20upscale%20dining%20environment&width=600&height=800&seq=restaurant10&orientation=portrait"
+              alt="Restaurant Interior"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-semibold mb-1">Main Dining Room</h3>
+                <p class="text-sm">Elegant atmosphere</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative group overflow-hidden rounded-lg h-64">
+            <img
+              src="https://readdy.ai/api/search-image?query=Gourmet%20pasta%20dish%20with%20fresh%20herbs%2C%20parmesan%2C%20and%20olive%20oil%20on%20a%20ceramic%20plate.%20The%20pasta%20is%20perfectly%20cooked%20with%20a%20silky%20sauce.%20Professional%20food%20photography%20with%20natural%20lighting%20highlighting%20the%20texture%20and%20colors%20of%20the%20dish&width=600&height=400&seq=restaurant11&orientation=landscape"
+              alt="Pasta Dish"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-semibold mb-1">Truffle Pasta</h3>
+                <p class="text-sm">House specialty</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative group overflow-hidden rounded-lg h-64 md:col-span-2"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Chef%20team%20working%20in%20a%20professional%20kitchen%2C%20preparing%20gourmet%20dishes.%20The%20kitchen%20is%20clean%20and%20modern%20with%20stainless%20steel%20equipment.%20The%20chefs%20are%20in%20white%20uniforms%2C%20focused%20and%20precise%2C%20demonstrating%20culinary%20expertise%20and%20teamwork&width=800&height=400&seq=restaurant12&orientation=landscape"
+              alt="Chef Team"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-semibold mb-1">Our Culinary Team</h3>
+                <p class="text-sm">Passion in action</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative group overflow-hidden rounded-lg h-64">
+            <img
+              src="https://readdy.ai/api/search-image?query=Elegant%20dessert%20with%20chocolate%2C%20berries%2C%20and%20gold%20leaf%20on%20a%20black%20plate.%20The%20dessert%20features%20multiple%20textures%20and%20components%20artfully%20arranged.%20Professional%20food%20photography%20with%20dramatic%20lighting%20highlighting%20the%20details%20and%20presentation&width=600&height=400&seq=restaurant13&orientation=landscape"
+              alt="Dessert"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-semibold mb-1">Chocolate Symphony</h3>
+                <p class="text-sm">Decadent dessert</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <button
+            class="bg-white border border-primary text-primary px-8 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-all"
+          >
+            View All Photos
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-8 max-w-6xl">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold heading mb-4 text-gray-800">
+            What Our Guests Say
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Read the experiences of our valued customers
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+            <div class="flex items-center gap-1 text-yellow-400 mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-600 mb-6">
+              "An unforgettable dining experience! The truffle pasta was divine,
+              and the service was impeccable. The sommelier's wine pairing
+              recommendations perfectly complemented our meal."
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20woman%20with%20shoulder-length%20brown%20hair%2C%20warm%20smile%2C%20and%20business%20attire.%20Natural%20lighting%2C%20neutral%20background%2C%20friendly%20expression&width=100&height=100&seq=person01&orientation=squarish"
+                  alt="Emily Robertson"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-800">Emily Robertson</h4>
+                <p class="text-sm text-gray-500">April 28, 2025</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+            <div class="flex items-center gap-1 text-yellow-400 mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-600 mb-6">
+              "The chef's tasting menu was a culinary journey I won't soon
+              forget. Each course was more impressive than the last, with
+              flavors that were both innovative and comforting. Worth every
+              penny!"
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20Asian%20man%20with%20short%20black%20hair%2C%20glasses%2C%20and%20business%20casual%20attire.%20Natural%20lighting%2C%20neutral%20background%2C%20confident%20expression&width=100&height=100&seq=person02&orientation=squarish"
+                  alt="James Chen"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-800">James Chen</h4>
+                <p class="text-sm text-gray-500">May 2, 2025</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+            <div class="flex items-center gap-1 text-yellow-400 mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-600 mb-6">
+              "We celebrated our anniversary here and couldn't have chosen a
+              better place. The ambiance was romantic, the food exceptional, and
+              the staff made us feel special. The chocolate dessert was a
+              highlight!"
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20African%20American%20couple%2C%20both%20smiling%20warmly%20at%20the%20camera.%20Natural%20lighting%2C%20neutral%20background%2C%20business%20casual%20attire&width=100&height=100&seq=person03&orientation=squarish"
+                  alt="Robert & Sarah Johnson"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-800">
+                  Robert & Sarah Johnson
+                </h4>
+                <p class="text-sm text-gray-500">April 30, 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Events Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-8 max-w-6xl">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold heading mb-4 text-gray-800">
+            Special Events
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Join us for unique culinary experiences and themed evenings
+          </p>
+        </div>
+
+        <div class="flex overflow-x-auto pb-8 gap-6 scrollbar-hide">
+          <div
+            class="min-w-[300px] bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Wine%20tasting%20event%20with%20elegant%20setup%2C%20multiple%20wine%20glasses%2C%20and%20sommelier%20explaining%20wines%20to%20guests.%20Professional%20event%20photography%20with%20warm%20lighting%20showing%20an%20upscale%20wine%20tasting%20experience%20with%20cheese%20and%20appetizer%20pairings&width=400&height=300&seq=event01&orientation=landscape"
+                alt="Wine Tasting"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-primary mb-3">
+                <i class="ri-calendar-line"></i>
+                <span class="text-sm">May 15, 2025 • 7:00 PM</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2 heading">
+                Wine Tasting Evening
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Join our sommelier for an exclusive tasting of premium wines
+                paired with chef-selected appetizers.
+              </p>
+              <a href="#" class="text-primary font-medium flex items-center">
+                Learn More
+                <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="min-w-[300px] bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Chef%20demonstration%20event%20with%20professional%20chef%20showing%20cooking%20techniques%20to%20an%20audience.%20The%20chef%20is%20at%20a%20cooking%20station%20with%20ingredients%20and%20equipment%2C%20explaining%20the%20process.%20Professional%20event%20photography%20with%20good%20lighting%20showing%20an%20interactive%20culinary%20demonstration&width=400&height=300&seq=event02&orientation=landscape"
+                alt="Chef's Table"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-primary mb-3">
+                <i class="ri-calendar-line"></i>
+                <span class="text-sm">May 22, 2025 • 6:30 PM</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2 heading">
+                Chef's Table Experience
+              </h3>
+              <p class="text-gray-600 mb-4">
+                An intimate dining experience where our head chef prepares a
+                special menu right before your eyes.
+              </p>
+              <a href="#" class="text-primary font-medium flex items-center">
+                Learn More
+                <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="min-w-[300px] bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Live%20jazz%20music%20performance%20in%20an%20elegant%20restaurant%20setting%20with%20musicians%20playing%20instruments%20while%20guests%20enjoy%20dinner.%20Professional%20event%20photography%20with%20atmospheric%20lighting%20showing%20a%20sophisticated%20evening%20of%20live%20entertainment%20and%20dining&width=400&height=300&seq=event03&orientation=landscape"
+                alt="Jazz Night"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-primary mb-3">
+                <i class="ri-calendar-line"></i>
+                <span class="text-sm">June 5, 2025 • 8:00 PM</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2 heading">
+                Jazz & Dinner Night
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Enjoy a special dinner menu accompanied by live jazz music for a
+                perfect evening out.
+              </p>
+              <a href="#" class="text-primary font-medium flex items-center">
+                Learn More
+                <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="min-w-[300px] bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Seasonal%20menu%20launch%20event%20with%20beautifully%20decorated%20table%20displaying%20new%20dishes.%20The%20event%20features%20elegant%20food%20presentation%20with%20seasonal%20ingredients%20and%20decorative%20elements.%20Professional%20event%20photography%20with%20perfect%20lighting%20showing%20a%20special%20culinary%20showcase&width=400&height=300&seq=event04&orientation=landscape"
+                alt="Seasonal Menu Launch"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-primary mb-3">
+                <i class="ri-calendar-line"></i>
+                <span class="text-sm">June 12, 2025 • 7:00 PM</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2 heading">
+                Summer Menu Launch
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Be among the first to experience our new summer menu featuring
+                seasonal ingredients.
+              </p>
+              <a href="#" class="text-primary font-medium flex items-center">
+                Learn More
+                <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservation & Contact Section -->
+    <section id="contact" class="py-20">
+      <div class="container mx-auto px-8 max-w-6xl">
+        <div class="flex flex-col lg:flex-row gap-12">
+          <div class="lg:w-1/2">
+            <h2
+              class="text-3xl md:text-4xl font-bold heading mb-6 text-gray-800"
+            >
+              Make a Reservation
+            </h2>
+            <p class="text-gray-600 mb-8">
+              Reserve your table online and we'll confirm your booking shortly
+            </p>
+
+            <div class="bg-white p-8 rounded-lg shadow-md">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Your email"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="date"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Date</label
+                  >
+                  <input
+                    type="date"
+                    id="date"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="time"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Time</label
+                  >
+                  <input
+                    type="time"
+                    id="time"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="guests"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Number of Guests</label
+                  >
+                  <input
+                    type="number"
+                    id="guests"
+                    min="1"
+                    max="20"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="2"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="occasion"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Occasion (Optional)</label
+                  >
+                  <div class="relative">
+                    <select
+                      id="occasion"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8"
+                    >
+                      <option value="">Select occasion</option>
+                      <option value="birthday">Birthday</option>
+                      <option value="anniversary">Anniversary</option>
+                      <option value="business">Business Dinner</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                    >
+                      <i class="ri-arrow-down-s-line text-gray-400"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label
+                  for="special-requests"
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  >Special Requests (Optional)</label
+                >
+                <textarea
+                  id="special-requests"
+                  rows="3"
+                  class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="Any dietary restrictions or special requests?"
+                ></textarea>
+              </div>
+
+              <div class="mb-6">
+                <label class="custom-checkbox flex items-center">
+                  <input type="checkbox" class="hidden" />
+                  <span class="checkmark"></span>
+                  <span class="ml-7 text-sm text-gray-600"
+                    >I agree to receive email updates about special events and
+                    promotions</span
+                  >
+                </label>
+              </div>
+
+              <button
+                class="w-full bg-primary text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all"
+              >
+                Reserve Now
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2">
+            <h2
+              class="text-3xl md:text-4xl font-bold heading mb-6 text-gray-800"
+            >
+              Contact & Location
+            </h2>
+            <p class="text-gray-600 mb-8">
+              Visit us or get in touch to learn more about our restaurant
+            </p>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+              <div class="h-64 w-full">
+                <img
+                  src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png"
+                  alt="Restaurant Location"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-8">
+                <div class="flex items-start gap-4 mb-6">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0 mt-1"
+                  >
+                    <i class="ri-map-pin-line"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Address</h3>
+                    <p class="text-gray-600">
+                      123 Gourmet Avenue, Culinary District<br />New York, NY
+                      10001
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4 mb-6">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0 mt-1"
+                  >
+                    <i class="ri-time-line"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-800 mb-1">
+                      Opening Hours
+                    </h3>
+                    <p class="text-gray-600">
+                      Monday - Thursday: 5:30 PM - 10:00 PM<br />
+                      Friday - Saturday: 5:30 PM - 11:00 PM<br />
+                      Sunday: 11:00 AM - 3:00 PM (Brunch), 5:30 PM - 9:00 PM
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0 mt-1"
+                  >
+                    <i class="ri-phone-line"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Contact</h3>
+                    <p class="text-gray-600">
+                      Phone: (212) 555-1234<br />
+                      Email: reservations@bistroelegance.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-primary/5 p-8 rounded-lg">
+              <h3 class="text-xl font-semibold mb-4 heading text-gray-800">
+                Private Events
+              </h3>
+              <p class="text-gray-600 mb-6">
+                Looking to host a private event? Our private dining room is
+                perfect for celebrations, corporate events, and special
+                occasions.
+              </p>
+              <button
+                class="bg-white border border-primary text-primary px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-all"
+              >
+                Inquire About Private Events
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-8 max-w-6xl">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+        >
+          <div>
+            <div class="text-3xl font-['Pacifico'] mb-6 text-white">logo</div>
+            <p class="text-gray-400 mb-6">
+              Bistro Elegance offers a sophisticated dining experience with
+              Mediterranean-inspired cuisine and impeccable service in the heart
+              of New York City.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors"
+              >
+                <i class="ri-twitter-x-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors"
+              >
+                <i class="ri-yelp-line"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#menu"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Menu</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Contact</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Private Events</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Contact Info</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mt-1"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <span class="text-gray-400"
+                  >123 Gourmet Avenue, Culinary District<br />New York, NY
+                  10001</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mt-1"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <span class="text-gray-400">(212) 555-1234</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-primary mt-1"
+                >
+                  <i class="ri-mail-line"></i>
+                </div>
+                <span class="text-gray-400"
+                  >reservations@bistroelegance.com</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+            <p class="text-gray-400 mb-4">
+              Subscribe to our newsletter for special offers and updates
+            </p>
+            <div class="flex">
+              <input
+                type="email"
+                placeholder="Your email address"
+                class="px-4 py-2 bg-gray-800 border-none rounded-l focus:outline-none focus:ring-2 focus:ring-primary text-sm flex-grow"
+              />
+              <button
+                class="bg-primary text-white px-4 py-2 !rounded-r-button whitespace-nowrap hover:bg-opacity-90 transition-all"
+              >
+                Subscribe
+              </button>
+            </div>
+            <div class="mt-6">
+              <h4 class="text-sm font-semibold mb-3">We Accept</h4>
+              <div class="flex space-x-3">
+                <i class="ri-visa-fill ri-lg"></i>
+                <i class="ri-mastercard-fill ri-lg"></i>
+                <i class="ri-american-express-fill ri-lg"></i>
+                <i class="ri-paypal-fill ri-lg"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm"
+        >
+          <p>&copy; 2025 Bistro Elegance. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Date picker default to today
+        const today = new Date().toISOString().split("T")[0];
+        document.getElementById("date").min = today;
+        document.getElementById("date").value = today;
+
+        // Custom checkbox functionality
+        const checkboxes = document.querySelectorAll(
+          '.custom-checkbox input[type="checkbox"]',
+        );
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            const checkmark = this.nextElementSibling;
+            if (this.checked) {
+              checkmark.style.backgroundColor = "#8B5A2B";
+              checkmark.style.borderColor = "#8B5A2B";
+            } else {
+              checkmark.style.backgroundColor = "#fff";
+              checkmark.style.borderColor = "#e5e7eb";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

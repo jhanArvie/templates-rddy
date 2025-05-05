@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gourmet Gatherings | Premium Catering Services</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#FF6B35", secondary: "#2E4057" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Poppins', sans-serif;
+      }
+      h1, h2, h3, h4 {
+          font-family: 'Playfair Display', serif;
+      }
+      .hero-section {
+          background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://readdy.ai/api/search-image?query=Professional%2520catering%2520scene%2520with%2520elegant%2520chefs%2520plating%2520gourmet%2520food%2520in%2520a%2520high-end%2520kitchen%252C%2520with%2520beautiful%2520presentation%2520of%2520dishes%2520and%2520soft%2520lighting%252C%2520creating%2520an%2520atmosphere%2520of%2520culinary%2520excellence%2520and%2520sophistication&width=1600&height=800&seq=1234&orientation=landscape');
+          background-size: cover;
+          background-position: center;
+      }
+      .service-card:hover .service-details {
+          opacity: 1;
+      }
+      .menu-card {
+          transition: transform 0.3s ease;
+      }
+      .menu-card:hover {
+          transform: translateY(-5px);
+      }
+      input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          background: #FF6B35;
+          border-radius: 50%;
+          cursor: pointer;
+      }
+      .custom-checkbox {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-right: 8px;
+      }
+      .custom-checkbox input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 20px;
+          width: 20px;
+          background-color: #fff;
+          border: 2px solid #ddd;
+          border-radius: 4px;
+      }
+      .custom-checkbox input:checked ~ .checkmark {
+          background-color: #FF6B35;
+          border-color: #FF6B35;
+      }
+      .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+      }
+      .custom-checkbox input:checked ~ .checkmark:after {
+          display: block;
+      }
+      .custom-checkbox .checkmark:after {
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
+      .switch {
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          height: 24px;
+      }
+      .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          transition: .4s;
+          border-radius: 24px;
+      }
+      .slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+      }
+      input:checked + .slider {
+          background-color: #FF6B35;
+      }
+      input:checked + .slider:before {
+          transform: translateX(26px);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm fixed w-full z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <a href="#" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="#services"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Services</a
+          >
+          <a href="#menus" class="text-gray-700 hover:text-primary font-medium"
+            >Menus</a
+          >
+          <a
+            href="#process"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Our Process</a
+          >
+          <a
+            href="#testimonials"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Testimonials</a
+          >
+          <a
+            href="#pricing"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Pricing</a
+          >
+          <a href="#faq" class="text-gray-700 hover:text-primary font-medium"
+            >FAQ</a
+          >
+        </nav>
+        <div class="flex items-center space-x-4">
+          <a
+            href="#contact"
+            class="hidden md:block text-white bg-primary hover:bg-primary/90 px-6 py-2 rounded-button whitespace-nowrap"
+            >Contact Us</a
+          >
+          <button
+            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700"
+            id="mobileMenuButton"
+          >
+            <i class="ri-menu-line text-2xl"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-white shadow-lg absolute w-full"
+      >
+        <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+          <a
+            href="#services"
+            class="text-gray-700 hover:text-primary py-2 border-b border-gray-100"
+            >Services</a
+          >
+          <a
+            href="#menus"
+            class="text-gray-700 hover:text-primary py-2 border-b border-gray-100"
+            >Menus</a
+          >
+          <a
+            href="#process"
+            class="text-gray-700 hover:text-primary py-2 border-b border-gray-100"
+            >Our Process</a
+          >
+          <a
+            href="#testimonials"
+            class="text-gray-700 hover:text-primary py-2 border-b border-gray-100"
+            >Testimonials</a
+          >
+          <a
+            href="#pricing"
+            class="text-gray-700 hover:text-primary py-2 border-b border-gray-100"
+            >Pricing</a
+          >
+          <a
+            href="#faq"
+            class="text-gray-700 hover:text-primary py-2 border-b border-gray-100"
+            >FAQ</a
+          >
+          <a
+            href="#contact"
+            class="text-white bg-primary hover:bg-primary/90 px-6 py-2 text-center rounded-button whitespace-nowrap"
+            >Contact Us</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center pt-16">
+      <div class="container mx-auto px-4 py-20 w-full">
+        <div class="max-w-3xl mx-auto text-center text-white">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            Stress-Free Events. Exceptional Food.
+          </h1>
+          <p class="text-xl mb-10">
+            Elevating your gatherings with culinary excellence since 2010. We
+            handle everything so you can focus on enjoying your special moments.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="#pricing"
+              class="bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3 rounded-button whitespace-nowrap"
+              >Get Instant Quote</a
+            >
+            <a
+              href="#menus"
+              class="bg-white hover:bg-gray-100 text-gray-800 font-medium px-8 py-3 rounded-button whitespace-nowrap"
+              >View Sample Menus</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="bg-white py-10 shadow-sm">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="flex items-center justify-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mr-4"
+            >
+              <i class="ri-award-line text-primary text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold">Served 1,000+ Events</h3>
+              <p class="text-gray-600">Experience you can trust</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mr-4"
+            >
+              <i class="ri-star-line text-primary text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold">5-Star Hygiene Rated</h3>
+              <p class="text-gray-600">Certified excellence</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mr-4"
+            >
+              <i class="ri-leaf-line text-primary text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold">Dietary Options</h3>
+              <p class="text-gray-600">Vegan & Gluten-Free available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Solvers -->
+    <section class="bg-gray-50 py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+          What Sets Us Apart
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4"
+            >
+              <i class="ri-price-tag-3-line text-primary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">No Hidden Fees</h3>
+            <p class="text-gray-600">
+              Our transparent pricing means what you see is what you pay. No
+              surprise charges after your event.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4"
+            >
+              <i class="ri-time-line text-primary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Last-Minute Bookings</h3>
+            <p class="text-gray-600">
+              Need catering in a hurry? We specialize in quick turnarounds
+              without compromising quality.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4"
+            >
+              <i class="ri-team-line text-primary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Full Staffing Included</h3>
+            <p class="text-gray-600">
+              Our professional team handles everything from setup to cleanup, so
+              you can focus on your guests.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Matrix -->
+    <section id="services" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Our Services
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Tailored catering solutions for every occasion. Hover over each option
+          to see sample dishes and pricing.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div
+            class="bg-gray-50 rounded overflow-hidden shadow-sm hover:shadow-md transition-all service-card relative"
+          >
+            <div class="p-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4"
+              >
+                <i class="ri-heart-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Weddings</h3>
+              <p class="text-gray-600">
+                Make your special day unforgettable with our exquisite wedding
+                catering.
+              </p>
+            </div>
+            <div
+              class="absolute inset-0 bg-primary/90 text-white opacity-0 transition-opacity duration-300 service-details flex flex-col justify-center p-6"
+            >
+              <h4 class="text-xl font-semibold mb-4">Sample Menu</h4>
+              <ul class="mb-4">
+                <li class="mb-2">• Champagne & canapé reception</li>
+                <li class="mb-2">• Three-course plated dinner</li>
+                <li class="mb-2">• Wedding cake service</li>
+                <li class="mb-2">• Evening food stations</li>
+              </ul>
+              <p class="font-semibold">From $85 per person</p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded overflow-hidden shadow-sm hover:shadow-md transition-all service-card relative"
+          >
+            <div class="p-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4"
+              >
+                <i class="ri-briefcase-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Corporate</h3>
+              <p class="text-gray-600">
+                Impress clients and reward employees with professional catering
+                services.
+              </p>
+            </div>
+            <div
+              class="absolute inset-0 bg-primary/90 text-white opacity-0 transition-opacity duration-300 service-details flex flex-col justify-center p-6"
+            >
+              <h4 class="text-xl font-semibold mb-4">Sample Menu</h4>
+              <ul class="mb-4">
+                <li class="mb-2">• Breakfast meetings</li>
+                <li class="mb-2">• Executive lunch buffets</li>
+                <li class="mb-2">• Conference refreshments</li>
+                <li class="mb-2">• Gala dinner service</li>
+              </ul>
+              <p class="font-semibold">From $35 per person</p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded overflow-hidden shadow-sm hover:shadow-md transition-all service-card relative"
+          >
+            <div class="p-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4"
+              >
+                <i class="ri-group-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Social Events</h3>
+              <p class="text-gray-600">
+                From birthdays to anniversaries, we'll make your celebration
+                memorable.
+              </p>
+            </div>
+            <div
+              class="absolute inset-0 bg-primary/90 text-white opacity-0 transition-opacity duration-300 service-details flex flex-col justify-center p-6"
+            >
+              <h4 class="text-xl font-semibold mb-4">Sample Menu</h4>
+              <ul class="mb-4">
+                <li class="mb-2">• Cocktail party nibbles</li>
+                <li class="mb-2">• Birthday feast packages</li>
+                <li class="mb-2">• Anniversary dinner service</li>
+                <li class="mb-2">• Family-style sharing platters</li>
+              </ul>
+              <p class="font-semibold">From $45 per person</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="bg-gray-50 rounded overflow-hidden shadow-sm hover:shadow-md transition-all service-card relative"
+          >
+            <div class="p-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4"
+              >
+                <i class="ri-restaurant-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Buffet Style</h3>
+              <p class="text-gray-600">
+                Diverse selection of dishes allowing guests to serve themselves.
+              </p>
+            </div>
+            <div
+              class="absolute inset-0 bg-primary/90 text-white opacity-0 transition-opacity duration-300 service-details flex flex-col justify-center p-6"
+            >
+              <h4 class="text-xl font-semibold mb-4">Sample Menu</h4>
+              <ul class="mb-4">
+                <li class="mb-2">• Hot & cold selection</li>
+                <li class="mb-2">• Carving stations</li>
+                <li class="mb-2">• International cuisine options</li>
+                <li class="mb-2">• Dessert buffet</li>
+              </ul>
+              <p class="font-semibold">From $40 per person</p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded overflow-hidden shadow-sm hover:shadow-md transition-all service-card relative"
+          >
+            <div class="p-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4"
+              >
+                <i class="ri-goblet-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Plated Service</h3>
+              <p class="text-gray-600">
+                Elegant multi-course meals served directly to your guests.
+              </p>
+            </div>
+            <div
+              class="absolute inset-0 bg-primary/90 text-white opacity-0 transition-opacity duration-300 service-details flex flex-col justify-center p-6"
+            >
+              <h4 class="text-xl font-semibold mb-4">Sample Menu</h4>
+              <ul class="mb-4">
+                <li class="mb-2">• Amuse-bouche</li>
+                <li class="mb-2">• Choice of starters</li>
+                <li class="mb-2">• Main course options</li>
+                <li class="mb-2">• Dessert & coffee service</li>
+              </ul>
+              <p class="font-semibold">From $65 per person</p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded overflow-hidden shadow-sm hover:shadow-md transition-all service-card relative"
+          >
+            <div class="p-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4"
+              >
+                <i class="ri-store-2-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Food Stations</h3>
+              <p class="text-gray-600">
+                Interactive culinary experiences with themed food stations.
+              </p>
+            </div>
+            <div
+              class="absolute inset-0 bg-primary/90 text-white opacity-0 transition-opacity duration-300 service-details flex flex-col justify-center p-6"
+            >
+              <h4 class="text-xl font-semibold mb-4">Sample Menu</h4>
+              <ul class="mb-4">
+                <li class="mb-2">• Live cooking demonstrations</li>
+                <li class="mb-2">• Sushi & raw bar</li>
+                <li class="mb-2">• Build-your-own stations</li>
+                <li class="mb-2">• Dessert & flambe station</li>
+              </ul>
+              <p class="font-semibold">From $55 per person</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature Menu Carousel -->
+    <section id="menus" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Signature Menus
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Browse our most popular catering packages, each carefully crafted to
+          delight your guests.
+        </p>
+
+        <div class="flex overflow-x-auto pb-6 gap-6 snap-x">
+          <div
+            class="min-w-[300px] md:min-w-[350px] bg-white rounded shadow-sm menu-card snap-center"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Summer%2520BBQ%2520platter%2520with%2520perfectly%2520grilled%2520meats%252C%2520colorful%2520vegetables%252C%2520and%2520sides%2520arranged%2520beautifully%2520on%2520a%2520wooden%2520serving%2520board%252C%2520with%2520a%2520clean%2520white%2520background%2520and%2520natural%2520lighting%2520highlighting%2520the%2520fresh%2520ingredients%2520and%2520char%2520marks&width=400&height=300&seq=1235&orientation=landscape"
+              alt="Summer BBQ Package"
+              class="w-full h-48 object-cover object-top"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <h3 class="text-xl font-semibold">Summer BBQ Package</h3>
+                <div class="flex space-x-2">
+                  <span title="Vegan options" class="text-green-600">🌱</span>
+                  <span title="Gluten-free options" class="text-amber-600"
+                    >🌾</span
+                  >
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4">
+                A delicious selection of grilled favorites including premium
+                meats, seafood, and vegetable skewers with gourmet sides.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-800 font-semibold"
+                  >From $42 per person</span
+                >
+                <a
+                  href="#"
+                  class="text-primary hover:text-primary/80 font-medium"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="min-w-[300px] md:min-w-[350px] bg-white rounded shadow-sm menu-card snap-center"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Luxury%2520canap%C3%A9%2520selection%2520featuring%2520elegant%2520bite-sized%2520appetizers%2520on%2520a%2520marble%2520serving%2520platter%252C%2520including%2520smoked%2520salmon%252C%2520caviar%252C%2520and%2520gourmet%2520cheese%2520bites%252C%2520with%2520a%2520clean%2520white%2520background%2520and%2520professional%2520lighting%2520highlighting%2520the%2520intricate%2520details&width=400&height=300&seq=1236&orientation=landscape"
+              alt="Luxury Canapé Selection"
+              class="w-full h-48 object-cover object-top"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <h3 class="text-xl font-semibold">Luxury Canapé Selection</h3>
+                <div class="flex space-x-2">
+                  <span title="Vegan options" class="text-green-600">🌱</span>
+                  <span title="Nut-free options" class="text-amber-600"
+                    >🥜</span
+                  >
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4">
+                Exquisite bite-sized delicacies perfect for cocktail receptions
+                and elegant social gatherings.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-800 font-semibold"
+                  >From $35 per person</span
+                >
+                <a
+                  href="#"
+                  class="text-primary hover:text-primary/80 font-medium"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="min-w-[300px] md:min-w-[350px] bg-white rounded shadow-sm menu-card snap-center"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Mediterranean%2520feast%2520with%2520colorful%2520mezze%2520platter%252C%2520hummus%252C%2520falafel%252C%2520grilled%2520vegetables%252C%2520and%2520pita%2520bread%2520arranged%2520beautifully%2520on%2520rustic%2520wooden%2520serving%2520boards%252C%2520with%2520a%2520clean%2520white%2520background%2520and%2520natural%2520lighting%2520highlighting%2520the%2520vibrant%2520colors%2520and%2520textures&width=400&height=300&seq=1237&orientation=landscape"
+              alt="Mediterranean Feast"
+              class="w-full h-48 object-cover object-top"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <h3 class="text-xl font-semibold">Mediterranean Feast</h3>
+                <div class="flex space-x-2">
+                  <span title="Vegan options" class="text-green-600">🌱</span>
+                  <span title="Dairy-free options" class="text-amber-600"
+                    >🥛</span
+                  >
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4">
+                A vibrant spread of Mediterranean favorites including mezze
+                platters, grilled specialties, and fresh salads.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-800 font-semibold"
+                  >From $38 per person</span
+                >
+                <a
+                  href="#"
+                  class="text-primary hover:text-primary/80 font-medium"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="min-w-[300px] md:min-w-[350px] bg-white rounded shadow-sm menu-card snap-center"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Asian%2520fusion%2520dinner%2520spread%2520with%2520sushi%252C%2520dumplings%252C%2520stir-fried%2520noodles%252C%2520and%2520spring%2520rolls%2520arranged%2520beautifully%2520on%2520black%2520ceramic%2520plates%252C%2520with%2520a%2520clean%2520white%2520background%2520and%2520professional%2520lighting%2520highlighting%2520the%2520colors%2520and%2520textures%2520of%2520the%2520dishes&width=400&height=300&seq=1238&orientation=landscape"
+              alt="Asian Fusion Experience"
+              class="w-full h-48 object-cover object-top"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-3">
+                <h3 class="text-xl font-semibold">Asian Fusion Experience</h3>
+                <div class="flex space-x-2">
+                  <span title="Vegan options" class="text-green-600">🌱</span>
+                  <span title="Gluten-free options" class="text-amber-600"
+                    >🌾</span
+                  >
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4">
+                A curated selection of pan-Asian favorites including sushi,
+                dumplings, stir-fries, and more.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-800 font-semibold"
+                  >From $45 per person</span
+                >
+                <a
+                  href="#"
+                  class="text-primary hover:text-primary/80 font-medium"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section id="process" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Our Process
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          From first contact to the day of your event, we ensure a seamless
+          experience.
+        </p>
+
+        <div class="relative">
+          <!-- Desktop Timeline -->
+          <div class="hidden md:block">
+            <div
+              class="absolute left-0 right-0 top-1/2 h-1 bg-gray-200 -translate-y-1/2"
+            ></div>
+            <div class="grid grid-cols-4 gap-4 relative">
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-white mb-4 relative z-10"
+                >
+                  <i class="ri-chat-1-line text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Consultation</h3>
+                <p class="text-gray-600">
+                  We discuss your vision, requirements, and budget to create a
+                  tailored proposal.
+                </p>
+              </div>
+
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-white mb-4 relative z-10"
+                >
+                  <i class="ri-file-list-3-line text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Menu Customization</h3>
+                <p class="text-gray-600">
+                  Our chefs craft a personalized menu that perfectly suits your
+                  event.
+                </p>
+              </div>
+
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-white mb-4 relative z-10"
+                >
+                  <i class="ri-restaurant-2-line text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Tasting</h3>
+                <p class="text-gray-600">
+                  Sample your selected dishes and make any final adjustments to
+                  ensure perfection.
+                </p>
+              </div>
+
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-white mb-4 relative z-10"
+                >
+                  <i class="ri-calendar-check-line text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Event Day</h3>
+                <p class="text-gray-600">
+                  We handle everything from setup to service to cleanup,
+                  allowing you to enjoy your event.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Timeline -->
+          <div class="md:hidden space-y-8">
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0"
+              >
+                <i class="ri-chat-1-line text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">1. Consultation</h3>
+                <p class="text-gray-600">
+                  We discuss your vision, requirements, and budget to create a
+                  tailored proposal.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0"
+              >
+                <i class="ri-file-list-3-line text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">
+                  2. Menu Customization
+                </h3>
+                <p class="text-gray-600">
+                  Our chefs craft a personalized menu that perfectly suits your
+                  event.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0"
+              >
+                <i class="ri-restaurant-2-line text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">3. Tasting</h3>
+                <p class="text-gray-600">
+                  Sample your selected dishes and make any final adjustments to
+                  ensure perfection.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0"
+              >
+                <i class="ri-calendar-check-line text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">4. Event Day</h3>
+                <p class="text-gray-600">
+                  We handle everything from setup to service to cleanup,
+                  allowing you to enjoy your event.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Behind the Scenes -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Behind the Scenes
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Meet our talented team and get a glimpse of our culinary
+          craftsmanship.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="overflow-hidden rounded shadow-sm">
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%2520chef%2520in%2520white%2520uniform%2520and%2520hat%2520carefully%2520plating%2520a%2520gourmet%2520dish%2520in%2520a%2520pristine%2520commercial%2520kitchen%252C%2520with%2520soft%2520natural%2520lighting%2520highlighting%2520the%2520concentration%2520on%2520their%2520face%2520and%2520the%2520precision%2520of%2520their%2520work&width=400&height=300&seq=1239&orientation=landscape"
+              alt="Chef plating a dish"
+              class="w-full h-64 object-cover object-top hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="overflow-hidden rounded shadow-sm">
+            <img
+              src="https://readdy.ai/api/search-image?query=Immaculate%2520commercial%2520kitchen%2520with%2520stainless%2520steel%2520equipment%252C%2520showing%2520a%2520team%2520of%2520chefs%2520working%2520together%2520to%2520prepare%2520food%252C%2520with%2520bright%2520lighting%2520highlighting%2520the%2520clean%2520surfaces%2520and%2520organized%2520workspace&width=400&height=300&seq=1240&orientation=landscape"
+              alt="Clean kitchen"
+              class="w-full h-64 object-cover object-top hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="overflow-hidden rounded shadow-sm">
+            <img
+              src="https://readdy.ai/api/search-image?query=Catering%2520team%2520preparing%2520elegant%2520food%2520displays%2520for%2520an%2520event%252C%2520arranging%2520plates%2520and%2520garnishing%2520dishes%2520with%2520precision%252C%2520with%2520soft%2520lighting%2520highlighting%2520their%2520teamwork%2520and%2520the%2520beautiful%2520presentation%2520of%2520the%2520food&width=400&height=300&seq=1241&orientation=landscape"
+              alt="Team prepping"
+              class="w-full h-64 object-cover object-top hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="#"
+            class="inline-flex items-center text-primary hover:text-primary/80 font-medium"
+          >
+            <span>Meet our full team</span>
+            <i class="ri-arrow-right-line ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients & Testimonials -->
+    <section id="testimonials" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Clients We've Fed
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Trusted by leading companies and prestigious venues across the region.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+          <div class="flex items-center justify-center">
+            <div class="w-12 h-12 flex items-center justify-center mr-3">
+              <i class="ri-building-4-fill text-gray-400 text-3xl"></i>
+            </div>
+            <span class="text-xl font-medium text-gray-600">Skyline Corp</span>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="w-12 h-12 flex items-center justify-center mr-3">
+              <i class="ri-hotel-fill text-gray-400 text-3xl"></i>
+            </div>
+            <span class="text-xl font-medium text-gray-600">Grand Hotel</span>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="w-12 h-12 flex items-center justify-center mr-3">
+              <i class="ri-bank-fill text-gray-400 text-3xl"></i>
+            </div>
+            <span class="text-xl font-medium text-gray-600">Heritage Hall</span>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="w-12 h-12 flex items-center justify-center mr-3">
+              <i class="ri-government-fill text-gray-400 text-3xl"></i>
+            </div>
+            <span class="text-xl font-medium text-gray-600">City Events</span>
+          </div>
+        </div>
+
+        <div class="mb-16">
+          <h3 class="text-xl font-semibold text-center mb-8">Featured In:</h3>
+          <div class="flex flex-wrap justify-center gap-8">
+            <div class="flex items-center">
+              <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-newspaper-fill text-gray-400 text-2xl"></i>
+              </div>
+              <span class="text-lg font-medium text-gray-600">Food & Wine</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-magazine-fill text-gray-400 text-2xl"></i>
+              </div>
+              <span class="text-lg font-medium text-gray-600"
+                >City Magazine</span
+              >
+            </div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-article-fill text-gray-400 text-2xl"></i>
+              </div>
+              <span class="text-lg font-medium text-gray-600"
+                >Gourmet Weekly</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-center mb-8">
+          What Our Clients Say
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-gray-50 p-6 rounded shadow-sm">
+            <div class="flex text-primary mb-3">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-4">
+              "Fed 200 guests at our wedding and everything was flawless! The
+              food was exceptional and the service impeccable. Our guests are
+              still raving about the meal."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520a%2520smiling%2520woman%2520in%2520her%252030s%2520with%2520shoulder-length%2520brown%2520hair%252C%2520wearing%2520business%2520casual%2520attire%252C%2520against%2520a%2520neutral%2520background%2520with%2520soft%2520lighting%2520highlighting%2520her%2520friendly%2520expression&width=60&height=60&seq=1242&orientation=squarish"
+                alt="Client"
+                class="w-12 h-12 rounded-full object-cover mr-3"
+              />
+              <div>
+                <h4 class="font-semibold">Emily Richardson</h4>
+                <p class="text-gray-600 text-sm">Wedding at Grand Hotel</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded shadow-sm">
+            <div class="flex text-primary mb-3">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-4">
+              "Handled 3 different dietary restrictions without notice! Their
+              team was incredibly professional and accommodating. The food was
+              creative and delicious."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520a%2520man%2520in%2520his%252040s%2520with%2520short%2520dark%2520hair%2520and%2520glasses%252C%2520wearing%2520a%2520business%2520suit%252C%2520against%2520a%2520neutral%2520background%2520with%2520soft%2520lighting%2520highlighting%2520his%2520confident%2520expression&width=60&height=60&seq=1243&orientation=squarish"
+                alt="Client"
+                class="w-12 h-12 rounded-full object-cover mr-3"
+              />
+              <div>
+                <h4 class="font-semibold">Michael Thornton</h4>
+                <p class="text-gray-600 text-sm">Corporate Event at Skyline</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded shadow-sm">
+            <div class="flex text-primary mb-3">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-4">
+              "Booked them with only 2 weeks' notice for our company
+              anniversary. Not only did they accommodate us, but they created a
+              memorable menu that impressed everyone."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%2520headshot%2520of%2520a%2520woman%2520in%2520her%252050s%2520with%2520short%2520silver%2520hair%252C%2520wearing%2520professional%2520business%2520attire%252C%2520against%2520a%2520neutral%2520background%2520with%2520soft%2520lighting%2520highlighting%2520her%2520experienced%2520and%2520friendly%2520expression&width=60&height=60&seq=1244&orientation=squarish"
+                alt="Client"
+                class="w-12 h-12 rounded-full object-cover mr-3"
+              />
+              <div>
+                <h4 class="font-semibold">Sarah Blackwood</h4>
+                <p class="text-gray-600 text-sm">CEO, Innovate Tech</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Pricing Calculator -->
+    <section id="pricing" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Get an Instant Quote
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Use our calculator to estimate the cost of your event catering. For a
+          detailed quote, contact us directly.
+        </p>
+
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded shadow-sm">
+          <div class="mb-8">
+            <label class="block text-gray-700 font-medium mb-2"
+              >Number of Guests</label
+            >
+            <div class="flex items-center">
+              <span class="text-gray-600 mr-4">50</span>
+              <div class="flex-1">
+                <input
+                  type="range"
+                  min="50"
+                  max="500"
+                  value="100"
+                  class="w-full h-2 bg-gray-200 rounded appearance-none"
+                  id="guestSlider"
+                />
+              </div>
+              <span class="text-gray-600 ml-4" id="guestValue">100</span>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <label class="block text-gray-700 font-medium mb-2"
+              >Service Level</label
+            >
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="relative">
+                <input
+                  type="radio"
+                  id="basic"
+                  name="serviceLevel"
+                  value="basic"
+                  class="hidden"
+                  checked
+                />
+                <label
+                  for="basic"
+                  class="block p-4 border-2 border-gray-200 rounded cursor-pointer hover:border-primary transition-colors"
+                >
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-semibold">Basic</h4>
+                    <div
+                      class="w-5 h-5 flex items-center justify-center border-2 border-gray-300 rounded-full service-radio"
+                    >
+                      <div
+                        class="w-3 h-3 bg-primary rounded-full hidden service-radio-selected"
+                      ></div>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm">
+                    Buffet service with standard menu options
+                  </p>
+                </label>
+              </div>
+
+              <div class="relative">
+                <input
+                  type="radio"
+                  id="standard"
+                  name="serviceLevel"
+                  value="standard"
+                  class="hidden"
+                />
+                <label
+                  for="standard"
+                  class="block p-4 border-2 border-gray-200 rounded cursor-pointer hover:border-primary transition-colors"
+                >
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-semibold">Standard</h4>
+                    <div
+                      class="w-5 h-5 flex items-center justify-center border-2 border-gray-300 rounded-full service-radio"
+                    >
+                      <div
+                        class="w-3 h-3 bg-primary rounded-full hidden service-radio-selected"
+                      ></div>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm">
+                    Buffet or plated service with premium options
+                  </p>
+                </label>
+              </div>
+
+              <div class="relative">
+                <input
+                  type="radio"
+                  id="premium"
+                  name="serviceLevel"
+                  value="premium"
+                  class="hidden"
+                />
+                <label
+                  for="premium"
+                  class="block p-4 border-2 border-gray-200 rounded cursor-pointer hover:border-primary transition-colors"
+                >
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-semibold">Premium</h4>
+                    <div
+                      class="w-5 h-5 flex items-center justify-center border-2 border-gray-300 rounded-full service-radio"
+                    >
+                      <div
+                        class="w-3 h-3 bg-primary rounded-full hidden service-radio-selected"
+                      ></div>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 text-sm">
+                    Full-service dining with luxury menu
+                  </p>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <label class="block text-gray-700 font-medium mb-2"
+              >Additional Options</label
+            >
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <label class="custom-checkbox">
+                  <input type="checkbox" value="barService" />
+                  <span class="checkmark"></span>
+                </label>
+                <span>Bar Service (+$15 per person)</span>
+              </div>
+              <div class="flex items-center">
+                <label class="custom-checkbox">
+                  <input type="checkbox" value="dessertStation" />
+                  <span class="checkmark"></span>
+                </label>
+                <span>Dessert Station (+$8 per person)</span>
+              </div>
+              <div class="flex items-center">
+                <label class="custom-checkbox">
+                  <input type="checkbox" value="staffing" />
+                  <span class="checkmark"></span>
+                </label>
+                <span>Additional Staffing (+$350)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded mb-8">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-gray-700">Base Price:</span>
+              <span class="text-gray-700" id="basePrice">$4,000</span>
+            </div>
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-gray-700">Additional Options:</span>
+              <span class="text-gray-700" id="optionsPrice">$0</span>
+            </div>
+            <div
+              class="flex justify-between items-center pt-4 border-t border-gray-200"
+            >
+              <span class="text-gray-800 font-semibold">Estimated Total:</span>
+              <span class="text-primary font-bold text-xl" id="totalPrice"
+                >$4,000</span
+              >
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#contact"
+              class="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-button text-center whitespace-nowrap"
+              >Request Detailed Quote</a
+            >
+            <button
+              class="bg-white hover:bg-gray-50 text-gray-800 font-medium px-6 py-3 border border-gray-300 rounded-button whitespace-nowrap"
+            >
+              Download Pricing Guide
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Urgency Builder -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded shadow-sm">
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">
+            2025 Dates Booking Fast
+          </h2>
+          <p class="text-gray-600 text-center mb-8">
+            Our calendar is filling up quickly. Secure your preferred date
+            before it's gone.
+          </p>
+
+          <div class="grid grid-cols-3 md:grid-cols-7 gap-2 mb-8">
+            <div class="text-center">
+              <div class="font-medium mb-2">Sun</div>
+              <div
+                class="w-full aspect-square bg-red-100 rounded flex items-center justify-center text-red-600 font-medium"
+              >
+                4
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="font-medium mb-2">Mon</div>
+              <div
+                class="w-full aspect-square bg-green-100 rounded flex items-center justify-center text-green-600 font-medium"
+              >
+                5
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="font-medium mb-2">Tue</div>
+              <div
+                class="w-full aspect-square bg-green-100 rounded flex items-center justify-center text-green-600 font-medium"
+              >
+                6
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="font-medium mb-2">Wed</div>
+              <div
+                class="w-full aspect-square bg-yellow-100 rounded flex items-center justify-center text-yellow-600 font-medium"
+              >
+                7
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="font-medium mb-2">Thu</div>
+              <div
+                class="w-full aspect-square bg-yellow-100 rounded flex items-center justify-center text-yellow-600 font-medium"
+              >
+                8
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="font-medium mb-2">Fri</div>
+              <div
+                class="w-full aspect-square bg-red-100 rounded flex items-center justify-center text-red-600 font-medium"
+              >
+                9
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="font-medium mb-2">Sat</div>
+              <div
+                class="w-full aspect-square bg-red-100 rounded flex items-center justify-center text-red-600 font-medium"
+              >
+                10
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-center">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 bg-green-100 rounded mr-2"></div>
+              <span class="text-sm text-gray-600">Available</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 bg-yellow-100 rounded mr-2"></div>
+              <span class="text-sm text-gray-600">Limited</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 bg-red-100 rounded mr-2"></div>
+              <span class="text-sm text-gray-600">Booked</span>
+            </div>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a
+              href="#contact"
+              class="inline-block bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3 rounded-button whitespace-nowrap"
+              >Check Date Availability</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          Find answers to common questions about our catering services.
+        </p>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="mb-4">
+            <button
+              class="flex justify-between items-center w-full p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow faq-toggle"
+            >
+              <h3 class="text-lg font-semibold text-left">
+                Do you provide rentals like tables, chairs, and linens?
+              </h3>
+              <i class="ri-add-line text-xl faq-icon"></i>
+            </button>
+            <div
+              class="bg-white px-4 pb-4 rounded-b shadow-sm faq-content hidden"
+            >
+              <p class="text-gray-600">
+                Yes, we offer comprehensive rental services including tables,
+                chairs, linens, tableware, and decorative elements. We can
+                handle everything from basic essentials to elaborate setups
+                based on your event's needs and theme.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <button
+              class="flex justify-between items-center w-full p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow faq-toggle"
+            >
+              <h3 class="text-lg font-semibold text-left">
+                What is your cancellation policy?
+              </h3>
+              <i class="ri-add-line text-xl faq-icon"></i>
+            </button>
+            <div
+              class="bg-white px-4 pb-4 rounded-b shadow-sm faq-content hidden"
+            >
+              <p class="text-gray-600">
+                Our cancellation policy allows for a full refund of your deposit
+                if cancelled 30+ days before your event. Cancellations 15-29
+                days prior receive a 50% refund. Unfortunately, we cannot offer
+                refunds for cancellations less than 14 days before the event due
+                to food ordering and staffing commitments.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <button
+              class="flex justify-between items-center w-full p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow faq-toggle"
+            >
+              <h3 class="text-lg font-semibold text-left">
+                How do you handle dietary restrictions?
+              </h3>
+              <i class="ri-add-line text-xl faq-icon"></i>
+            </button>
+            <div
+              class="bg-white px-4 pb-4 rounded-b shadow-sm faq-content hidden"
+            >
+              <p class="text-gray-600">
+                We take dietary restrictions very seriously. During the planning
+                process, we'll discuss any allergies or dietary needs your
+                guests may have. We can accommodate vegetarian, vegan,
+                gluten-free, dairy-free, and most other dietary requirements
+                with advance notice, ensuring everyone enjoys a delicious meal.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <button
+              class="flex justify-between items-center w-full p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow faq-toggle"
+            >
+              <h3 class="text-lg font-semibold text-left">
+                Do you provide alcohol service?
+              </h3>
+              <i class="ri-add-line text-xl faq-icon"></i>
+            </button>
+            <div
+              class="bg-white px-4 pb-4 rounded-b shadow-sm faq-content hidden"
+            >
+              <p class="text-gray-600">
+                Yes, we offer full bar services including licensed bartenders,
+                mixologists, and a range of beverage packages. We can provide
+                everything from beer and wine service to full premium open bars.
+                All our staff are TIPS certified for responsible alcohol
+                service.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <button
+              class="flex justify-between items-center w-full p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow faq-toggle"
+            >
+              <h3 class="text-lg font-semibold text-left">
+                How far in advance should I book?
+              </h3>
+              <i class="ri-add-line text-xl faq-icon"></i>
+            </button>
+            <div
+              class="bg-white px-4 pb-4 rounded-b shadow-sm faq-content hidden"
+            >
+              <p class="text-gray-600">
+                For peak season events (May-September) and holidays, we
+                recommend booking 6-12 months in advance. For off-peak dates,
+                3-6 months is usually sufficient. That said, we do occasionally
+                have last-minute availability, so don't hesitate to contact us
+                even for short-notice events.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <button
+              class="flex justify-between items-center w-full p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow faq-toggle"
+            >
+              <h3 class="text-lg font-semibold text-left">
+                Do you charge for tastings?
+              </h3>
+              <i class="ri-add-line text-xl faq-icon"></i>
+            </button>
+            <div
+              class="bg-white px-4 pb-4 rounded-b shadow-sm faq-content hidden"
+            >
+              <p class="text-gray-600">
+                We offer complimentary tastings for events with 100+ guests once
+                you've received a proposal from us. For smaller events, there's
+                a modest tasting fee that will be credited toward your final
+                balance if you book with us.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+            <p class="text-gray-600 mb-8">
+              Ready to plan your event? Contact us for a personalized
+              consultation.
+            </p>
+
+            <form class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-gray-700 font-medium mb-2"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-700 font-medium mb-2"
+                    >Last Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  required
+                />
+              </div>
+
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  required
+                />
+              </div>
+
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Event Date</label
+                >
+                <input
+                  type="date"
+                  class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  required
+                />
+              </div>
+
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Event Type</label
+                >
+                <div class="relative">
+                  <select
+                    class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary appearance-none pr-8"
+                    required
+                  >
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="corporate">Corporate Event</option>
+                    <option value="social">Social Gathering</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div
+                    class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
+                  >
+                    <i class="ri-arrow-down-s-line text-gray-500"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-gray-700 font-medium mb-2"
+                  >Message</label
+                >
+                <textarea
+                  rows="4"
+                  class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                ></textarea>
+              </div>
+
+              <div class="flex items-center">
+                <label class="custom-checkbox">
+                  <input type="checkbox" required />
+                  <span class="checkmark"></span>
+                </label>
+                <span class="text-gray-700"
+                  >I agree to receive communications about my inquiry</span
+                >
+              </div>
+
+              <button
+                type="submit"
+                class="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-button whitespace-nowrap"
+              >
+                Submit Inquiry
+              </button>
+            </form>
+          </div>
+
+          <div>
+            <div class="bg-gray-50 p-8 rounded shadow-sm mb-8">
+              <h3 class="text-2xl font-bold mb-4">Call Chef Direct</h3>
+              <div class="flex items-center mb-6">
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mr-4"
+                >
+                  <i class="ri-phone-line text-primary text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">For immediate assistance</p>
+                  <a
+                    href="tel:5551234"
+                    class="text-xl font-semibold text-primary"
+                    >555-1234</a
+                  >
+                </div>
+              </div>
+              <p class="text-gray-600">Available Monday-Friday, 9am-5pm</p>
+            </div>
+
+            <div class="bg-gray-50 p-8 rounded shadow-sm">
+              <h3 class="text-2xl font-bold mb-4">Download Our Menus</h3>
+              <p class="text-gray-600 mb-6">
+                Get inspired by browsing our seasonal menu collections.
+              </p>
+
+              <div class="space-y-4">
+                <a
+                  href="#"
+                  class="flex items-center p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div class="w-10 h-10 flex items-center justify-center mr-4">
+                    <i class="ri-file-pdf-line text-primary text-2xl"></i>
+                  </div>
+                  <span class="font-medium">Spring/Summer Menu Collection</span>
+                </a>
+
+                <a
+                  href="#"
+                  class="flex items-center p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div class="w-10 h-10 flex items-center justify-center mr-4">
+                    <i class="ri-file-pdf-line text-primary text-2xl"></i>
+                  </div>
+                  <span class="font-medium">Fall/Winter Menu Collection</span>
+                </a>
+
+                <a
+                  href="#"
+                  class="flex items-center p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div class="w-10 h-10 flex items-center justify-center mr-4">
+                    <i class="ri-file-pdf-line text-primary text-2xl"></i>
+                  </div>
+                  <span class="font-medium">Special Dietary Options Guide</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <a
+              href="#"
+              class="text-3xl font-['Pacifico'] text-white mb-4 inline-block"
+              >logo</a
+            >
+            <p class="text-gray-300 mb-4">
+              Premium catering services for all occasions. Making your events
+              memorable since 2010.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-300 hover:text-white">
+                <i class="ri-facebook-fill text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-300 hover:text-white">
+                <i class="ri-instagram-fill text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-300 hover:text-white">
+                <i class="ri-pinterest-fill text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-300 hover:text-white">
+                <i class="ri-twitter-x-fill text-xl"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#services" class="text-gray-300 hover:text-white"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="#menus" class="text-gray-300 hover:text-white"
+                  >Menus</a
+                >
+              </li>
+              <li>
+                <a href="#testimonials" class="text-gray-300 hover:text-white"
+                  >Testimonials</a
+                >
+              </li>
+              <li>
+                <a href="#faq" class="text-gray-300 hover:text-white">FAQ</a>
+              </li>
+              <li>
+                <a href="#contact" class="text-gray-300 hover:text-white"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="ri-map-pin-line mr-2 mt-1"></i>
+                <span>123 Catering Way, Foodville, CA 90210</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-phone-line mr-2 mt-1"></i>
+                <span>555-1234</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-mail-line mr-2 mt-1"></i>
+                <span>info@gourmetgatherings.com</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-time-line mr-2 mt-1"></i>
+                <span>Mon-Fri: 9am-5pm</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+            <p class="text-gray-300 mb-4">
+              Subscribe to receive seasonal menu updates and exclusive offers.
+            </p>
+            <form class="flex">
+              <input
+                type="email"
+                placeholder="Your email"
+                class="p-2 w-full bg-gray-700 border border-gray-600 rounded-l focus:outline-none focus:ring-1 focus:ring-primary"
+              />
+              <button
+                type="submit"
+                class="bg-primary hover:bg-primary/90 px-4 py-2 rounded-r whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center"
+        >
+          <div class="text-gray-400 mb-4 md:mb-0">
+            &copy; 2025 Gourmet Gatherings. All rights reserved.
+          </div>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white"
+              >Privacy Policy</a
+            >
+            <a href="#" class="text-gray-400 hover:text-white"
+              >Terms of Service</a
+            >
+            <div class="flex items-center space-x-2">
+              <i class="ri-visa-line text-xl"></i>
+              <i class="ri-mastercard-line text-xl"></i>
+              <i class="ri-paypal-line text-xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById("mobileMenuButton");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // FAQ Toggles
+        const faqToggles = document.querySelectorAll(".faq-toggle");
+
+        faqToggles.forEach((toggle) => {
+          toggle.addEventListener("click", function () {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector(".faq-icon");
+
+            content.classList.toggle("hidden");
+
+            if (content.classList.contains("hidden")) {
+              icon.classList.remove("ri-subtract-line");
+              icon.classList.add("ri-add-line");
+            } else {
+              icon.classList.remove("ri-add-line");
+              icon.classList.add("ri-subtract-line");
+            }
+          });
+        });
+
+        // Service Level Radio Buttons
+        const serviceRadios = document.querySelectorAll('input[name="serviceLevel"]');
+
+        serviceRadios.forEach((radio) => {
+          radio.addEventListener("change", function () {
+            document.querySelectorAll(".service-radio-selected").forEach((el) => {
+              el.classList.add("hidden");
+            });
+            document
+              .querySelectorAll(
+                'label[for^="basic"], label[for^="standard"], label[for^="premium"]',
+              )
+              .forEach((el) => {
+                el.classList.remove("border-primary");
+                el.classList.add("border-gray-200");
+              });
+
+            if (this.checked) {
+              const label = document.querySelector(`label[for="${this.id}"]`);
+              const selectedDot = label.querySelector(".service-radio-selected");
+
+              selectedDot.classList.remove("hidden");
+              label.classList.remove("border-gray-200");
+              label.classList.add("border-primary");
+
+              updatePriceCalculator();
+            }
+          });
+        });
+
+        // Guest Slider
+        const guestSlider = document.getElementById("guestSlider");
+        const guestValue = document.getElementById("guestValue");
+
+        guestSlider.addEventListener("input", function () {
+          guestValue.textContent = this.value;
+          updatePriceCalculator();
+        });
+
+        // Additional Options Checkboxes
+        const optionCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        optionCheckboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            updatePriceCalculator();
+          });
+        });
+
+        // Price Calculator
+        function updatePriceCalculator() {
+          const guests = parseInt(guestSlider.value);
+          let basePrice = 0;
+          let optionsPrice = 0;
+
+          // Get selected service level
+          const selectedService = document.querySelector(
+            'input[name="serviceLevel"]:checked',
+          ).value;
+
+          // Calculate base price based on guests and service level
+          switch (selectedService) {
+            case "basic":
+              basePrice = guests * 40;
+              break;
+            case "standard":
+              basePrice = guests * 55;
+              break;
+            case "premium":
+              basePrice = guests * 75;
+              break;
+          }
+
+          // Calculate additional options
+          optionCheckboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+              switch (checkbox.value) {
+                case "barService":
+                  optionsPrice += guests * 15;
+                  break;
+                case "dessertStation":
+                  optionsPrice += guests * 8;
+                  break;
+                case "staffing":
+                  optionsPrice += 350;
+                  break;
+              }
+            }
+          });
+
+          // Update price display
+          document.getElementById("basePrice").textContent =
+            "$" + basePrice.toLocaleString();
+          document.getElementById("optionsPrice").textContent =
+            "$" + optionsPrice.toLocaleString();
+          document.getElementById("totalPrice").textContent =
+            "$" + (basePrice + optionsPrice).toLocaleString();
+        }
+
+        // Initialize price calculator
+        updatePriceCalculator();
+
+        // Initialize service radio buttons
+        document.getElementById("basic").checked = true;
+        document.querySelector('label[for="basic"]').classList.add("border-primary");
+        document
+          .querySelector('label[for="basic"]')
+          .classList.remove("border-gray-200");
+        document
+          .querySelector('label[for="basic"] .service-radio-selected')
+          .classList.remove("hidden");
+      });
+    </script>
+  </body>
+</html>

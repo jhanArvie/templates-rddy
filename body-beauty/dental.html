@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dental Clinic - Painless Dentistry for the Whole Family</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#4F86C6", secondary: "#62C4C3" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Poppins', sans-serif;
+      }
+      .hero-section {
+          background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=Modern%20dental%20clinic%20interior%20with%20soft%20lighting%2C%20clean%20environment%2C%20professional%20staff%20in%20white%20coats%20smiling%2C%20dental%20chairs%20and%20equipment%2C%20patients%20with%20happy%20expressions%2C%20soothing%20blue%20and%20white%20color%20scheme%2C%20high-end%20technology%20visible&width=1920&height=1080&seq=1&orientation=landscape');
+          background-size: cover;
+          background-position: center;
+      }
+      .service-card:hover .service-details {
+          display: block;
+      }
+      .service-details {
+          display: none;
+      }
+      input[type="range"] {
+          appearance: none;
+          height: 8px;
+          background: #e5e7eb;
+          border-radius: 4px;
+          outline: none;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 20px;
+          height: 20px;
+          background: #4F86C6;
+          border-radius: 50%;
+          cursor: pointer;
+      }
+      .custom-checkbox {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          border: 2px solid #d1d5db;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+      .custom-checkbox.checked {
+          background-color: #4F86C6;
+          border-color: #4F86C6;
+      }
+      .custom-checkbox.checked::after {
+          content: '';
+          position: absolute;
+          left: 6px;
+          top: 2px;
+          width: 6px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
+      .custom-switch {
+          position: relative;
+          display: inline-block;
+          width: 48px;
+          height: 24px;
+      }
+      .custom-switch-input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      .custom-switch-slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #e5e7eb;
+          transition: .4s;
+          border-radius: 24px;
+      }
+      .custom-switch-slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+      }
+      .custom-switch-input:checked + .custom-switch-slider {
+          background-color: #4F86C6;
+      }
+      .custom-switch-input:checked + .custom-switch-slider:before {
+          transform: translateX(24px);
+      }
+      .custom-radio {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          border: 2px solid #d1d5db;
+          border-radius: 50%;
+          cursor: pointer;
+      }
+      .custom-radio.checked {
+          border-color: #4F86C6;
+      }
+      .custom-radio.checked::after {
+          content: '';
+          position: absolute;
+          left: 4px;
+          top: 4px;
+          width: 8px;
+          height: 8px;
+          background-color: #4F86C6;
+          border-radius: 50%;
+      }
+      .timeline-node::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          background-color: #e5e7eb;
+          top: 50%;
+          left: 50%;
+          z-index: -1;
+      }
+      .timeline-node:last-child::after {
+          display: none;
+      }
+      .faq-item.active .faq-answer {
+          display: block;
+      }
+      .faq-item.active .faq-icon {
+          transform: rotate(180deg);
+      }
+      .faq-answer {
+          display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            href="#services"
+            class="text-gray-700 hover:text-primary transition"
+            >Services</a
+          >
+          <a
+            href="#dentists"
+            class="text-gray-700 hover:text-primary transition"
+            >Our Dentists</a
+          >
+          <a
+            href="#technology"
+            class="text-gray-700 hover:text-primary transition"
+            >Technology</a
+          >
+          <a
+            href="#testimonials"
+            class="text-gray-700 hover:text-primary transition"
+            >Testimonials</a
+          >
+          <a href="#contact" class="text-gray-700 hover:text-primary transition"
+            >Contact</a
+          >
+        </div>
+        <div class="flex items-center space-x-4">
+          <a
+            href="tel:+18005551234"
+            class="hidden md:flex items-center text-gray-700 hover:text-primary"
+          >
+            <div class="w-10 h-10 flex items-center justify-center">
+              <i class="ri-phone-line ri-lg"></i>
+            </div>
+            <span class="font-medium">800-555-1234</span>
+          </a>
+          <button
+            class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap"
+          >
+            Book Appointment
+          </button>
+        </div>
+        <div class="md:hidden w-10 h-10 flex items-center justify-center">
+          <i class="ri-menu-line ri-lg"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-[600px] flex items-center">
+      <div class="container mx-auto px-4 py-16 w-full">
+        <div class="max-w-2xl text-white">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            Painless Dentistry for the Whole Family
+          </h1>
+          <p class="text-lg mb-8">
+            Experience dental care that prioritizes your comfort. Our gentle
+            approach and advanced technology ensure a pain-free visit for
+            patients of all ages.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button
+              class="bg-primary text-white px-8 py-3 !rounded-button font-medium whitespace-nowrap"
+            >
+              Book Online Now
+            </button>
+            <button
+              class="bg-red-600 text-white px-8 py-3 !rounded-button font-medium whitespace-nowrap"
+            >
+              Emergency Dentist Available
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="bg-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col items-center text-center"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-full mb-4"
+            >
+              <i class="ri-emotion-happy-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">98% Pain-Free Procedures</h3>
+            <p class="text-gray-600">
+              Our gentle techniques and technology ensure minimal discomfort
+              during all procedures.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col items-center text-center"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-full mb-4"
+            >
+              <i class="ri-shield-check-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">FDA-Approved Technology</h3>
+            <p class="text-gray-600">
+              We use only the safest, most effective equipment and materials for
+              your treatment.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col items-center text-center"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-full mb-4"
+            >
+              <i class="ri-bank-card-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">0% Financing Available</h3>
+            <p class="text-gray-600">
+              Flexible payment plans with no interest make quality dental care
+              accessible to everyone.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded shadow-sm border border-gray-100 flex flex-col items-center text-center"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-full mb-4"
+            >
+              <i class="ri-translate-2 ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Multiple Languages</h3>
+            <p class="text-gray-600">
+              Our staff speaks English, Spanish, Mandarin, and French to better
+              serve our diverse community.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Matrix -->
+    <section id="services" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">
+            Our Comprehensive Dental Services
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            From routine check-ups to advanced cosmetic procedures, we provide
+            complete dental care for your entire family.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="service-card bg-white rounded shadow-sm overflow-hidden relative"
+          >
+            <div class="p-8">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-6"
+              >
+                <i class="ri-health-book-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-2xl font-semibold mb-4">General Dentistry</h3>
+              <p class="text-gray-600 mb-6">
+                Comprehensive care to maintain your oral health including
+                cleanings, exams, fillings, and preventive treatments.
+              </p>
+              <div class="service-details bg-gray-50 p-6 rounded mt-4">
+                <div class="mb-4">
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium">Dental Cleaning</span>
+                    <span class="text-gray-600">45 min</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Professional cleaning to remove plaque and tartar
+                  </p>
+                  <p class="text-primary font-medium">Starting at $99</p>
+                </div>
+                <div class="mb-4">
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium">Dental Fillings</span>
+                    <span class="text-gray-600">60 min</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Tooth-colored composite restorations
+                  </p>
+                  <p class="text-primary font-medium">Starting at $150</p>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium"
+                      >Dental Exam
+                      <span
+                        class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full ml-2"
+                        >Most Popular</span
+                      ></span
+                    >
+                    <span class="text-gray-600">30 min</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Comprehensive oral examination with digital X-rays
+                  </p>
+                  <p class="text-primary font-medium">Starting at $75</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="service-card bg-white rounded shadow-sm overflow-hidden relative"
+          >
+            <div class="p-8">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-6"
+              >
+                <i class="ri-emotion-laugh-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-2xl font-semibold mb-4">Cosmetic Dentistry</h3>
+              <p class="text-gray-600 mb-6">
+                Transform your smile with our aesthetic treatments including
+                veneers, whitening, and smile makeovers.
+              </p>
+              <div class="service-details bg-gray-50 p-6 rounded mt-4">
+                <div class="mb-4">
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium"
+                      >Teeth Whitening
+                      <span
+                        class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full ml-2"
+                        >Most Popular</span
+                      ></span
+                    >
+                    <span class="text-gray-600">90 min</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Professional in-office whitening treatment
+                  </p>
+                  <p class="text-primary font-medium">Starting at $350</p>
+                </div>
+                <div class="mb-4">
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium">Porcelain Veneers</span>
+                    <span class="text-gray-600">2-3 visits</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Custom-made thin shells to cover front surface of teeth
+                  </p>
+                  <p class="text-primary font-medium">
+                    Starting at $950 per tooth
+                  </p>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium">Dental Bonding</span>
+                    <span class="text-gray-600">60 min</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Tooth-colored resin to improve appearance
+                  </p>
+                  <p class="text-primary font-medium">
+                    Starting at $250 per tooth
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="service-card bg-white rounded shadow-sm overflow-hidden relative"
+          >
+            <div class="p-8">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-6"
+              >
+                <i class="ri-tools-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-2xl font-semibold mb-4">Restorative Dentistry</h3>
+              <p class="text-gray-600 mb-6">
+                Restore function and appearance with our advanced treatments
+                including implants, crowns, bridges, and dentures.
+              </p>
+              <div class="service-details bg-gray-50 p-6 rounded mt-4">
+                <div class="mb-4">
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium"
+                      >Dental Implants
+                      <span
+                        class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full ml-2"
+                        >Most Popular</span
+                      ></span
+                    >
+                    <span class="text-gray-600">Multiple visits</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Permanent tooth replacement solution
+                  </p>
+                  <p class="text-primary font-medium">Starting at $3,000</p>
+                </div>
+                <div class="mb-4">
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium">Dental Crowns</span>
+                    <span class="text-gray-600">2 visits</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Custom-made caps to restore damaged teeth
+                  </p>
+                  <p class="text-primary font-medium">Starting at $850</p>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium">Dentures</span>
+                    <span class="text-gray-600">Multiple visits</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Removable replacements for missing teeth
+                  </p>
+                  <p class="text-primary font-medium">Starting at $1,200</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="service-card bg-white rounded shadow-sm overflow-hidden relative"
+          >
+            <div class="p-8">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-red-50 rounded-full mb-6"
+              >
+                <i class="ri-first-aid-kit-line ri-2x text-red-600"></i>
+              </div>
+              <h3 class="text-2xl font-semibold mb-4">Emergency Dentistry</h3>
+              <p class="text-gray-600 mb-6">
+                Immediate care for dental emergencies including toothaches,
+                broken teeth, and other urgent dental problems.
+              </p>
+              <div class="service-details bg-gray-50 p-6 rounded mt-4">
+                <div class="mb-4">
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium">Emergency Exam</span>
+                    <span class="text-gray-600">Same day</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Immediate evaluation of dental emergency
+                  </p>
+                  <p class="text-primary font-medium">Starting at $125</p>
+                </div>
+                <div class="mb-4">
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium">Tooth Extraction</span>
+                    <span class="text-gray-600">60 min</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Removal of damaged or infected tooth
+                  </p>
+                  <p class="text-primary font-medium">Starting at $200</p>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-2">
+                    <span class="font-medium"
+                      >Pain Relief Treatment
+                      <span
+                        class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full ml-2"
+                        >Most Popular</span
+                      ></span
+                    >
+                    <span class="text-gray-600">30-60 min</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-1">
+                    Immediate treatment to alleviate dental pain
+                  </p>
+                  <p class="text-primary font-medium">Starting at $150</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet the Dentists -->
+    <section id="dentists" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Meet Our Expert Dentists</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Our team of highly qualified dental professionals is committed to
+            providing you with the best care possible.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white rounded shadow-sm overflow-hidden">
+            <div class="aspect-square overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20female%20Asian%20dentist%20in%20her%2040s%20with%20glasses%20and%20a%20friendly%20smile%2C%20wearing%20a%20white%20coat%20in%20a%20modern%20dental%20office%2C%20natural%20lighting%2C%20professional%20headshot%20style&width=600&height=600&seq=2&orientation=squarish"
+                alt="Dr. Sarah Lee"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Dr. Sarah Lee</h3>
+              <p class="text-gray-700 mb-4">
+                Implant Specialist with 15 years of experience in restorative
+                dentistry. Dr. Lee has completed over 2,000 successful implant
+                procedures.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span
+                  class="bg-blue-50 text-primary text-sm px-3 py-1 rounded-full"
+                  >Implants</span
+                >
+                <span
+                  class="bg-blue-50 text-primary text-sm px-3 py-1 rounded-full"
+                  >Restorative</span
+                >
+                <span
+                  class="bg-blue-50 text-primary text-sm px-3 py-1 rounded-full"
+                  >Oral Surgery</span
+                >
+              </div>
+              <button
+                class="w-full bg-primary text-white py-2 !rounded-button whitespace-nowrap"
+              >
+                Book This Dentist
+              </button>
+            </div>
+          </div>
+          <div class="bg-white rounded shadow-sm overflow-hidden">
+            <div class="aspect-square overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20male%20Indian%20dentist%20in%20his%2030s%20with%20a%20warm%20smile%2C%20wearing%20a%20white%20coat%20in%20a%20modern%20dental%20office%2C%20natural%20lighting%2C%20professional%20headshot%20style&width=600&height=600&seq=3&orientation=squarish"
+                alt="Dr. Raj Patel"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Dr. Raj Patel</h3>
+              <p class="text-gray-700 mb-4">
+                Pediatric Specialist dedicated to making dental visits fun and
+                stress-free for children. Board-certified with advanced training
+                in child psychology.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span
+                  class="bg-blue-50 text-primary text-sm px-3 py-1 rounded-full"
+                  >Pediatric</span
+                >
+                <span
+                  class="bg-blue-50 text-primary text-sm px-3 py-1 rounded-full"
+                  >Preventive</span
+                >
+                <span
+                  class="bg-blue-50 text-primary text-sm px-3 py-1 rounded-full"
+                  >Orthodontics</span
+                >
+              </div>
+              <button
+                class="w-full bg-primary text-white py-2 !rounded-button whitespace-nowrap"
+              >
+                Book This Dentist
+              </button>
+            </div>
+          </div>
+          <div class="bg-white rounded shadow-sm overflow-hidden">
+            <div class="aspect-square overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20female%20Caucasian%20dentist%20in%20her%2030s%20with%20blonde%20hair%20and%20a%20confident%20smile%2C%20wearing%20a%20white%20coat%20in%20a%20modern%20dental%20office%2C%20natural%20lighting%2C%20professional%20headshot%20style&width=600&height=600&seq=4&orientation=squarish"
+                alt="Dr. Emily Wilson"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Dr. Emily Wilson</h3>
+              <p class="text-gray-700 mb-4">
+                Cosmetic Dentistry Expert specializing in smile makeovers.
+                Trained at NYU with 10+ years of experience in advanced
+                aesthetic procedures.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span
+                  class="bg-blue-50 text-primary text-sm px-3 py-1 rounded-full"
+                  >Cosmetic</span
+                >
+                <span
+                  class="bg-blue-50 text-primary text-sm px-3 py-1 rounded-full"
+                  >Veneers</span
+                >
+                <span
+                  class="bg-blue-50 text-primary text-sm px-3 py-1 rounded-full"
+                  >Whitening</span
+                >
+              </div>
+              <button
+                class="w-full bg-primary text-white py-2 !rounded-button whitespace-nowrap"
+              >
+                Book This Dentist
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Showcase -->
+    <section id="technology" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Advanced Dental Technology</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We invest in the latest dental technology to provide more
+            comfortable, efficient, and precise treatments.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-6"
+            >
+              <i class="ri-scan-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Digital X-Rays</h3>
+            <div class="text-3xl font-bold text-primary mb-4">
+              80% Less Radiation
+            </div>
+            <p class="text-gray-600 mb-6">
+              Our digital X-ray technology provides clearer images with
+              significantly less radiation than traditional X-rays, making it
+              safer for patients of all ages.
+            </p>
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-check-line ri-lg"></i>
+              </div>
+              <span class="text-gray-700">Instant results - no waiting</span>
+            </div>
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-check-line ri-lg"></i>
+              </div>
+              <span class="text-gray-700">Enhanced diagnostic accuracy</span>
+            </div>
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-check-line ri-lg"></i>
+              </div>
+              <span class="text-gray-700"
+                >Environmentally friendly - no chemicals</span
+              >
+            </div>
+          </div>
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-6"
+            >
+              <i class="ri-focus-3-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Laser Dentistry</h3>
+            <div class="text-3xl font-bold text-primary mb-4">
+              Minimal Discomfort
+            </div>
+            <p class="text-gray-600 mb-6">
+              Our dental lasers allow for precise, gentle treatments with less
+              pain, reduced bleeding, and faster healing times compared to
+              traditional methods.
+            </p>
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-check-line ri-lg"></i>
+              </div>
+              <span class="text-gray-700"
+                >Often eliminates need for anesthesia</span
+              >
+            </div>
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-check-line ri-lg"></i>
+              </div>
+              <span class="text-gray-700"
+                >Preserves more healthy tooth structure</span
+              >
+            </div>
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-check-line ri-lg"></i>
+              </div>
+              <span class="text-gray-700"
+                >Reduces risk of bacterial infections</span
+              >
+            </div>
+          </div>
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-6"
+            >
+              <i class="ri-timer-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">CEREC Same-Day Crowns</h3>
+            <div class="text-3xl font-bold text-primary mb-4">
+              One Visit Solution
+            </div>
+            <p class="text-gray-600 mb-6">
+              Our CEREC technology creates custom, high-quality ceramic crowns
+              in just one appointment, eliminating the need for temporary crowns
+              and multiple visits.
+            </p>
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-check-line ri-lg"></i>
+              </div>
+              <span class="text-gray-700"
+                >Digital impressions - no messy molds</span
+              >
+            </div>
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-check-line ri-lg"></i>
+              </div>
+              <span class="text-gray-700"
+                >Perfectly matched to your natural teeth</span
+              >
+            </div>
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 flex items-center justify-center text-primary"
+              >
+                <i class="ri-check-line ri-lg"></i>
+              </div>
+              <span class="text-gray-700"
+                >Durable, long-lasting restorations</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Patient Journey Timeline -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Your Patient Journey</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We've designed a streamlined, stress-free experience from your first
+            contact to your ongoing care.
+          </p>
+        </div>
+        <div class="relative">
+          <div
+            class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -translate-y-1/2"
+          ></div>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div
+              class="timeline-node relative flex flex-col items-center text-center"
+            >
+              <div
+                class="w-20 h-20 flex items-center justify-center bg-primary text-white rounded-full mb-6 z-10"
+              >
+                <span class="text-2xl font-bold">1</span>
+              </div>
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4"
+              >
+                <i class="ri-calendar-check-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Online Booking</h3>
+              <p class="text-gray-600">
+                Schedule your appointment online in minutes. Choose your
+                preferred dentist, date, and time.
+              </p>
+            </div>
+            <div
+              class="timeline-node relative flex flex-col items-center text-center"
+            >
+              <div
+                class="w-20 h-20 flex items-center justify-center bg-primary text-white rounded-full mb-6 z-10"
+              >
+                <span class="text-2xl font-bold">2</span>
+              </div>
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4"
+              >
+                <i class="ri-file-text-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Paperless Forms</h3>
+              <p class="text-gray-600">
+                Complete your registration forms online before your visit to
+                save time and reduce waiting.
+              </p>
+            </div>
+            <div
+              class="timeline-node relative flex flex-col items-center text-center"
+            >
+              <div
+                class="w-20 h-20 flex items-center justify-center bg-primary text-white rounded-full mb-6 z-10"
+              >
+                <span class="text-2xl font-bold">3</span>
+              </div>
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4"
+              >
+                <i class="ri-service-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Gentle Cleaning</h3>
+              <p class="text-gray-600">
+                Experience our comfortable, thorough cleaning and examination
+                with our caring dental team.
+              </p>
+            </div>
+            <div
+              class="timeline-node relative flex flex-col items-center text-center"
+            >
+              <div
+                class="w-20 h-20 flex items-center justify-center bg-primary text-white rounded-full mb-6 z-10"
+              >
+                <span class="text-2xl font-bold">4</span>
+              </div>
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4"
+              >
+                <i class="ri-road-map-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Personalized Plan</h3>
+              <p class="text-gray-600">
+                Receive a customized treatment plan designed specifically for
+                your oral health needs and goals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Smile Gallery -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Smile Gallery</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            See the real results we've achieved for our patients. These are
+            actual before and after photos from our satisfied patients.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white rounded shadow-sm overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=Before%20and%20after%20dental%20veneers%2C%20showing%20dramatic%20smile%20transformation%2C%20yellowed%20crooked%20teeth%20transformed%20to%20perfect%20white%20aligned%20teeth%2C%20dental%20photography%20style%2C%20clinical%20lighting&width=600&height=400&seq=5&orientation=landscape"
+                alt="Veneers Before and After"
+                class="w-full h-64 object-cover object-top"
+              />
+              <div
+                class="absolute top-4 right-4 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full"
+              >
+                Actual Patient
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold mb-2">Porcelain Veneers</h3>
+              <p class="text-gray-600 mb-4">
+                8 upper veneers transformed this patient's smile, correcting
+                discoloration and alignment issues.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500"
+                  >Treatment time: 2 weeks</span
+                >
+                <button class="text-primary flex items-center">
+                  <span class="mr-1">View Details</span>
+                  <div class="w-5 h-5 flex items-center justify-center">
+                    <i class="ri-arrow-right-line"></i>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded shadow-sm overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=Before%20and%20after%20dental%20implants%2C%20showing%20missing%20teeth%20replaced%20with%20natural-looking%20implants%2C%20dental%20photography%20style%2C%20clinical%20lighting&width=600&height=400&seq=6&orientation=landscape"
+                alt="Implants Before and After"
+                class="w-full h-64 object-cover object-top"
+              />
+              <div
+                class="absolute top-4 right-4 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full"
+              >
+                Actual Patient
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold mb-2">Dental Implants</h3>
+              <p class="text-gray-600 mb-4">
+                Full-mouth restoration with dental implants, replacing missing
+                teeth with permanent, natural-looking solutions.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500"
+                  >Treatment time: 6 months</span
+                >
+                <button class="text-primary flex items-center">
+                  <span class="mr-1">View Details</span>
+                  <div class="w-5 h-5 flex items-center justify-center">
+                    <i class="ri-arrow-right-line"></i>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded shadow-sm overflow-hidden">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=Before%20and%20after%20teeth%20whitening%2C%20showing%20yellowed%20stained%20teeth%20transformed%20to%20bright%20white%20smile%2C%20dental%20photography%20style%2C%20clinical%20lighting&width=600&height=400&seq=7&orientation=landscape"
+                alt="Whitening Before and After"
+                class="w-full h-64 object-cover object-top"
+              />
+              <div
+                class="absolute top-4 right-4 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full"
+              >
+                Actual Patient
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold mb-2">Professional Whitening</h3>
+              <p class="text-gray-600 mb-4">
+                In-office whitening treatment that brightened this patient's
+                smile by 8 shades in just one visit.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500"
+                  >Treatment time: 90 minutes</span
+                >
+                <button class="text-primary flex items-center">
+                  <span class="mr-1">View Details</span>
+                  <div class="w-5 h-5 flex items-center justify-center">
+                    <i class="ri-arrow-right-line"></i>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <button
+            class="bg-white border border-primary text-primary px-6 py-3 !rounded-button whitespace-nowrap"
+          >
+            View More Transformations
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">What Our Patients Say</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Hear from our satisfied patients about their experiences at our
+            dental clinic.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-gray-50 p-8 rounded shadow-sm">
+            <div class="flex items-start mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full mr-4"
+              >
+                <i class="ri-double-quotes-l ri-lg"></i>
+              </div>
+              <div>
+                <div class="flex mb-2">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                </div>
+                <h3 class="text-xl font-semibold">I Finally Love My Smile!</h3>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "After years of being embarrassed about my teeth, Dr. Wilson
+              transformed my smile with veneers. The process was so much easier
+              than I expected, and the results are incredible. I can't stop
+              smiling now!"
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20Caucasian%20woman%20with%20blonde%20hair%20smiling%20confidently%2C%20natural%20lighting%2C%20neutral%20background&width=100&height=100&seq=8&orientation=squarish"
+                  alt="Jennifer M."
+                  class="w-12 h-12 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <div class="font-medium">Jennifer M.</div>
+                  <div class="text-sm text-gray-500">
+                    Verified Patient • May 2025
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center text-primary">
+                <span class="mr-1">View Case</span>
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-8 rounded shadow-sm">
+            <div class="flex items-start mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full mr-4"
+              >
+                <i class="ri-double-quotes-l ri-lg"></i>
+              </div>
+              <div>
+                <div class="flex mb-2">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                  <div
+                    class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                  >
+                    <i class="ri-star-fill"></i>
+                  </div>
+                </div>
+                <h3 class="text-xl font-semibold">
+                  My Kids Actually Enjoy Coming!
+                </h3>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "Dr. Patel is amazing with children! My kids used to dread dental
+              visits, but now they look forward to seeing him. The staff makes
+              the experience fun, and they're so gentle that my 5-year-old
+              didn't even realize he was getting a filling."
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20African%20American%20man%20with%20short%20hair%20and%20glasses%20smiling%20confidently%2C%20natural%20lighting%2C%20neutral%20background&width=100&height=100&seq=9&orientation=squarish"
+                  alt="Marcus T."
+                  class="w-12 h-12 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <div class="font-medium">Marcus T.</div>
+                  <div class="text-sm text-gray-500">
+                    Verified Patient • April 2025
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center text-primary">
+                <span class="mr-1">Read More</span>
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 p-8 rounded shadow-sm">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-semibold">Google Reviews</h3>
+            <div class="flex items-center">
+              <div class="flex mr-2">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-half-fill"></i>
+                </div>
+              </div>
+              <span class="font-medium">4.8/5</span>
+              <span class="text-gray-500 ml-2">(256 reviews)</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-4 rounded">
+              <div class="flex mb-2">
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+              </div>
+              <p class="text-gray-700 text-sm mb-4">
+                "Best dental experience I've ever had. Dr. Lee was thorough,
+                gentle, and explained everything clearly. The office is modern
+                and clean, and the staff is friendly and professional."
+              </p>
+              <div class="flex items-center">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20Asian%20woman%20with%20long%20dark%20hair%20smiling%20confidently%2C%20natural%20lighting%2C%20neutral%20background&width=50&height=50&seq=10&orientation=squarish"
+                  alt="Sophia K."
+                  class="w-8 h-8 rounded-full object-cover mr-3"
+                />
+                <div>
+                  <div class="text-sm font-medium">Sophia K.</div>
+                  <div class="text-xs text-gray-500">1 week ago</div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white p-4 rounded">
+              <div class="flex mb-2">
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+              </div>
+              <p class="text-gray-700 text-sm mb-4">
+                "Had a dental emergency and they got me in the same day. Dr.
+                Wilson fixed my broken tooth and I was pain-free immediately.
+                Their emergency service is truly a lifesaver!"
+              </p>
+              <div class="flex items-center">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20Hispanic%20man%20with%20short%20dark%20hair%20smiling%20confidently%2C%20natural%20lighting%2C%20neutral%20background&width=50&height=50&seq=11&orientation=squarish"
+                  alt="Carlos R."
+                  class="w-8 h-8 rounded-full object-cover mr-3"
+                />
+                <div>
+                  <div class="text-sm font-medium">Carlos R.</div>
+                  <div class="text-xs text-gray-500">2 weeks ago</div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white p-4 rounded">
+              <div class="flex mb-2">
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-yellow-400"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div
+                  class="w-4 h-4 flex items-center justify-center text-gray-300"
+                >
+                  <i class="ri-star-fill"></i>
+                </div>
+              </div>
+              <p class="text-gray-700 text-sm mb-4">
+                "The financing options made it possible for me to get the dental
+                work I needed. The staff helped me understand my insurance
+                coverage and set up a payment plan that worked for my budget."
+              </p>
+              <div class="flex items-center">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20an%20elderly%20Caucasian%20woman%20with%20gray%20hair%20and%20glasses%20smiling%20confidently%2C%20natural%20lighting%2C%20neutral%20background&width=50&height=50&seq=12&orientation=squarish"
+                  alt="Eleanor J."
+                  class="w-8 h-8 rounded-full object-cover mr-3"
+                />
+                <div>
+                  <div class="text-sm font-medium">Eleanor J.</div>
+                  <div class="text-xs text-gray-500">1 month ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-6">
+            <a
+              href="#"
+              class="text-primary font-medium flex items-center justify-center"
+            >
+              <span>Read All Reviews</span>
+              <div class="w-5 h-5 flex items-center justify-center ml-1">
+                <i class="ri-arrow-right-line"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Insurance & Financing -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Insurance & Financing Options</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We work with most major insurance providers and offer flexible
+            financing options to make dental care affordable for everyone.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full mr-4"
+              >
+                <i class="ri-shield-check-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Insurance Coverage</h3>
+            </div>
+            <div class="mb-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-8 h-8 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-check-line ri-lg"></i>
+                </div>
+                <span class="text-gray-700">We File All Insurance Claims</span>
+              </div>
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-8 h-8 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-check-line ri-lg"></i>
+                </div>
+                <span class="text-gray-700"
+                  >In-Network with Most Major Providers</span
+                >
+              </div>
+              <div class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-check-line ri-lg"></i>
+                </div>
+                <span class="text-gray-700"
+                  >Complimentary Benefits Verification</span
+                >
+              </div>
+            </div>
+            <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 mb-8">
+              <div class="flex flex-col items-center">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <i class="ri-blue-shield-fill ri-2x text-blue-600"></i>
+                </div>
+                <span class="text-xs text-center mt-1">Blue Cross</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <i class="ri-shield-fill ri-2x text-red-600"></i>
+                </div>
+                <span class="text-xs text-center mt-1">Aetna</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <i class="ri-shield-fill ri-2x text-blue-400"></i>
+                </div>
+                <span class="text-xs text-center mt-1">Cigna</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <i class="ri-shield-fill ri-2x text-green-600"></i>
+                </div>
+                <span class="text-xs text-center mt-1">Delta Dental</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <i class="ri-shield-fill ri-2x text-yellow-600"></i>
+                </div>
+                <span class="text-xs text-center mt-1">MetLife</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <i class="ri-shield-fill ri-2x text-purple-600"></i>
+                </div>
+                <span class="text-xs text-center mt-1">Guardian</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <i class="ri-shield-fill ri-2x text-indigo-600"></i>
+                </div>
+                <span class="text-xs text-center mt-1">Humana</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <i class="ri-more-fill ri-2x text-gray-600"></i>
+                </div>
+                <span class="text-xs text-center mt-1">And More</span>
+              </div>
+            </div>
+            <div class="bg-gray-50 p-4 rounded">
+              <h4 class="font-medium mb-3">Check Your Coverage</h4>
+              <form>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Insurance Provider"
+                      class="w-full px-4 py-2 border-none rounded bg-white"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Member ID"
+                      class="w-full px-4 py-2 border-none rounded bg-white"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="w-full bg-primary text-white py-2 !rounded-button whitespace-nowrap"
+                >
+                  Verify Coverage
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full mr-4"
+              >
+                <i class="ri-bank-card-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Financing Options</h3>
+            </div>
+            <div class="mb-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-8 h-8 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-check-line ri-lg"></i>
+                </div>
+                <span class="text-gray-700">12-Month 0% Interest Plans</span>
+              </div>
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-8 h-8 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-check-line ri-lg"></i>
+                </div>
+                <span class="text-gray-700">Flexible Monthly Payments</span>
+              </div>
+              <div class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center text-primary"
+                >
+                  <i class="ri-check-line ri-lg"></i>
+                </div>
+                <span class="text-gray-700"
+                  >No Credit Check Options Available</span
+                >
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              <div class="bg-gray-50 p-4 rounded text-center">
+                <div
+                  class="w-12 h-12 flex items-center justify-center mx-auto mb-2"
+                >
+                  <i class="ri-bank-card-fill ri-2x text-blue-500"></i>
+                </div>
+                <h4 class="font-medium mb-1">CareCredit</h4>
+                <p class="text-sm text-gray-600">
+                  Healthcare financing credit card
+                </p>
+              </div>
+              <div class="bg-gray-50 p-4 rounded text-center">
+                <div
+                  class="w-12 h-12 flex items-center justify-center mx-auto mb-2"
+                >
+                  <i class="ri-bank-card-fill ri-2x text-green-500"></i>
+                </div>
+                <h4 class="font-medium mb-1">LendingClub</h4>
+                <p class="text-sm text-gray-600">Patient financing solutions</p>
+              </div>
+            </div>
+            <div class="bg-gray-50 p-4 rounded mb-6">
+              <h4 class="font-medium mb-3">Payment Calculator</h4>
+              <div class="mb-4">
+                <label class="block text-sm text-gray-600 mb-2"
+                  >Treatment Cost</label
+                >
+                <input
+                  type="text"
+                  value="$2,500"
+                  class="w-full px-4 py-2 border-none rounded bg-white"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm text-gray-600 mb-2"
+                  >Payment Period:
+                  <span id="months-value">12 months</span></label
+                >
+                <input
+                  type="range"
+                  min="6"
+                  max="24"
+                  value="12"
+                  class="w-full"
+                  id="months-slider"
+                />
+              </div>
+              <div class="bg-blue-50 p-4 rounded">
+                <div class="flex justify-between mb-2">
+                  <span class="text-gray-700">Monthly Payment:</span>
+                  <span class="font-medium">$208.33</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-700">Interest Rate:</span>
+                  <span class="font-medium text-green-600">0%</span>
+                </div>
+              </div>
+            </div>
+            <button
+              class="w-full bg-primary text-white py-2 !rounded-button whitespace-nowrap"
+            >
+              Apply for Financing
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Find answers to common questions about our services, procedures, and
+            what to expect during your visit.
+          </p>
+        </div>
+        <div class="max-w-3xl mx-auto">
+          <div class="faq-item bg-gray-50 rounded mb-4 overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer">
+              <h3 class="font-medium">Will It Hurt?</h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-gray-500 faq-icon transition-transform"
+              >
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </div>
+            <div class="faq-answer px-4 pb-4">
+              <p class="text-gray-600">
+                We prioritize your comfort above all else. Our gentle
+                techniques, advanced technology, and optional sedation options
+                ensure that most patients experience minimal to no discomfort
+                during procedures. We'll always check in with you throughout
+                your treatment to make sure you're comfortable.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item bg-gray-50 rounded mb-4 overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer">
+              <h3 class="font-medium">
+                What If I Haven't Been to a Dentist in Years?
+              </h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-gray-500 faq-icon transition-transform"
+              >
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </div>
+            <div class="faq-answer px-4 pb-4">
+              <p class="text-gray-600">
+                You're not alone, and we're here to help without judgment. Many
+                of our patients come to us after long gaps in dental care. We'll
+                start with a thorough but gentle examination, discuss your
+                concerns, and create a step-by-step plan to address any issues
+                at a pace that feels comfortable for you.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item bg-gray-50 rounded mb-4 overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer">
+              <h3 class="font-medium">Do You Sedate Nervous Patients?</h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-gray-500 faq-icon transition-transform"
+              >
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </div>
+            <div class="faq-answer px-4 pb-4">
+              <p class="text-gray-600">
+                Yes, we offer several sedation options for anxious patients,
+                including nitrous oxide (laughing gas), oral conscious sedation,
+                and IV sedation for more complex procedures. During your
+                consultation, we can discuss which option might be best for your
+                specific needs and anxiety level.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item bg-gray-50 rounded mb-4 overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer">
+              <h3 class="font-medium">How Much Will My Treatment Cost?</h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-gray-500 faq-icon transition-transform"
+              >
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </div>
+            <div class="faq-answer px-4 pb-4">
+              <p class="text-gray-600">
+                Treatment costs vary depending on your specific needs. After
+                your initial examination, we'll provide a detailed treatment
+                plan with all associated costs. We're committed to transparency
+                in pricing, and we'll work with you to maximize your insurance
+                benefits and find financing options that fit your budget.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item bg-gray-50 rounded mb-4 overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer">
+              <h3 class="font-medium">How Long Will My Appointment Take?</h3>
+              <div
+                class="w-6 h-6 flex items-center justify-center text-gray-500 faq-icon transition-transform"
+              >
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </div>
+            <div class="faq-answer px-4 pb-4">
+              <p class="text-gray-600">
+                Appointment times vary by procedure. Routine cleanings typically
+                take 45-60 minutes, while more complex treatments may require
+                longer appointments. We respect your time and strive to maintain
+                an on-time schedule. When you book your appointment, our team
+                will let you know exactly how much time to set aside.
+              </p>
+            </div>
+          </div>
+          <div class="text-center mt-8">
+            <button
+              class="bg-white border border-primary text-primary px-6 py-3 !rounded-button whitespace-nowrap"
+            >
+              View All FAQs
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Urgency Elements -->
+    <section class="py-12 bg-blue-50">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-red-50 rounded-full mr-4"
+              >
+                <i class="ri-first-aid-kit-line ri-2x text-red-600"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Same-Day Emergency Care</h3>
+            </div>
+            <p class="text-gray-600 mb-6">
+              Dental pain can't wait. We reserve slots each day for emergency
+              patients, ensuring you get the care you need when you need it
+              most.
+            </p>
+            <div class="bg-red-50 p-4 rounded mb-6">
+              <div class="flex justify-between items-center">
+                <span class="font-medium"
+                  >Emergency Slots Available Today:</span
+                >
+                <span class="text-red-600 font-bold">3</span>
+              </div>
+            </div>
+            <button
+              class="w-full bg-red-600 text-white py-3 !rounded-button whitespace-nowrap"
+            >
+              Call Now for Emergency Care
+            </button>
+          </div>
+          <div class="bg-white p-8 rounded shadow-sm">
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-green-50 rounded-full mr-4"
+              >
+                <i class="ri-coupon-line ri-2x text-green-600"></i>
+              </div>
+              <h3 class="text-xl font-semibold">New Patient Special</h3>
+            </div>
+            <p class="text-gray-600 mb-6">
+              Start your journey to better oral health with our new patient
+              special. Comprehensive exam, cleaning, and X-rays at a special
+              introductory price.
+            </p>
+            <div class="bg-green-50 p-4 rounded mb-6">
+              <div class="text-center">
+                <div class="text-sm text-gray-600 mb-1">Limited Time Offer</div>
+                <div class="text-3xl font-bold text-green-600 mb-1">$49</div>
+                <div class="text-sm text-gray-600">Regular Price: $250</div>
+              </div>
+              <div class="mt-4 text-center">
+                <div class="text-sm text-gray-600 mb-1">Offer Expires In:</div>
+                <div class="flex justify-center gap-2">
+                  <div class="bg-white px-2 py-1 rounded">
+                    <div class="text-xl font-bold">2</div>
+                    <div class="text-xs text-gray-500">Days</div>
+                  </div>
+                  <div class="bg-white px-2 py-1 rounded">
+                    <div class="text-xl font-bold">18</div>
+                    <div class="text-xs text-gray-500">Hours</div>
+                  </div>
+                  <div class="bg-white px-2 py-1 rounded">
+                    <div class="text-xl font-bold">45</div>
+                    <div class="text-xs text-gray-500">Mins</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              class="w-full bg-green-600 text-white py-3 !rounded-button whitespace-nowrap"
+            >
+              Claim This Offer
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location/Contact -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Visit Our Office</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We're conveniently located in the heart of the city with easy access
+            to public transportation and ample parking.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-gray-50 rounded shadow-sm overflow-hidden">
+            <div class="aspect-video relative">
+              <img
+                src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png"
+                alt="Office Location Map"
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <button class="bg-white p-4 rounded-full shadow-md">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center text-primary"
+                  >
+                    <i class="ri-map-pin-line ri-2x"></i>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-4">Our Location</h3>
+              <div class="flex items-start mb-4">
+                <div
+                  class="w-8 h-8 flex items-center justify-center text-primary mt-1"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <div>
+                  <p class="text-gray-700">
+                    123 Smile Avenue, Suite 200<br />Metropolis, NY 10001
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start mb-4">
+                <div
+                  class="w-8 h-8 flex items-center justify-center text-primary mt-1"
+                >
+                  <i class="ri-time-line"></i>
+                </div>
+                <div>
+                  <p class="text-gray-700 mb-1">
+                    Monday - Friday: 8:00 AM - 6:00 PM
+                  </p>
+                  <p class="text-gray-700">Saturday: 9:00 AM - 2:00 PM</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-8 h-8 flex items-center justify-center text-primary mt-1"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <div>
+                  <p class="text-gray-700 mb-1">Phone: (800) 555-1234</p>
+                  <p class="text-gray-700">Email: info@dentalclinic.com</p>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6">
+              <div class="bg-white p-4 rounded">
+                <h4 class="font-medium mb-3">Getting Here</h4>
+                <div class="flex items-start mb-3">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-blue-500 mt-1"
+                  >
+                    <i class="ri-parking-line"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-700 text-sm">
+                      Free parking available in our dedicated lot behind the
+                      building. Validation provided for patients.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center text-green-500 mt-1"
+                  >
+                    <i class="ri-train-line"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-700 text-sm">
+                      Two blocks from Central Station. Bus routes 10, 15, and 22
+                      stop directly in front of our building.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 rounded shadow-sm overflow-hidden">
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+              <form>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label class="block text-sm text-gray-600 mb-2"
+                      >First Name</label
+                    >
+                    <input
+                      type="text"
+                      class="w-full px-4 py-2 border-none rounded bg-white"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm text-gray-600 mb-2"
+                      >Last Name</label
+                    >
+                    <input
+                      type="text"
+                      class="w-full px-4 py-2 border-none rounded bg-white"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label class="block text-sm text-gray-600 mb-2"
+                      >Email</label
+                    >
+                    <input
+                      type="email"
+                      class="w-full px-4 py-2 border-none rounded bg-white"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm text-gray-600 mb-2"
+                      >Phone</label
+                    >
+                    <input
+                      type="tel"
+                      class="w-full px-4 py-2 border-none rounded bg-white"
+                    />
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label class="block text-sm text-gray-600 mb-2"
+                    >Reason for Visit</label
+                  >
+                  <select
+                    class="w-full px-4 py-2 border-none rounded bg-white pr-8"
+                  >
+                    <option>General Check-up</option>
+                    <option>Cleaning</option>
+                    <option>Cosmetic Consultation</option>
+                    <option>Emergency Care</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="mb-4">
+                  <label class="block text-sm text-gray-600 mb-2"
+                    >Preferred Date</label
+                  >
+                  <input
+                    type="date"
+                    class="w-full px-4 py-2 border-none rounded bg-white"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label class="block text-sm text-gray-600 mb-2"
+                    >Preferred Time</label
+                  >
+                  <div class="flex flex-wrap gap-2">
+                    <label class="inline-flex items-center">
+                      <div class="custom-radio" id="time-morning"></div>
+                      <span class="ml-2 text-sm text-gray-700">Morning</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                      <div class="custom-radio" id="time-afternoon"></div>
+                      <span class="ml-2 text-sm text-gray-700">Afternoon</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                      <div class="custom-radio" id="time-evening"></div>
+                      <span class="ml-2 text-sm text-gray-700">Evening</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label class="block text-sm text-gray-600 mb-2"
+                    >Message</label
+                  >
+                  <textarea
+                    rows="4"
+                    class="w-full px-4 py-2 border-none rounded bg-white"
+                  ></textarea>
+                </div>
+                <div class="mb-6">
+                  <label class="inline-flex items-center">
+                    <div class="custom-checkbox" id="consent-checkbox"></div>
+                    <span class="ml-2 text-sm text-gray-700"
+                      >I consent to receiving communications regarding my
+                      appointment and treatment.</span
+                    >
+                  </label>
+                </div>
+                <button
+                  class="w-full bg-primary text-white py-3 !rounded-button whitespace-nowrap"
+                >
+                  Submit Request
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 text-center">
+          <button
+            class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap"
+          >
+            Book Online Now
+          </button>
+          <p class="text-gray-600 mt-4">
+            Or call us at (800) 555-1234 to schedule your appointment
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <a href="#" class="text-3xl font-['Pacifico'] text-white mb-4 block"
+              >logo</a
+            >
+            <p class="text-gray-400 mb-4">
+              Providing painless, high-quality dental care for the whole family
+              since 2005.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <i class="ri-facebook-fill ri-lg"></i>
+                </div>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <i class="ri-instagram-line ri-lg"></i>
+                </div>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <i class="ri-twitter-x-line ri-lg"></i>
+                </div>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <i class="ri-youtube-line ri-lg"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Services</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >General Dentistry</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Cosmetic Dentistry</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Restorative Dentistry</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Emergency Dentistry</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Pediatric Dentistry</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Orthodontics</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Patient Resources</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >New Patient Forms</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Insurance Information</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Financing Options</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Patient Portal</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Dental Blog</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >FAQs</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+            <div class="flex items-start mb-4">
+              <div
+                class="w-6 h-6 flex items-center justify-center text-gray-400 mt-1"
+              >
+                <i class="ri-map-pin-line"></i>
+              </div>
+              <div class="ml-2">
+                <p class="text-gray-400">
+                  123 Smile Avenue, Suite 200<br />Metropolis, NY 10001
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start mb-4">
+              <div
+                class="w-6 h-6 flex items-center justify-center text-gray-400 mt-1"
+              >
+                <i class="ri-phone-line"></i>
+              </div>
+              <div class="ml-2">
+                <p class="text-gray-400">(800) 555-1234</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div
+                class="w-6 h-6 flex items-center justify-center text-gray-400 mt-1"
+              >
+                <i class="ri-mail-line"></i>
+              </div>
+              <div class="ml-2">
+                <p class="text-gray-400">info@dentalclinic.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center"
+        >
+          <div class="mb-4 md:mb-0">
+            <p class="text-gray-400">
+              © 2025 Dental Clinic. All rights reserved.
+            </p>
+          </div>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex items-center">
+              <div
+                class="w-8 h-8 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-shield-check-line"></i>
+              </div>
+              <span class="text-gray-400 text-sm">ADA Member</span>
+            </div>
+            <div class="flex items-center">
+              <div
+                class="w-8 h-8 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-shield-check-line"></i>
+              </div>
+              <span class="text-gray-400 text-sm">HIPAA Compliant</span>
+            </div>
+            <div class="flex items-center">
+              <div
+                class="w-8 h-8 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-visa-line"></i>
+              </div>
+              <div
+                class="w-8 h-8 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-mastercard-line"></i>
+              </div>
+              <div
+                class="w-8 h-8 flex items-center justify-center text-gray-400"
+              >
+                <i class="ri-paypal-line"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Chat Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        class="bg-primary text-white rounded-full p-4 shadow-lg flex items-center"
+      >
+        <div class="w-6 h-6 flex items-center justify-center">
+          <i class="ri-chat-1-line"></i>
+        </div>
+        <span class="ml-2 font-medium">Chat With Our Care Team</span>
+      </button>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll(".faq-item");
+        faqItems.forEach((item) => {
+          const header = item.querySelector(".flex.justify-between");
+          header.addEventListener("click", () => {
+            item.classList.toggle("active");
+          });
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Range Slider
+        const monthsSlider = document.getElementById("months-slider");
+        const monthsValue = document.getElementById("months-value");
+
+        if (monthsSlider && monthsValue) {
+          monthsSlider.addEventListener("input", function () {
+            monthsValue.textContent = this.value + " months";
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Custom Checkbox
+        const consentCheckbox = document.getElementById("consent-checkbox");
+        if (consentCheckbox) {
+          consentCheckbox.addEventListener("click", function () {
+            this.classList.toggle("checked");
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Custom Radio Buttons
+        const radioButtons = document.querySelectorAll(".custom-radio");
+        radioButtons.forEach((radio) => {
+          radio.addEventListener("click", function () {
+            // Uncheck all radios in the same group
+            const name = this.id.split("-")[0];
+            document.querySelectorAll(`[id^="${name}-"]`).forEach((r) => {
+              r.classList.remove("checked");
+            });
+            // Check the clicked radio
+            this.classList.add("checked");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

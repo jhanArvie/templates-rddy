@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capture Studio | Professional Photography & Videography</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#f59e0b" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Poppins', sans-serif;
+      }
+      .hero-title {
+          font-family: 'Playfair Display', serif;
+      }
+      .hero-section {
+          position: relative;
+          height: 100vh;
+          min-height: 700px;
+          max-height: 900px;
+          overflow: hidden;
+      }
+      .hero-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
+      }
+      .badge {
+          transition: all 0.3s ease;
+      }
+      .badge:hover {
+          transform: translateY(-5px);
+      }
+      .service-card {
+          transition: all 0.3s ease;
+          overflow: hidden;
+      }
+      .service-card:hover {
+          transform: translateY(-5px);
+      }
+      .service-info {
+          transition: all 0.3s ease;
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      .service-card:hover .service-info {
+          opacity: 1;
+          transform: translateY(0);
+      }
+      .portfolio-item {
+          overflow: hidden;
+          position: relative;
+      }
+      .portfolio-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.5);
+          opacity: 0;
+          transition: all 0.3s ease;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+      .portfolio-item:hover .portfolio-overlay {
+          opacity: 1;
+      }
+      .timeline-item {
+          position: relative;
+      }
+      .timeline-item::before {
+          content: '';
+          position: absolute;
+          top: 24px;
+          left: 50%;
+          width: 100%;
+          height: 2px;
+          background-color: #e5e7eb;
+          z-index: -1;
+      }
+      .timeline-item:last-child::before {
+          display: none;
+      }
+      .equipment-item {
+          transition: all 0.3s ease;
+      }
+      .equipment-item:hover {
+          transform: scale(1.05);
+      }
+      .testimonial-card {
+          transition: all 0.3s ease;
+      }
+      .testimonial-card:hover {
+          transform: translateY(-5px);
+      }
+      input[type="range"] {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 100%;
+          height: 6px;
+          background: #e5e7eb;
+          border-radius: 5px;
+          outline: none;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 20px;
+          height: 20px;
+          background: #3b82f6;
+          border-radius: 50%;
+          cursor: pointer;
+      }
+      .before-after-slider {
+          position: relative;
+          overflow: hidden;
+      }
+      .before-image, .after-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+      }
+      .after-image {
+          width: 50%;
+          border-right: 2px solid white;
+      }
+      .slider-handle {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: 2px;
+          height: 100%;
+          background: white;
+          transform: translateX(-50%);
+          cursor: ew-resize;
+      }
+      .slider-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 40px;
+          height: 40px;
+          background: white;
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 0 10px rgba(0,0,0,0.3);
+          cursor: ew-resize;
+      }
+      .custom-checkbox {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+      }
+      .custom-checkbox input {
+          display: none;
+      }
+      .checkbox-icon {
+          width: 20px;
+          height: 20px;
+          border: 2px solid #d1d5db;
+          border-radius: 4px;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+      }
+      .custom-checkbox input:checked + .checkbox-icon {
+          background-color: #3b82f6;
+          border-color: #3b82f6;
+      }
+      .custom-checkbox input:checked + .checkbox-icon i {
+          color: white;
+          opacity: 1;
+      }
+      .checkbox-icon i {
+          opacity: 0;
+          transition: all 0.2s ease;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 w-full bg-white bg-opacity-95 z-50 shadow-sm"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#services"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >Services</a
+          >
+          <a
+            href="#portfolio"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >Portfolio</a
+          >
+          <a
+            href="#about"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >About</a
+          >
+          <a
+            href="#process"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >Process</a
+          >
+          <a
+            href="#testimonials"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >Testimonials</a
+          >
+          <a
+            href="#pricing"
+            class="text-gray-700 hover:text-primary font-medium transition"
+            >Pricing</a
+          >
+        </div>
+        <button
+          class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+        >
+          Contact Us
+        </button>
+        <div class="md:hidden w-10 h-10 flex items-center justify-center">
+          <i class="ri-menu-line ri-lg"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div
+        style="background-image: url('https://readdy.ai/api/search-image?query=cinematic%20photography%20scene%20with%20professional%20camera%20equipment%2C%20dramatic%20lighting%2C%20soft%20focus%20background%2C%20high-end%20production%20set%2C%20cinematic%20color%20grading%2C%20professional%20photography%20studio%20with%20lighting%20equipment%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=1920&height=1080&seq=1&orientation=landscape');"
+        class="absolute inset-0 bg-cover bg-center"
+      ></div>
+      <div class="hero-overlay"></div>
+      <div class="container mx-auto px-6 h-full flex items-center">
+        <div class="w-full max-w-3xl text-white">
+          <h1
+            class="hero-title text-5xl md:text-6xl font-bold mb-6 leading-tight"
+          >
+            Capturing Moments That Last Forever
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-2xl">
+            We create stunning visuals that tell your unique story through
+            expert photography and cinematic videography.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <button
+              class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap text-lg"
+            >
+              View Portfolio
+            </button>
+            <button
+              class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button font-medium hover:bg-white hover:text-gray-900 transition whitespace-nowrap text-lg"
+            >
+              Get a Quote
+            </button>
+          </div>
+          <div class="flex flex-wrap gap-6 mt-12">
+            <div
+              class="badge flex items-center bg-black bg-opacity-50 px-4 py-2 rounded-full"
+            >
+              <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-award-fill ri-lg text-yellow-400"></i>
+              </div>
+              <span>Award-Winning</span>
+            </div>
+            <div
+              class="badge flex items-center bg-black bg-opacity-50 px-4 py-2 rounded-full"
+            >
+              <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-4k-fill ri-lg text-yellow-400"></i>
+              </div>
+              <span>4K/8K Ready</span>
+            </div>
+            <div
+              class="badge flex items-center bg-black bg-opacity-50 px-4 py-2 rounded-full"
+            >
+              <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-drone-fill ri-lg text-yellow-400"></i>
+              </div>
+              <span>Drone Certified</span>
+            </div>
+            <div
+              class="badge flex items-center bg-black bg-opacity-50 px-4 py-2 rounded-full"
+            >
+              <div class="w-8 h-8 flex items-center justify-center mr-2">
+                <i class="ri-time-fill ri-lg text-yellow-400"></i>
+              </div>
+              <span>24-Hr Delivery Available</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Explore our comprehensive range of professional photography and
+            videography services tailored to your specific needs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Service 1 -->
+          <div
+            class="service-card bg-white rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=elegant%20wedding%20photography%2C%20bride%20and%20groom%20in%20romantic%20setting%2C%20soft%20natural%20lighting%2C%20emotional%20moment%2C%20professional%20wedding%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=400&seq=2&orientation=landscape"
+                alt="Wedding Photography"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-6 text-white">
+                <h3 class="text-2xl font-bold mb-2">
+                  Wedding Photography & Videography
+                </h3>
+                <p class="opacity-90">
+                  Capturing your special day with elegance and emotion
+                </p>
+              </div>
+            </div>
+            <div class="p-6 service-info">
+              <div class="mb-4">
+                <span
+                  class="inline-block bg-blue-100 text-primary px-3 py-1 rounded-full text-sm font-medium"
+                  >Starting at $2,499</span
+                >
+              </div>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>8 hours of coverage</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Engagement session included</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Cinematic highlight film</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Online gallery with digital downloads</span>
+                </li>
+              </ul>
+              <button
+                class="mt-6 bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap w-full"
+              >
+                Learn More
+              </button>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="service-card bg-white rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20commercial%20product%20photography%2C%20sleek%20modern%20product%20on%20minimalist%20background%2C%20perfect%20lighting%2C%20advertising%20quality%2C%20commercial%20photography%20studio%20setup%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=400&seq=3&orientation=landscape"
+                alt="Commercial Photography"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-6 text-white">
+                <h3 class="text-2xl font-bold mb-2">
+                  Commercial Photography & Videography
+                </h3>
+                <p class="opacity-90">
+                  Elevate your brand with professional visual content
+                </p>
+              </div>
+            </div>
+            <div class="p-6 service-info">
+              <div class="mb-4">
+                <span
+                  class="inline-block bg-blue-100 text-primary px-3 py-1 rounded-full text-sm font-medium"
+                  >Starting at $1,799</span
+                >
+              </div>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Product photography</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Brand storytelling videos</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Social media content packages</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Commercial usage rights included</span>
+                </li>
+              </ul>
+              <button
+                class="mt-6 bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap w-full"
+              >
+                Learn More
+              </button>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="service-card bg-white rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=luxury%20real%20estate%20photography%2C%20modern%20architectural%20interior%2C%20perfect%20lighting%2C%20wide%20angle%20view%2C%20professional%20real%20estate%20photography%2C%20high-end%20property%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=400&seq=4&orientation=landscape"
+                alt="Real Estate Photography"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-6 text-white">
+                <h3 class="text-2xl font-bold mb-2">
+                  Real Estate Photography & Tours
+                </h3>
+                <p class="opacity-90">
+                  Showcase properties with stunning visuals
+                </p>
+              </div>
+            </div>
+            <div class="p-6 service-info">
+              <div class="mb-4">
+                <span
+                  class="inline-block bg-blue-100 text-primary px-3 py-1 rounded-full text-sm font-medium"
+                  >Starting at $399</span
+                >
+              </div>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>HDR photography package</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Aerial drone footage</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>360° virtual tours</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Floor plans and property videos</span>
+                </li>
+              </ul>
+              <button
+                class="mt-6 bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap w-full"
+              >
+                Learn More
+              </button>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div
+            class="service-card bg-white rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20event%20photography%2C%20corporate%20event%20with%20people%20networking%2C%20perfect%20lighting%2C%20candid%20moments%2C%20professional%20event%20coverage%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=400&seq=5&orientation=landscape"
+                alt="Event Photography"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-6 text-white">
+                <h3 class="text-2xl font-bold mb-2">
+                  Event Photography & Coverage
+                </h3>
+                <p class="opacity-90">
+                  Document your special occasions with style
+                </p>
+              </div>
+            </div>
+            <div class="p-6 service-info">
+              <div class="mb-4">
+                <span
+                  class="inline-block bg-blue-100 text-primary px-3 py-1 rounded-full text-sm font-medium"
+                  >Starting at $899</span
+                >
+              </div>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Corporate events & conferences</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Parties & celebrations</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Live event streaming</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span>Same-day photo delivery option</span>
+                </li>
+              </ul>
+              <button
+                class="mt-6 bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap w-full"
+              >
+                Learn More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Our Portfolio</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Browse through our collection of professional photography and
+            videography work.
+          </p>
+        </div>
+
+        <div class="flex justify-center mb-10">
+          <div class="inline-flex bg-gray-100 p-1 rounded-full">
+            <button
+              class="px-6 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap"
+            >
+              All Work
+            </button>
+            <button
+              class="px-6 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap"
+            >
+              Photography
+            </button>
+            <button
+              class="px-6 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap"
+            >
+              Videography
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Portfolio Item 1 -->
+          <div class="portfolio-item rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=elegant%20wedding%20photography%2C%20bride%20and%20groom%20in%20romantic%20setting%20with%20soft%20natural%20lighting%2C%20emotional%20moment%2C%20professional%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=600&seq=6&orientation=squarish"
+              alt="Wedding Photography"
+              class="w-full h-80 object-cover object-top"
+            />
+            <div class="portfolio-overlay p-6 text-white text-center">
+              <h3 class="text-xl font-bold mb-2">Elegant Wedding</h3>
+              <p class="mb-4">Wedding Photography</p>
+              <button
+                class="bg-white text-gray-900 px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+              >
+                View Project
+              </button>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 2 -->
+          <div class="portfolio-item rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=commercial%20product%20photography%2C%20luxury%20watch%20on%20minimalist%20background%2C%20perfect%20studio%20lighting%2C%20advertising%20quality%2C%20commercial%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=600&seq=7&orientation=squarish"
+              alt="Product Photography"
+              class="w-full h-80 object-cover object-top"
+            />
+            <div class="portfolio-overlay p-6 text-white text-center">
+              <h3 class="text-xl font-bold mb-2">Luxury Timepieces</h3>
+              <p class="mb-4">Product Photography</p>
+              <button
+                class="bg-white text-gray-900 px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+              >
+                View Project
+              </button>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 3 -->
+          <div class="portfolio-item rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=aerial%20drone%20photography%2C%20beautiful%20landscape%20with%20mountains%20and%20lake%2C%20golden%20hour%20lighting%2C%20cinematic%20drone%20shot%2C%20professional%20landscape%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=600&seq=8&orientation=squarish"
+              alt="Drone Photography"
+              class="w-full h-80 object-cover object-top"
+            />
+            <div class="portfolio-overlay p-6 text-white text-center">
+              <h3 class="text-xl font-bold mb-2">Mountain Vista</h3>
+              <p class="mb-4">Drone Photography</p>
+              <button
+                class="bg-white text-gray-900 px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+              >
+                View Project
+              </button>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 4 -->
+          <div class="portfolio-item rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=cinematic%20wedding%20videography%2C%20emotional%20wedding%20ceremony%20scene%2C%20perfect%20lighting%2C%20cinematic%20color%20grading%2C%20professional%20videography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=600&seq=9&orientation=squarish"
+              alt="Wedding Videography"
+              class="w-full h-80 object-cover object-top"
+            />
+            <div class="portfolio-overlay p-6 text-white text-center">
+              <h3 class="text-xl font-bold mb-2">Sarah & Michael</h3>
+              <p class="mb-4">Wedding Videography</p>
+              <button
+                class="bg-white text-gray-900 px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+              >
+                View Project
+              </button>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 5 -->
+          <div class="portfolio-item rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=luxury%20real%20estate%20photography%2C%20modern%20architectural%20interior%2C%20perfect%20lighting%2C%20wide%20angle%20view%2C%20professional%20real%20estate%20photography%2C%20high-end%20property%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=600&seq=10&orientation=squarish"
+              alt="Real Estate Photography"
+              class="w-full h-80 object-cover object-top"
+            />
+            <div class="portfolio-overlay p-6 text-white text-center">
+              <h3 class="text-xl font-bold mb-2">Lakeside Mansion</h3>
+              <p class="mb-4">Real Estate Photography</p>
+              <button
+                class="bg-white text-gray-900 px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+              >
+                View Project
+              </button>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 6 -->
+          <div class="portfolio-item rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=commercial%20advertising%20videography%2C%20professional%20product%20commercial%20scene%2C%20perfect%20lighting%2C%20cinematic%20color%20grading%2C%20professional%20videography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=600&height=600&seq=11&orientation=squarish"
+              alt="Commercial Videography"
+              class="w-full h-80 object-cover object-top"
+            />
+            <div class="portfolio-overlay p-6 text-white text-center">
+              <h3 class="text-xl font-bold mb-2">Luxury Brand Campaign</h3>
+              <p class="mb-4">Commercial Videography</p>
+              <button
+                class="bg-white text-gray-900 px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+              >
+                View Project
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <button
+            class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+          >
+            View All Projects
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="about" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Why Choose Us</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We deliver exceptional quality and service that sets us apart from
+            the competition.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- USP 1 -->
+          <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center mx-auto mb-6 bg-blue-100 text-primary rounded-full"
+            >
+              <i class="ri-palette-fill ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">
+              Cinematic Color Grading Included
+            </h3>
+            <p class="text-gray-600">
+              Every photo and video receives our signature color treatment that
+              enhances mood and creates a cinematic feel that stands out.
+            </p>
+          </div>
+
+          <!-- USP 2 -->
+          <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center mx-auto mb-6 bg-blue-100 text-primary rounded-full"
+            >
+              <i class="ri-file-list-3-fill ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">RAW Files Delivered</h3>
+            <p class="text-gray-600">
+              Unlike many studios, we provide you with the original RAW files,
+              giving you complete ownership of your memories and content.
+            </p>
+          </div>
+
+          <!-- USP 3 -->
+          <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center mx-auto mb-6 bg-blue-100 text-primary rounded-full"
+            >
+              <i class="ri-time-fill ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Same-Day Sneak Peeks</h3>
+            <p class="text-gray-600">
+              Don't wait weeks to see your photos. We provide same-day previews
+              so you can share your special moments immediately.
+            </p>
+          </div>
+        </div>
+
+        <!-- Equipment Showcase -->
+        <div class="mt-20">
+          <h3 class="text-2xl font-bold mb-8 text-center">
+            Professional Equipment We Use
+          </h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div
+              class="equipment-item bg-white p-6 rounded-lg shadow-md text-center"
+            >
+              <img
+                src="https://readdy.ai/api/search-image?query=Sony%20A7IV%20professional%20camera%20on%20white%20background%2C%20product%20photography%2C%20clean%20background%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=300&height=300&seq=12&orientation=squarish"
+                alt="Sony A7IV"
+                class="w-full h-40 object-contain mb-4"
+              />
+              <h4 class="font-bold">Sony A7IV</h4>
+              <p class="text-sm text-gray-600">Full-frame Mirrorless</p>
+            </div>
+            <div
+              class="equipment-item bg-white p-6 rounded-lg shadow-md text-center"
+            >
+              <img
+                src="https://readdy.ai/api/search-image?query=DJI%20Ronin%20gimbal%20stabilizer%20on%20white%20background%2C%20product%20photography%2C%20clean%20background%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=300&height=300&seq=13&orientation=squarish"
+                alt="DJI Ronin"
+                class="w-full h-40 object-contain mb-4"
+              />
+              <h4 class="font-bold">DJI Ronin</h4>
+              <p class="text-sm text-gray-600">Professional Stabilizer</p>
+            </div>
+            <div
+              class="equipment-item bg-white p-6 rounded-lg shadow-md text-center"
+            >
+              <img
+                src="https://readdy.ai/api/search-image?query=DJI%20Mavic%203%20Pro%20drone%20on%20white%20background%2C%20product%20photography%2C%20clean%20background%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=300&height=300&seq=14&orientation=squarish"
+                alt="DJI Mavic 3 Pro"
+                class="w-full h-40 object-contain mb-4"
+              />
+              <h4 class="font-bold">DJI Mavic 3 Pro</h4>
+              <p class="text-sm text-gray-600">4K Aerial Drone</p>
+            </div>
+            <div
+              class="equipment-item bg-white p-6 rounded-lg shadow-md text-center"
+            >
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20lighting%20equipment%20on%20white%20background%2C%20studio%20lights%2C%20product%20photography%2C%20clean%20background%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=300&height=300&seq=15&orientation=squarish"
+                alt="Professional Lighting"
+                class="w-full h-40 object-contain mb-4"
+              />
+              <h4 class="font-bold">Profoto B10</h4>
+              <p class="text-sm text-gray-600">Studio Lighting</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Timeline Section -->
+    <section id="process" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Our Process</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We follow a streamlined workflow to ensure an exceptional experience
+            from start to finish.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col md:flex-row justify-between items-start mb-16"
+        >
+          <div
+            class="timeline-item flex flex-col items-center mb-10 md:mb-0 w-full md:w-1/5"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full font-bold mb-4 z-10"
+            >
+              1
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-center">Consultation</h3>
+            <p class="text-gray-600 text-center">
+              We discuss your vision, requirements, and expectations.
+            </p>
+          </div>
+          <div
+            class="timeline-item flex flex-col items-center mb-10 md:mb-0 w-full md:w-1/5"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full font-bold mb-4 z-10"
+            >
+              2
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-center">Planning</h3>
+            <p class="text-gray-600 text-center">
+              We create a detailed shot list and production schedule.
+            </p>
+          </div>
+          <div
+            class="timeline-item flex flex-col items-center mb-10 md:mb-0 w-full md:w-1/5"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full font-bold mb-4 z-10"
+            >
+              3
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-center">Shoot Day</h3>
+            <p class="text-gray-600 text-center">
+              Our team captures your story with professional equipment.
+            </p>
+          </div>
+          <div
+            class="timeline-item flex flex-col items-center mb-10 md:mb-0 w-full md:w-1/5"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full font-bold mb-4 z-10"
+            >
+              4
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-center">Editing</h3>
+            <p class="text-gray-600 text-center">
+              We enhance your images with our signature editing style.
+            </p>
+          </div>
+          <div class="timeline-item flex flex-col items-center w-full md:w-1/5">
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full font-bold mb-4 z-10"
+            >
+              5
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-center">Delivery</h3>
+            <p class="text-gray-600 text-center">
+              You receive your finalized photos and videos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Client Proof Section -->
+        <div class="mt-20">
+          <h3 class="text-2xl font-bold mb-8 text-center">Our Editing Magic</h3>
+          <div class="max-w-3xl mx-auto">
+            <div
+              class="before-after-slider h-96 rounded-lg overflow-hidden relative"
+            >
+              <div
+                class="before-image w-full h-full"
+                style="background-image: url('https://readdy.ai/api/search-image?query=unedited%20raw%20photo%20of%20wedding%20couple%2C%20natural%20lighting%2C%20before%20professional%20editing%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=800&height=600&seq=16&orientation=landscape');"
+              ></div>
+              <div
+                class="after-image h-full"
+                style="background-image: url('https://readdy.ai/api/search-image?query=professionally%20edited%20wedding%20photo%20with%20cinematic%20color%20grading%2C%20perfect%20lighting%2C%20enhanced%20colors%2C%20professional%20editing%2C%20same%20composition%20as%20before%20image%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=800&height=600&seq=17&orientation=landscape');"
+              ></div>
+              <div class="slider-handle">
+                <div class="slider-button">
+                  <i class="ri-arrow-left-right-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-center">
+              <div class="flex items-center mr-8">
+                <div class="w-4 h-4 bg-gray-300 rounded-full mr-2"></div>
+                <span class="text-gray-700">Before</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-primary rounded-full mr-2"></div>
+                <span class="text-gray-700">After</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured In Section -->
+        <div class="mt-20">
+          <h3 class="text-lg font-medium text-gray-500 mb-8 text-center">
+            FEATURED IN
+          </h3>
+          <div class="flex flex-wrap justify-center items-center gap-10">
+            <div
+              class="w-32 h-12 flex items-center justify-center grayscale hover:grayscale-0 transition"
+            >
+              <i class="ri-vogue-fill ri-3x text-gray-400"></i>
+            </div>
+            <div
+              class="w-32 h-12 flex items-center justify-center grayscale hover:grayscale-0 transition"
+            >
+              <i class="ri-netflix-fill ri-3x text-gray-400"></i>
+            </div>
+            <div
+              class="w-32 h-12 flex items-center justify-center grayscale hover:grayscale-0 transition"
+            >
+              <i class="ri-behance-fill ri-3x text-gray-400"></i>
+            </div>
+            <div
+              class="w-32 h-12 flex items-center justify-center grayscale hover:grayscale-0 transition"
+            >
+              <i class="ri-dribbble-fill ri-3x text-gray-400"></i>
+            </div>
+            <div
+              class="w-32 h-12 flex items-center justify-center grayscale hover:grayscale-0 transition"
+            >
+              <i class="ri-pinterest-fill ri-3x text-gray-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Client Testimonials</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Don't just take our word for it. Here's what our clients have to say
+            about our services.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card bg-white p-8 rounded-lg shadow-lg">
+            <div class="flex items-center mb-6">
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20young%20woman%20with%20brown%20hair%2C%20smiling%2C%20clean%20background%2C%20professional%20portrait%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=100&height=100&seq=18&orientation=squarish"
+                alt="Emma Thompson"
+                class="w-16 h-16 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-bold">Emma Thompson</h4>
+                <p class="text-gray-600 text-sm">Wedding Client</p>
+              </div>
+            </div>
+            <div class="mb-4 flex">
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+            </div>
+            <p class="text-gray-700">
+              "Our wedding film made us relive the day all over again! The team
+              captured moments we didn't even know happened. The quality and
+              attention to detail exceeded our expectations."
+            </p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card bg-white p-8 rounded-lg shadow-lg">
+            <div class="flex items-center mb-6">
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20middle-aged%20man%20with%20glasses%2C%20smiling%2C%20clean%20background%2C%20professional%20portrait%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=100&height=100&seq=19&orientation=squarish"
+                alt="Daniel Roberts"
+                class="w-16 h-16 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-bold">Daniel Roberts</h4>
+                <p class="text-gray-600 text-sm">Business Owner</p>
+              </div>
+            </div>
+            <div class="mb-4 flex">
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+            </div>
+            <p class="text-gray-700">
+              "The product videos they created increased our online sales by
+              30%! Their team understood our brand vision perfectly and
+              delivered content that truly resonated with our audience."
+            </p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card bg-white p-8 rounded-lg shadow-lg">
+            <div class="flex items-center mb-6">
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20woman%20with%20blonde%20hair%2C%20smiling%2C%20clean%20background%2C%20professional%20portrait%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=100&height=100&seq=20&orientation=squarish"
+                alt="Sarah Johnson"
+                class="w-16 h-16 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-bold">Sarah Johnson</h4>
+                <p class="text-gray-600 text-sm">Real Estate Agent</p>
+              </div>
+            </div>
+            <div class="mb-4 flex">
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+              <i class="ri-star-fill text-yellow-400"></i>
+            </div>
+            <p class="text-gray-700">
+              "Their real estate photography helped me sell a luxury property in
+              just 5 days! The drone footage and virtual tour were absolutely
+              stunning and made my listing stand out."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Investment Guide</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Quality visual content is an investment in your memories or your
+            business. Our packages are designed to provide exceptional value.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Basic Package -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-gray-100 p-6">
+              <h3 class="text-2xl font-bold mb-2">Basic Package</h3>
+              <div class="text-3xl font-bold text-primary">
+                Starting at $999
+              </div>
+              <p class="text-gray-600 mt-2">
+                Perfect for small events and basic needs
+              </p>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-4 mb-6">
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">4 hours of coverage</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">1 photographer/videographer</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">100+ edited photos</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">Online gallery</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-gray-300"
+                  >
+                    <i class="ri-close-line"></i>
+                  </div>
+                  <span class="text-gray-400">Drone footage</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-gray-300"
+                  >
+                    <i class="ri-close-line"></i>
+                  </div>
+                  <span class="text-gray-400">Same-day delivery</span>
+                </li>
+              </ul>
+              <button
+                class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+              >
+                Choose Package
+              </button>
+            </div>
+          </div>
+
+          <!-- Premium Package -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform scale-105 border-2 border-primary"
+          >
+            <div class="bg-primary p-6 text-white">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-2xl font-bold">Premium Package</h3>
+                <span
+                  class="bg-white text-primary text-xs font-bold px-3 py-1 rounded-full"
+                  >POPULAR</span
+                >
+              </div>
+              <div class="text-3xl font-bold">Starting at $1,999</div>
+              <p class="mt-2 opacity-90">Our most popular option for events</p>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-4 mb-6">
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">8 hours of coverage</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700"
+                    >2 photographers/videographers</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">300+ edited photos</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">5-minute highlight video</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">Drone footage</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-gray-300"
+                  >
+                    <i class="ri-close-line"></i>
+                  </div>
+                  <span class="text-gray-400">Same-day delivery</span>
+                </li>
+              </ul>
+              <button
+                class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+              >
+                Choose Package
+              </button>
+            </div>
+          </div>
+
+          <!-- All-Day Package -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-gray-100 p-6">
+              <h3 class="text-2xl font-bold mb-2">All-Day Coverage</h3>
+              <div class="text-3xl font-bold text-primary">
+                Starting at $2,999
+              </div>
+              <p class="text-gray-600 mt-2">
+                Complete coverage for special events
+              </p>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-4 mb-6">
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">12+ hours of coverage</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700"
+                    >3 photographers/videographers</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">500+ edited photos</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">10-minute highlight video</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">Drone footage</span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">Same-day delivery</span>
+                </li>
+              </ul>
+              <button
+                class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+              >
+                Choose Package
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <p class="text-gray-600 mb-6">
+            Ask about our flexible payment plans and custom packages.
+          </p>
+          <button
+            class="bg-white border border-gray-300 text-gray-700 px-8 py-3 !rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap"
+          >
+            Request Custom Quote
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Availability Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="p-10">
+              <h2 class="text-3xl font-bold mb-6">Current Availability</h2>
+              <p class="text-gray-600 mb-8">
+                We're booking fast for 2025! Check our calendar and secure your
+                date before someone else does.
+              </p>
+              <div class="mb-8">
+                <div class="flex items-center mb-4">
+                  <div class="w-4 h-4 bg-red-500 rounded-full mr-2"></div>
+                  <span class="text-gray-700 font-medium"
+                    >2025 Weddings: Only 3 Dates Left</span
+                  >
+                </div>
+                <div class="flex items-center mb-4">
+                  <div class="w-4 h-4 bg-yellow-500 rounded-full mr-2"></div>
+                  <span class="text-gray-700 font-medium"
+                    >Commercial Projects: Limited Slots in June</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+                  <span class="text-gray-700 font-medium"
+                    >Real Estate: Good Availability</span
+                  >
+                </div>
+              </div>
+              <button
+                class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+              >
+                Book a Consultation
+              </button>
+            </div>
+            <div class="bg-gray-100 p-10">
+              <h3 class="text-xl font-bold mb-6">May 2025</h3>
+              <div class="grid grid-cols-7 gap-2 mb-4">
+                <div class="text-center text-gray-500 text-sm">Sun</div>
+                <div class="text-center text-gray-500 text-sm">Mon</div>
+                <div class="text-center text-gray-500 text-sm">Tue</div>
+                <div class="text-center text-gray-500 text-sm">Wed</div>
+                <div class="text-center text-gray-500 text-sm">Thu</div>
+                <div class="text-center text-gray-500 text-sm">Fri</div>
+                <div class="text-center text-gray-500 text-sm">Sat</div>
+              </div>
+              <div class="grid grid-cols-7 gap-2">
+                <div class="text-center py-2 text-gray-400">27</div>
+                <div class="text-center py-2 text-gray-400">28</div>
+                <div class="text-center py-2 text-gray-400">29</div>
+                <div class="text-center py-2 text-gray-400">30</div>
+                <div class="text-center py-2">1</div>
+                <div class="text-center py-2">2</div>
+                <div class="text-center py-2">3</div>
+                <div class="text-center py-2 bg-gray-200 rounded">4</div>
+                <div class="text-center py-2">5</div>
+                <div class="text-center py-2">6</div>
+                <div class="text-center py-2">7</div>
+                <div class="text-center py-2">8</div>
+                <div class="text-center py-2">9</div>
+                <div class="text-center py-2">10</div>
+                <div class="text-center py-2">11</div>
+                <div class="text-center py-2">12</div>
+                <div class="text-center py-2">13</div>
+                <div class="text-center py-2 bg-red-100 rounded">14</div>
+                <div class="text-center py-2">15</div>
+                <div class="text-center py-2">16</div>
+                <div class="text-center py-2">17</div>
+                <div class="text-center py-2">18</div>
+                <div class="text-center py-2 bg-red-100 rounded">19</div>
+                <div class="text-center py-2">20</div>
+                <div class="text-center py-2">21</div>
+                <div class="text-center py-2">22</div>
+                <div class="text-center py-2">23</div>
+                <div class="text-center py-2 bg-red-100 rounded">24</div>
+                <div class="text-center py-2">25</div>
+                <div class="text-center py-2">26</div>
+                <div class="text-center py-2">27</div>
+                <div class="text-center py-2">28</div>
+                <div class="text-center py-2">29</div>
+                <div class="text-center py-2">30</div>
+                <div class="text-center py-2">31</div>
+              </div>
+              <div class="mt-6 flex space-x-4">
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-gray-200 rounded mr-2"></div>
+                  <span class="text-sm text-gray-600">Today</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-red-100 rounded mr-2"></div>
+                  <span class="text-sm text-gray-600">Booked</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Find answers to our most commonly asked questions. If you don't see
+            what you're looking for, please contact us.
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="mb-6 border-b border-gray-200 pb-6">
+            <button
+              class="flex justify-between items-center w-full text-left focus:outline-none"
+            >
+              <h3 class="text-xl font-bold">How many photos will I receive?</h3>
+              <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-add-line ri-lg"></i>
+              </div>
+            </button>
+            <div class="mt-4">
+              <p class="text-gray-600">
+                The number of photos depends on your package, but typically our
+                clients receive between 100-500 professionally edited images. We
+                focus on quality over quantity, ensuring each photo tells part
+                of your story.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-6 border-b border-gray-200 pb-6">
+            <button
+              class="flex justify-between items-center w-full text-left focus:outline-none"
+            >
+              <h3 class="text-xl font-bold">Do you travel internationally?</h3>
+              <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-add-line ri-lg"></i>
+              </div>
+            </button>
+            <div class="hidden mt-4">
+              <p class="text-gray-600">
+                Yes, we love destination shoots! We've worked in over 20
+                countries and are passport-ready. Travel fees apply based on
+                location, but we offer special packages for international
+                clients.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-6 border-b border-gray-200 pb-6">
+            <button
+              class="flex justify-between items-center w-full text-left focus:outline-none"
+            >
+              <h3 class="text-xl font-bold">
+                How long does it take to receive the final photos?
+              </h3>
+              <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-add-line ri-lg"></i>
+              </div>
+            </button>
+            <div class="hidden mt-4">
+              <p class="text-gray-600">
+                For standard packages, you'll receive your photos within 2-3
+                weeks. We offer same-day sneak peeks for all clients, and our
+                premium packages include expedited delivery options as fast as
+                24-48 hours.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-6 border-b border-gray-200 pb-6">
+            <button
+              class="flex justify-between items-center w-full text-left focus:outline-none"
+            >
+              <h3 class="text-xl font-bold">What equipment do you use?</h3>
+              <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-add-line ri-lg"></i>
+              </div>
+            </button>
+            <div class="hidden mt-4">
+              <p class="text-gray-600">
+                We use professional-grade equipment including Sony mirrorless
+                cameras, cinema-quality lenses, DJI drones, gimbals, and
+                professional lighting. We always bring backup equipment to
+                ensure nothing is missed.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <button
+              class="flex justify-between items-center w-full text-left focus:outline-none"
+            >
+              <h3 class="text-xl font-bold">Do you offer payment plans?</h3>
+              <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-add-line ri-lg"></i>
+              </div>
+            </button>
+            <div class="hidden mt-4">
+              <p class="text-gray-600">
+                Yes! We understand that quality photography and videography is
+                an investment. We offer flexible payment plans with no interest.
+                Typically, we require a 30% booking deposit with the remainder
+                split into monthly payments.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-gray-900 text-white">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-4xl font-bold mb-6">
+              Let's Create Something Amazing Together
+            </h2>
+            <p class="text-gray-300 mb-8">
+              Ready to capture your special moments or elevate your brand with
+              professional visuals? Get in touch with us today.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 flex items-center justify-center mr-4 bg-primary bg-opacity-20 rounded-full text-primary"
+                >
+                  <i class="ri-map-pin-line ri-lg"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold mb-1">Studio Location</h3>
+                  <p class="text-gray-300">
+                    123 Creative Ave, Suite 101<br />San Francisco, CA 94107
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 flex items-center justify-center mr-4 bg-primary bg-opacity-20 rounded-full text-primary"
+                >
+                  <i class="ri-mail-line ri-lg"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold mb-1">Email Us</h3>
+                  <p class="text-gray-300">hello@capturestudio.com</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 flex items-center justify-center mr-4 bg-primary bg-opacity-20 rounded-full text-primary"
+                >
+                  <i class="ri-phone-line ri-lg"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold mb-1">Call Us</h3>
+                  <p class="text-gray-300">(415) 555-0123</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-10 flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-instagram-line ri-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-facebook-fill ri-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-youtube-fill ri-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-pinterest-fill ri-lg"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <form class="bg-white p-8 rounded-lg">
+              <h3 class="text-2xl font-bold mb-6 text-gray-900">
+                Send Us a Message
+              </h3>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-2" for="name"
+                  >Your Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900"
+                  placeholder="John Smith"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-2" for="email"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900"
+                  placeholder="john@example.com"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block text-gray-700 font-medium mb-2"
+                  for="service"
+                  >Service Interested In</label
+                >
+                <div class="relative">
+                  <select
+                    id="service"
+                    class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900 appearance-none pr-8"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="wedding">
+                      Wedding Photography & Videography
+                    </option>
+                    <option value="commercial">
+                      Commercial Photography & Videography
+                    </option>
+                    <option value="real-estate">
+                      Real Estate Photography & Tours
+                    </option>
+                    <option value="event">Event Photography & Coverage</option>
+                  </select>
+                  <div
+                    class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
+                  >
+                    <i class="ri-arrow-down-s-line ri-lg text-gray-500"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-6">
+                <label
+                  class="block text-gray-700 font-medium mb-2"
+                  for="message"
+                  >Your Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="4"
+                  class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900"
+                  placeholder="Tell us about your project..."
+                ></textarea>
+              </div>
+              <div class="mb-6">
+                <label class="custom-checkbox">
+                  <input type="checkbox" name="newsletter" />
+                  <div class="checkbox-icon">
+                    <i class="ri-check-line ri-sm"></i>
+                  </div>
+                  <span class="text-gray-700"
+                    >Subscribe to our newsletter for tips and special
+                    offers</span
+                  >
+                </label>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-10">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div>
+            <a href="#" class="text-3xl font-['Pacifico'] text-white mb-6 block"
+              >logo</a
+            >
+            <p class="text-gray-400 mb-6">
+              Capturing moments that last forever through professional
+              photography and videography services.
+            </p>
+            <div class="flex items-center">
+              <div class="mr-2">
+                <i class="ri-award-fill text-yellow-400"></i>
+              </div>
+              <span class="text-gray-300 text-sm"
+                >Voted Best Wedding Photographer 2024</span
+              >
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  class="text-gray-400 hover:text-white transition"
+                  >Portfolio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#pricing"
+                  class="text-gray-400 hover:text-white transition"
+                  >Pricing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-6">Services</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Wedding Photography</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Commercial Photography</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Real Estate Photography</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Event Coverage</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Drone Services</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Video Production</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-6">Instagram</h4>
+            <div class="grid grid-cols-3 gap-2">
+              <a href="#" class="block aspect-square overflow-hidden rounded">
+                <img
+                  src="https://readdy.ai/api/search-image?query=elegant%20wedding%20photography%2C%20bride%20and%20groom%2C%20professional%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=100&height=100&seq=21&orientation=squarish"
+                  alt="Instagram Post"
+                  class="w-full h-full object-cover"
+                />
+              </a>
+              <a href="#" class="block aspect-square overflow-hidden rounded">
+                <img
+                  src="https://readdy.ai/api/search-image?query=commercial%20product%20photography%2C%20luxury%20product%2C%20professional%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=100&height=100&seq=22&orientation=squarish"
+                  alt="Instagram Post"
+                  class="w-full h-full object-cover"
+                />
+              </a>
+              <a href="#" class="block aspect-square overflow-hidden rounded">
+                <img
+                  src="https://readdy.ai/api/search-image?query=real%20estate%20photography%2C%20luxury%20interior%2C%20professional%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=100&height=100&seq=23&orientation=squarish"
+                  alt="Instagram Post"
+                  class="w-full h-full object-cover"
+                />
+              </a>
+              <a href="#" class="block aspect-square overflow-hidden rounded">
+                <img
+                  src="https://readdy.ai/api/search-image?query=event%20photography%2C%20corporate%20event%2C%20professional%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=100&height=100&seq=24&orientation=squarish"
+                  alt="Instagram Post"
+                  class="w-full h-full object-cover"
+                />
+              </a>
+              <a href="#" class="block aspect-square overflow-hidden rounded">
+                <img
+                  src="https://readdy.ai/api/search-image?query=drone%20photography%2C%20aerial%20landscape%2C%20professional%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=100&height=100&seq=25&orientation=squarish"
+                  alt="Instagram Post"
+                  class="w-full h-full object-cover"
+                />
+              </a>
+              <a href="#" class="block aspect-square overflow-hidden rounded">
+                <img
+                  src="https://readdy.ai/api/search-image?query=portrait%20photography%2C%20professional%20headshot%2C%20professional%20photography%2C%20high%20resolution%2C%20photorealistic%2C%20extremely%20detailed&width=100&height=100&seq=26&orientation=squarish"
+                  alt="Instagram Post"
+                  class="w-full h-full object-cover"
+                />
+              </a>
+            </div>
+            <a
+              href="#"
+              class="text-primary hover:text-blue-400 mt-4 inline-block"
+              >Follow us on Instagram</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-500 text-sm mb-4 md:mb-0">
+            &copy; 2025 Capture Studio. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <div class="flex items-center">
+              <i class="ri-visa-fill ri-lg text-gray-400 mr-2"></i>
+              <i class="ri-mastercard-fill ri-lg text-gray-400 mr-2"></i>
+              <i class="ri-paypal-fill ri-lg text-gray-400 mr-2"></i>
+              <i class="ri-apple-fill ri-lg text-gray-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Before-After Slider
+        const slider = document.querySelector(".before-after-slider");
+        if (slider) {
+          const sliderHandle = slider.querySelector(".slider-handle");
+          const afterImage = slider.querySelector(".after-image");
+
+          function updateSlider(e) {
+            let position;
+
+            if (e.type === "mousemove" || e.type === "mousedown") {
+              position =
+                (e.clientX - slider.getBoundingClientRect().left) /
+                slider.offsetWidth;
+            } else if (e.type === "touchmove" || e.type === "touchstart") {
+              position =
+                (e.touches[0].clientX - slider.getBoundingClientRect().left) /
+                slider.offsetWidth;
+            }
+
+            position = Math.max(0, Math.min(1, position));
+
+            afterImage.style.width = position * 100 + "%";
+            sliderHandle.style.left = position * 100 + "%";
+          }
+
+          function startDrag(e) {
+            e.preventDefault();
+            updateSlider(e);
+
+            if (e.type === "mousedown") {
+              document.addEventListener("mousemove", updateSlider);
+              document.addEventListener("mouseup", stopDrag);
+            } else if (e.type === "touchstart") {
+              document.addEventListener("touchmove", updateSlider);
+              document.addEventListener("touchend", stopDrag);
+            }
+          }
+
+          function stopDrag() {
+            document.removeEventListener("mousemove", updateSlider);
+            document.removeEventListener("mouseup", stopDrag);
+            document.removeEventListener("touchmove", updateSlider);
+            document.removeEventListener("touchend", stopDrag);
+          }
+
+          sliderHandle.addEventListener("mousedown", startDrag);
+          sliderHandle.addEventListener("touchstart", startDrag);
+        }
+
+        // FAQ Accordion
+        const faqButtons = document.querySelectorAll(".faq button");
+        faqButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector("i");
+
+            if (content.classList.contains("hidden")) {
+              content.classList.remove("hidden");
+              icon.classList.remove("ri-add-line");
+              icon.classList.add("ri-subtract-line");
+            } else {
+              content.classList.add("hidden");
+              icon.classList.remove("ri-subtract-line");
+              icon.classList.add("ri-add-line");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

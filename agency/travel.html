@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wanderlust Travel Agency</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#10b981" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Poppins', sans-serif;
+          scroll-behavior: smooth;
+      }
+      .video-container {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: 100vh;
+      }
+      .video-container::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 1;
+      }
+      .video-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+      .hero-content {
+          position: relative;
+          z-index: 2;
+      }
+      .custom-checkbox {
+          appearance: none;
+          -webkit-appearance: none;
+          width: 1.25rem;
+          height: 1.25rem;
+          border: 2px solid #e5e7eb;
+          border-radius: 4px;
+          outline: none;
+          cursor: pointer;
+          position: relative;
+      }
+      .custom-checkbox:checked {
+          background-color: #3b82f6;
+          border-color: #3b82f6;
+      }
+      .custom-checkbox:checked::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 0.5rem;
+          height: 0.5rem;
+          border-radius: 1px;
+          background-color: white;
+      }
+      .map-container {
+          position: relative;
+          width: 100%;
+          height: 500px;
+          background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+      }
+      .destination-marker {
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+      }
+      .destination-marker:hover {
+          transform: scale(1.2);
+      }
+      .trending {
+          background-color: rgba(239, 68, 68, 0.8);
+      }
+      .hidden-gem {
+          background-color: rgba(16, 185, 129, 0.8);
+      }
+      .destination-info {
+          position: absolute;
+          width: 200px;
+          background-color: white;
+          border-radius: 8px;
+          padding: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease, visibility 0.3s ease;
+          z-index: 10;
+      }
+      .destination-marker:hover .destination-info {
+          opacity: 1;
+          visibility: visible;
+      }
+      .accordion-item {
+          border-bottom: 1px solid #e5e7eb;
+      }
+      .accordion-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+      }
+      .accordion-content.active {
+          max-height: 500px;
+      }
+      .countdown-timer {
+          display: flex;
+          gap: 12px;
+          justify-content: center;
+      }
+      .countdown-box {
+          background-color: #3b82f6;
+          color: white;
+          width: 60px;
+          height: 60px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+      }
+      .ticker-container {
+          overflow: hidden;
+          white-space: nowrap;
+          width: 100%;
+      }
+      .ticker-content {
+          display: inline-block;
+          animation: ticker 20s linear infinite;
+          padding-right: 100%;
+      }
+      @keyframes ticker {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-100%); }
+      }
+      .sticky-chat {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          z-index: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Navigation -->
+    <header
+      class="fixed top-0 left-0 w-full bg-white bg-opacity-95 shadow-sm z-50"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary">logo</a>
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="#destinations"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Destinations</a
+          >
+          <a
+            href="#packages"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Packages</a
+          >
+          <a href="#about" class="text-gray-700 hover:text-primary font-medium"
+            >About Us</a
+          >
+          <a
+            href="#testimonials"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Testimonials</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-700 hover:text-primary font-medium"
+            >Contact</a
+          >
+        </nav>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="hidden md:block text-gray-700 hover:text-primary">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-search-line ri-lg"></i>
+            </div>
+          </a>
+          <a href="#" class="hidden md:block text-gray-700 hover:text-primary">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-user-line ri-lg"></i>
+            </div>
+          </a>
+          <button class="md:hidden text-gray-700" id="mobile-menu-button">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-menu-line ri-lg"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white w-full border-t">
+        <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+          <a
+            href="#destinations"
+            class="text-gray-700 py-2 border-b border-gray-100"
+            >Destinations</a
+          >
+          <a
+            href="#packages"
+            class="text-gray-700 py-2 border-b border-gray-100"
+            >Packages</a
+          >
+          <a href="#about" class="text-gray-700 py-2 border-b border-gray-100"
+            >About Us</a
+          >
+          <a
+            href="#testimonials"
+            class="text-gray-700 py-2 border-b border-gray-100"
+            >Testimonials</a
+          >
+          <a href="#contact" class="text-gray-700 py-2">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section with Video Background -->
+    <section class="video-container">
+      <div
+        style="background-image: url('https://readdy.ai/api/search-image?query=cinematic%20travel%20montage%20showing%20beautiful%20destinations%20with%20beaches%2C%20mountains%2C%20cities%2C%20and%20adventure%20activities%2C%20professional%20videography%2C%20high-quality%20footage%2C%20vibrant%20colors%2C%20diverse%20landscapes%2C%20inspiring%20travel%20scenes%2C%20perfect%20for%20travel%20agency%20website%20hero%20background&width=1920&height=1080&seq=1&orientation=landscape');"
+        class="video-bg"
+      ></div>
+      <div
+        class="hero-content h-full flex flex-col justify-center items-center text-white text-center px-4"
+      >
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 max-w-4xl">
+          Your Dream Vacation, Expertly Crafted
+        </h1>
+        <p class="text-xl md:text-2xl mb-10 max-w-2xl">
+          Discover extraordinary destinations with personalized itineraries
+          tailored to your travel style
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="#packages"
+            class="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-button font-semibold text-lg transition duration-300 whitespace-nowrap"
+            >Explore Packages</a
+          >
+          <a
+            href="#contact"
+            class="bg-white hover:bg-gray-100 text-gray-800 px-8 py-4 rounded-button font-semibold text-lg transition duration-300 whitespace-nowrap"
+            >Get a Free Consultation</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="bg-white py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col items-center text-center"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-user-heart-line ri-3x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">
+              10,000+ Satisfied Travelers
+            </h3>
+            <p class="text-gray-600">Join our community of happy explorers</p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col items-center text-center"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-award-line ri-3x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">AAA Accredited</h3>
+            <p class="text-gray-600">
+              Highest industry standards and certifications
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col items-center text-center"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-customer-service-2-line ri-3x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">24/7 Emergency Support</h3>
+            <p class="text-gray-600">We're always there when you need us</p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col items-center text-center"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-price-tag-3-line ri-3x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Best Price Guarantee</h3>
+            <p class="text-gray-600">
+              We'll match or beat any comparable offer
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specialty Icons -->
+    <section class="bg-gray-50 py-12">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-10">
+          Find Your Perfect Trip
+        </h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <button
+            class="flex items-center gap-2 bg-white hover:bg-gray-50 px-6 py-3 rounded-full shadow-sm border border-gray-200 transition duration-300 whitespace-nowrap"
+          >
+            <span class="text-xl">✈️</span>
+            <span class="font-medium">Luxury</span>
+          </button>
+          <button
+            class="flex items-center gap-2 bg-white hover:bg-gray-50 px-6 py-3 rounded-full shadow-sm border border-gray-200 transition duration-300 whitespace-nowrap"
+          >
+            <span class="text-xl">🌴</span>
+            <span class="font-medium">All-Inclusive</span>
+          </button>
+          <button
+            class="flex items-center gap-2 bg-white hover:bg-gray-50 px-6 py-3 rounded-full shadow-sm border border-gray-200 transition duration-300 whitespace-nowrap"
+          >
+            <span class="text-xl">🗺️</span>
+            <span class="font-medium">Custom Tours</span>
+          </button>
+          <button
+            class="flex items-center gap-2 bg-white hover:bg-gray-50 px-6 py-3 rounded-full shadow-sm border border-gray-200 transition duration-300 whitespace-nowrap"
+          >
+            <span class="text-xl">💑</span>
+            <span class="font-medium">Honeymoons</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Destinations (Interactive Map) -->
+    <section id="destinations" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Featured Destinations</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Explore our handpicked destinations around the world
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+          <div class="flex items-center gap-2">
+            <span class="w-4 h-4 bg-red-500 rounded-full"></span>
+            <span class="text-gray-700">Trending Now</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+            <span class="text-gray-700">Hidden Gems</span>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <!-- Bali Marker -->
+          <div class="destination-marker trending" style="top: 60%; left: 75%;">
+            <div class="destination-info -translate-y-full -translate-x-1/2">
+              <h4 class="font-semibold mb-1">Bali, Indonesia</h4>
+              <p class="text-sm text-gray-600 mb-1">Starting from $1,299</p>
+              <p class="text-xs text-gray-500">
+                Best time to visit: May-September
+              </p>
+            </div>
+          </div>
+
+          <!-- Iceland Marker -->
+          <div class="destination-marker trending" style="top: 20%; left: 40%;">
+            <div class="destination-info -translate-y-full -translate-x-1/2">
+              <h4 class="font-semibold mb-1">Iceland</h4>
+              <p class="text-sm text-gray-600 mb-1">Starting from $2,199</p>
+              <p class="text-xs text-gray-500">
+                Best time to visit: June-August
+              </p>
+            </div>
+          </div>
+
+          <!-- Georgia Marker -->
+          <div
+            class="destination-marker hidden-gem"
+            style="top: 35%; left: 58%;"
+          >
+            <div class="destination-info -translate-y-full -translate-x-1/2">
+              <h4 class="font-semibold mb-1">Georgia</h4>
+              <p class="text-sm text-gray-600 mb-1">Starting from $1,499</p>
+              <p class="text-xs text-gray-500">
+                Best time to visit: May-October
+              </p>
+            </div>
+          </div>
+
+          <!-- Oman Marker -->
+          <div
+            class="destination-marker hidden-gem"
+            style="top: 45%; left: 62%;"
+          >
+            <div class="destination-info -translate-y-full -translate-x-1/2">
+              <h4 class="font-semibold mb-1">Oman</h4>
+              <p class="text-sm text-gray-600 mb-1">Starting from $1,799</p>
+              <p class="text-xs text-gray-500">
+                Best time to visit: October-April
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Book With Us -->
+    <section id="about" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Why Book With Us</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We create unforgettable experiences tailored to your travel style
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+            <div
+              class="w-14 h-14 flex items-center justify-center text-primary mb-4 bg-blue-50 rounded-full"
+            >
+              <i class="ri-map-pin-user-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">
+              Local Guides in Every Destination
+            </h3>
+            <p class="text-gray-600">
+              Our expert local guides provide authentic experiences and insider
+              knowledge you won't find anywhere else.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+            <div
+              class="w-14 h-14 flex items-center justify-center text-primary mb-4 bg-blue-50 rounded-full"
+            >
+              <i class="ri-compass-discover-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Skip the Tourist Traps</h3>
+            <p class="text-gray-600">
+              We curate authentic experiences beyond the guidebooks, connecting
+              you with local culture and hidden gems.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+            <div
+              class="w-14 h-14 flex items-center justify-center text-primary mb-4 bg-blue-50 rounded-full"
+            >
+              <i class="ri-stack-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">
+              Flight/Hotel/Rental Car Bundles
+            </h3>
+            <p class="text-gray-600">
+              Save time and money with our comprehensive travel packages that
+              handle all the details for you.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample Itinerary Carousel -->
+    <section id="packages" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Featured Itineraries</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Expertly crafted travel experiences for every type of adventurer
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="itinerary-carousel overflow-hidden">
+            <div
+              class="flex transition-transform duration-500"
+              id="carousel-container"
+            >
+              <!-- Greek Islands Itinerary -->
+              <div class="w-full flex-shrink-0">
+                <div
+                  class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+                >
+                  <div class="relative h-64 md:h-80">
+                    <img
+                      src="https://readdy.ai/api/search-image?query=stunning%20panoramic%20view%20of%20Santorini%2C%20Greece%20with%20white%20buildings%20and%20blue%20domed%20churches%20overlooking%20the%20Aegean%20Sea%2C%20beautiful%20sunset%2C%20crystal%20clear%20water%2C%20picturesque%20Greek%20island%20landscape%2C%20professional%20travel%20photography&width=800&height=400&seq=2&orientation=landscape"
+                      alt="Greek Islands"
+                      class="w-full h-full object-cover object-top"
+                    />
+                    <div
+                      class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6"
+                    >
+                      <h3 class="text-2xl font-bold text-white">
+                        7-Day Greek Islands Tour
+                      </h3>
+                      <p class="text-white text-opacity-90">
+                        Athens • Mykonos • Santorini
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                      <div>
+                        <span class="text-sm text-gray-500">Starting from</span>
+                        <p class="text-2xl font-bold text-primary">$2,499</p>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="flex text-yellow-400">
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="ml-1 text-sm text-gray-600"
+                          >4.8 (124 reviews)</span
+                        >
+                      </div>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                      <div class="flex items-start">
+                        <div
+                          class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-3"
+                        >
+                          1
+                        </div>
+                        <div>
+                          <h4 class="font-medium">Day 1: Athens</h4>
+                          <p class="text-sm text-gray-600">
+                            Acropolis tour and welcome dinner in Plaka
+                          </p>
+                        </div>
+                      </div>
+                      <div class="flex items-start">
+                        <div
+                          class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-3"
+                        >
+                          2
+                        </div>
+                        <div>
+                          <h4 class="font-medium">Days 2-4: Mykonos</h4>
+                          <p class="text-sm text-gray-600">
+                            Beach relaxation and vibrant nightlife
+                          </p>
+                        </div>
+                      </div>
+                      <div class="flex items-start">
+                        <div
+                          class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-3"
+                        >
+                          3
+                        </div>
+                        <div>
+                          <h4 class="font-medium">Days 5-7: Santorini</h4>
+                          <p class="text-sm text-gray-600">
+                            Caldera views and sunset in Oia
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                      <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                          <i class="ri-calendar-line text-gray-500"></i>
+                        </div>
+                        <span class="text-sm text-gray-600"
+                          >May - September</span
+                        >
+                      </div>
+                      <a
+                        href="#"
+                        class="bg-primary hover:bg-blue-600 text-white px-6 py-2 rounded-button font-medium transition duration-300 whitespace-nowrap"
+                        >View Details</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Japan Itinerary -->
+              <div class="w-full flex-shrink-0">
+                <div
+                  class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+                >
+                  <div class="relative h-64 md:h-80">
+                    <img
+                      src="https://readdy.ai/api/search-image?query=beautiful%20view%20of%20Tokyo%20skyline%20with%20Mount%20Fuji%20in%20background%2C%20cherry%20blossoms%20in%20foreground%2C%20traditional%20Japanese%20temple%2C%20vibrant%20city%20lights%2C%20iconic%20Japan%20landmarks%2C%20professional%20travel%20photography&width=800&height=400&seq=3&orientation=landscape"
+                      alt="Japan Tour"
+                      class="w-full h-full object-cover object-top"
+                    />
+                    <div
+                      class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6"
+                    >
+                      <h3 class="text-2xl font-bold text-white">
+                        10-Day Japan Explorer
+                      </h3>
+                      <p class="text-white text-opacity-90">
+                        Tokyo • Kyoto • Osaka
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                      <div>
+                        <span class="text-sm text-gray-500">Starting from</span>
+                        <p class="text-2xl font-bold text-primary">$3,299</p>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="flex text-yellow-400">
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="ml-1 text-sm text-gray-600"
+                          >4.9 (87 reviews)</span
+                        >
+                      </div>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                      <div class="flex items-start">
+                        <div
+                          class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-3"
+                        >
+                          1
+                        </div>
+                        <div>
+                          <h4 class="font-medium">Days 1-3: Tokyo</h4>
+                          <p class="text-sm text-gray-600">
+                            Shibuya, Asakusa Temple, and Tsukiji Market
+                          </p>
+                        </div>
+                      </div>
+                      <div class="flex items-start">
+                        <div
+                          class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-3"
+                        >
+                          2
+                        </div>
+                        <div>
+                          <h4 class="font-medium">Days 4-7: Kyoto</h4>
+                          <p class="text-sm text-gray-600">
+                            Bamboo Forest, Golden Pavilion, and tea ceremony
+                          </p>
+                        </div>
+                      </div>
+                      <div class="flex items-start">
+                        <div
+                          class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-3"
+                        >
+                          3
+                        </div>
+                        <div>
+                          <h4 class="font-medium">Days 8-10: Osaka</h4>
+                          <p class="text-sm text-gray-600">
+                            Osaka Castle and street food adventure
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                      <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                          <i class="ri-calendar-line text-gray-500"></i>
+                        </div>
+                        <span class="text-sm text-gray-600"
+                          >March - May (Cherry Blossoms)</span
+                        >
+                      </div>
+                      <a
+                        href="#"
+                        class="bg-primary hover:bg-blue-600 text-white px-6 py-2 rounded-button font-medium transition duration-300 whitespace-nowrap"
+                        >View Details</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Safari Itinerary -->
+              <div class="w-full flex-shrink-0">
+                <div
+                  class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+                >
+                  <div class="relative h-64 md:h-80">
+                    <img
+                      src="https://readdy.ai/api/search-image?query=stunning%20African%20safari%20landscape%20with%20elephants%2C%20giraffes%20and%20zebras%20at%20sunset%2C%20Serengeti%20National%20Park%2C%20golden%20hour%20lighting%2C%20acacia%20trees%2C%20dramatic%20sky%2C%20wildlife%20photography%2C%20professional%20travel%20photography&width=800&height=400&seq=4&orientation=landscape"
+                      alt="African Safari"
+                      class="w-full h-full object-cover object-top"
+                    />
+                    <div
+                      class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6"
+                    >
+                      <h3 class="text-2xl font-bold text-white">
+                        8-Day Tanzania Safari
+                      </h3>
+                      <p class="text-white text-opacity-90">
+                        Serengeti • Ngorongoro • Tarangire
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                      <div>
+                        <span class="text-sm text-gray-500">Starting from</span>
+                        <p class="text-2xl font-bold text-primary">$3,899</p>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="flex text-yellow-400">
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                          <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="ml-1 text-sm text-gray-600"
+                          >5.0 (56 reviews)</span
+                        >
+                      </div>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                      <div class="flex items-start">
+                        <div
+                          class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-3"
+                        >
+                          1
+                        </div>
+                        <div>
+                          <h4 class="font-medium">Days 1-3: Serengeti</h4>
+                          <p class="text-sm text-gray-600">
+                            Big Five wildlife and migration viewing
+                          </p>
+                        </div>
+                      </div>
+                      <div class="flex items-start">
+                        <div
+                          class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-3"
+                        >
+                          2
+                        </div>
+                        <div>
+                          <h4 class="font-medium">Days 4-6: Ngorongoro</h4>
+                          <p class="text-sm text-gray-600">
+                            Crater game drives and Maasai village visit
+                          </p>
+                        </div>
+                      </div>
+                      <div class="flex items-start">
+                        <div
+                          class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-full text-primary mr-3"
+                        >
+                          3
+                        </div>
+                        <div>
+                          <h4 class="font-medium">Days 7-8: Tarangire</h4>
+                          <p class="text-sm text-gray-600">
+                            Elephant herds and baobab landscapes
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                      <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                          <i class="ri-calendar-line text-gray-500"></i>
+                        </div>
+                        <span class="text-sm text-gray-600"
+                          >June - October (Migration)</span
+                        >
+                      </div>
+                      <a
+                        href="#"
+                        class="bg-primary hover:bg-blue-600 text-white px-6 py-2 rounded-button font-medium transition duration-300 whitespace-nowrap"
+                        >View Details</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <button
+            id="prev-btn"
+            class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 md:-translate-x-0 w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition duration-300 z-10 focus:outline-none"
+          >
+            <div class="w-12 h-12 flex items-center justify-center">
+              <i class="ri-arrow-left-s-line ri-xl"></i>
+            </div>
+          </button>
+          <button
+            id="next-btn"
+            class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 md:translate-x-0 w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition duration-300 z-10 focus:outline-none"
+          >
+            <div class="w-12 h-12 flex items-center justify-center">
+              <i class="ri-arrow-right-s-line ri-xl"></i>
+            </div>
+          </button>
+
+          <!-- Carousel Indicators -->
+          <div class="flex justify-center mt-6 space-x-2">
+            <button
+              class="w-3 h-3 rounded-full bg-primary"
+              data-index="0"
+            ></button>
+            <button
+              class="w-3 h-3 rounded-full bg-gray-300"
+              data-index="1"
+            ></button>
+            <button
+              class="w-3 h-3 rounded-full bg-gray-300"
+              data-index="2"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials with Travel Photos -->
+    <section id="testimonials" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">What Our Travelers Say</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Real experiences from our satisfied clients
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=couple%20enjoying%20sunset%20in%20Santorini%2C%20Greece%2C%20romantic%20view%20of%20white%20buildings%20and%20blue%20domes%2C%20beautiful%20golden%20hour%20lighting%2C%20Mediterranean%20Sea%20view%2C%20happy%20travelers%2C%20authentic%20travel%20moment&width=600&height=400&seq=5&orientation=landscape"
+                alt="Santorini Sunset"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <div class="flex text-yellow-400 mb-2">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                </div>
+                <p class="text-white font-medium italic">
+                  "The perfect anniversary trip! Every detail was taken care
+                  of."
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden"
+                >
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20couple%2C%20warm%20smiles%2C%20casual%20elegant%20attire%2C%20neutral%20background%2C%20genuine%20expression&width=100&height=100&seq=6&orientation=squarish"
+                    alt="Client"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 class="font-semibold">Michael & Rebecca Thompson</h4>
+                  <p class="text-sm text-gray-600">Greek Islands Tour</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=family%20on%20safari%20in%20Africa%2C%20parents%20with%20two%20children%20watching%20elephants%2C%20golden%20hour%20lighting%2C%20safari%20vehicle%2C%20Serengeti%20landscape%2C%20authentic%20travel%20moment%2C%20happy%20travelers&width=600&height=400&seq=7&orientation=landscape"
+                alt="Safari Experience"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <div class="flex text-yellow-400 mb-2">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                </div>
+                <p class="text-white font-medium italic">
+                  "Our kids still talk about this safari! A life-changing
+                  experience."
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden"
+                >
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20family%20portrait%2C%20parents%20with%20two%20children%2C%20casual%20outdoor%20setting%2C%20warm%20smiles%2C%20neutral%20background&width=100&height=100&seq=8&orientation=squarish"
+                    alt="Client"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 class="font-semibold">The Anderson Family</h4>
+                  <p class="text-sm text-gray-600">Tanzania Safari Adventure</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://readdy.ai/api/search-image?query=young%20woman%20in%20traditional%20Japanese%20garden%20with%20cherry%20blossoms%2C%20Kyoto%20temple%20in%20background%2C%20spring%20season%2C%20authentic%20travel%20moment%2C%20solo%20traveler%20enjoying%20cultural%20experience&width=600&height=400&seq=9&orientation=landscape"
+                alt="Japan Experience"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <div class="flex text-yellow-400 mb-2">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-half-fill"></i>
+                </div>
+                <p class="text-white font-medium italic">
+                  "The local guides made Japan come alive in ways I never
+                  expected!"
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden"
+                >
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20young%20Asian%20woman%2C%20casual%20elegant%20attire%2C%20warm%20smile%2C%20neutral%20background%2C%20genuine%20expression&width=100&height=100&seq=10&orientation=squarish"
+                    alt="Client"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 class="font-semibold">Jennifer Chen</h4>
+                  <p class="text-sm text-gray-600">Japan Explorer Tour</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Limited-Time Offers -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div
+          class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg overflow-hidden"
+        >
+          <div class="p-8 md:p-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <span
+                  class="inline-block px-4 py-1 bg-white text-blue-600 rounded-full text-sm font-semibold mb-4"
+                  >Limited Time Offer</span
+                >
+                <h2 class="text-3xl font-bold text-white mb-4">
+                  Summer in Italy
+                </h2>
+                <p class="text-white text-opacity-90 mb-6">
+                  Book by June 15 for a complimentary room upgrade and exclusive
+                  wine tasting experience in Tuscany.
+                </p>
+
+                <div class="mb-6">
+                  <p class="text-white mb-2">Offer Ends In:</p>
+                  <div class="countdown-timer">
+                    <div class="countdown-box">
+                      <span class="text-2xl font-bold">14</span>
+                      <span class="text-xs">Days</span>
+                    </div>
+                    <div class="countdown-box">
+                      <span class="text-2xl font-bold">22</span>
+                      <span class="text-xs">Hours</span>
+                    </div>
+                    <div class="countdown-box">
+                      <span class="text-2xl font-bold">45</span>
+                      <span class="text-xs">Mins</span>
+                    </div>
+                    <div class="countdown-box">
+                      <span class="text-2xl font-bold">18</span>
+                      <span class="text-xs">Secs</span>
+                    </div>
+                  </div>
+                </div>
+
+                <a
+                  href="#"
+                  class="inline-block bg-white hover:bg-gray-100 text-blue-600 px-6 py-3 rounded-button font-semibold transition duration-300 whitespace-nowrap"
+                  >View Italy Packages</a
+                >
+              </div>
+
+              <div class="hidden md:block">
+                <img
+                  src="https://readdy.ai/api/search-image?query=beautiful%20Italian%20landscape%20with%20Tuscan%20countryside%2C%20rolling%20hills%20with%20cypress%20trees%2C%20vineyard%2C%20golden%20hour%20lighting%2C%20charming%20villa%2C%20romantic%20setting%2C%20professional%20travel%20photography&width=600&height=400&seq=11&orientation=landscape"
+                  alt="Italy Summer"
+                  class="w-full h-auto rounded-lg shadow-lg"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-indigo-700 p-4">
+            <div class="ticker-container">
+              <div class="ticker-content text-white">
+                <span class="font-medium">🔥 LAST-MINUTE DEAL:</span> 5-Day
+                Costa Rica Adventure - 30% OFF (Only 3 spots left!) |
+                <span class="font-medium">🔥 LAST-MINUTE DEAL:</span> Bali
+                Wellness Retreat - Save $750 when you book this week |
+                <span class="font-medium">🔥 LAST-MINUTE DEAL:</span> Weekend in
+                Paris - Business Class Upgrade Included |
+                <span class="font-medium">🔥 LAST-MINUTE DEAL:</span> Alaska
+                Cruise - Kids Sail Free |
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Insurance Spotlight -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div
+          class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="p-8 md:p-12">
+              <span
+                class="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4"
+                >Travel With Confidence</span
+              >
+              <h2 class="text-3xl font-bold mb-6">Travel Insurance</h2>
+              <p class="text-gray-600 mb-6">
+                Protect your travel investment and enjoy peace of mind with our
+                comprehensive coverage options.
+              </p>
+
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start">
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-green-500 mr-3"
+                  >
+                    <i class="ri-check-line ri-lg"></i>
+                  </div>
+                  <p class="text-gray-700">
+                    Trip cancellation & interruption protection
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-green-500 mr-3"
+                  >
+                    <i class="ri-check-line ri-lg"></i>
+                  </div>
+                  <p class="text-gray-700">
+                    Emergency medical coverage up to $250,000
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-green-500 mr-3"
+                  >
+                    <i class="ri-check-line ri-lg"></i>
+                  </div>
+                  <p class="text-gray-700">
+                    Lost or delayed baggage reimbursement
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-green-500 mr-3"
+                  >
+                    <i class="ri-check-line ri-lg"></i>
+                  </div>
+                  <p class="text-gray-700">24/7 travel assistance services</p>
+                </div>
+              </div>
+
+              <div class="flex items-center mb-8">
+                <p class="text-2xl font-bold text-primary mr-3">$99</p>
+                <p class="text-gray-600">per person, per trip</p>
+              </div>
+
+              <a
+                href="#"
+                class="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-button font-semibold transition duration-300 whitespace-nowrap"
+                >Add Insurance to My Trip</a
+              >
+            </div>
+
+            <div class="hidden md:block relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=family%20traveling%20with%20luggage%20in%20airport%2C%20stress-free%20travel%2C%20parents%20with%20children%2C%20modern%20terminal%2C%20bright%20and%20airy%20space%2C%20travel%20insurance%20concept%2C%20professional%20travel%20photography&width=600&height=700&seq=12&orientation=portrait"
+                alt="Travel Insurance"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Everything you need to know about booking with us
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="accordion">
+            <div class="accordion-item">
+              <button
+                class="accordion-header w-full flex justify-between items-center py-4 px-1 text-left focus:outline-none"
+              >
+                <span class="text-lg font-medium"
+                  >Can I make changes to my booking?</span
+                >
+                <div
+                  class="w-6 h-6 flex items-center justify-center accordion-icon"
+                >
+                  <i class="ri-add-line ri-lg"></i>
+                </div>
+              </button>
+              <div class="accordion-content px-1 pb-4">
+                <p class="text-gray-600">
+                  Yes, you can make changes to your booking up to 30 days before
+                  departure without any change fees. Changes made within 30 days
+                  may incur additional costs depending on the specific
+                  circumstances. Contact your travel advisor for assistance with
+                  any changes.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-header w-full flex justify-between items-center py-4 px-1 text-left focus:outline-none"
+              >
+                <span class="text-lg font-medium"
+                  >What COVID policies are in place?</span
+                >
+                <div
+                  class="w-6 h-6 flex items-center justify-center accordion-icon"
+                >
+                  <i class="ri-add-line ri-lg"></i>
+                </div>
+              </button>
+              <div class="accordion-content px-1 pb-4">
+                <p class="text-gray-600">
+                  We follow all local health guidelines for each destination.
+                  Our flexible booking policies allow for changes due to
+                  COVID-related issues, including free rebooking or full refunds
+                  for government-imposed travel restrictions. All our partners
+                  adhere to enhanced cleaning and safety protocols.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-header w-full flex justify-between items-center py-4 px-1 text-left focus:outline-none"
+              >
+                <span class="text-lg font-medium"
+                  >How do I know if I need a visa?</span
+                >
+                <div
+                  class="w-6 h-6 flex items-center justify-center accordion-icon"
+                >
+                  <i class="ri-add-line ri-lg"></i>
+                </div>
+              </button>
+              <div class="accordion-content px-1 pb-4">
+                <p class="text-gray-600">
+                  Visa requirements vary based on your citizenship and
+                  destination. When you book with us, your travel advisor will
+                  provide information about visa requirements specific to your
+                  itinerary. We can also assist with visa application processes
+                  for an additional fee through our partner visa services.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-header w-full flex justify-between items-center py-4 px-1 text-left focus:outline-none"
+              >
+                <span class="text-lg font-medium"
+                  >What payment methods do you accept?</span
+                >
+                <div
+                  class="w-6 h-6 flex items-center justify-center accordion-icon"
+                >
+                  <i class="ri-add-line ri-lg"></i>
+                </div>
+              </button>
+              <div class="accordion-content px-1 pb-4">
+                <p class="text-gray-600">
+                  We accept all major credit cards (Visa, Mastercard, American
+                  Express), bank transfers, and PayPal. For certain
+                  destinations, we also offer payment plans allowing you to pay
+                  in installments before your departure date.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-header w-full flex justify-between items-center py-4 px-1 text-left focus:outline-none"
+              >
+                <span class="text-lg font-medium"
+                  >Are meals included in my package?</span
+                >
+                <div
+                  class="w-6 h-6 flex items-center justify-center accordion-icon"
+                >
+                  <i class="ri-add-line ri-lg"></i>
+                </div>
+              </button>
+              <div class="accordion-content px-1 pb-4">
+                <p class="text-gray-600">
+                  Meal inclusions vary by package and destination. All-inclusive
+                  resorts typically include all meals, while city tours might
+                  include breakfast only. Your detailed itinerary will specify
+                  exactly which meals are included. We're also happy to
+                  accommodate dietary restrictions with advance notice.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Meet Your Agents -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Meet Your Travel Experts</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Our experienced team is ready to craft your perfect journey
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="overflow-x-auto pb-4 hide-scrollbar">
+            <div class="flex space-x-6 min-w-max">
+              <div
+                class="w-64 bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+              >
+                <div class="h-72 overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20female%20travel%20agent%2C%20mid%2030s%2C%20business%20casual%20attire%2C%20friendly%20smile%2C%20office%20setting%2C%20cruise%20ship%20model%20in%20background%2C%20professional%20headshot&width=400&height=500&seq=13&orientation=portrait"
+                    alt="Sarah Johnson"
+                    class="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-1">Sarah Johnson</h3>
+                  <p class="text-primary font-medium mb-3">Cruise Expert</p>
+                  <p class="text-gray-600 text-sm mb-4">
+                    15+ years specializing in luxury cruises and Mediterranean
+                    destinations.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center text-primary hover:text-blue-700 font-medium"
+                  >
+                    <span>Contact Sarah</span>
+                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                      <i class="ri-arrow-right-line"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="w-64 bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+              >
+                <div class="h-72 overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20male%20travel%20agent%2C%20early%2040s%2C%20business%20casual%20attire%2C%20confident%20smile%2C%20office%20setting%20with%20adventure%20travel%20posters%2C%20outdoor%20enthusiast%20look%2C%20professional%20headshot&width=400&height=500&seq=14&orientation=portrait"
+                    alt="David Rodriguez"
+                    class="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-1">David Rodriguez</h3>
+                  <p class="text-primary font-medium mb-3">
+                    Adventure Travel Pro
+                  </p>
+                  <p class="text-gray-600 text-sm mb-4">
+                    Former expedition guide specializing in South America and
+                    adventure tours.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center text-primary hover:text-blue-700 font-medium"
+                  >
+                    <span>Contact David</span>
+                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                      <i class="ri-arrow-right-line"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="w-64 bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+              >
+                <div class="h-72 overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20female%20travel%20agent%2C%20late%2020s%2C%20business%20casual%20attire%2C%20warm%20smile%2C%20office%20setting%20with%20Asian%20travel%20decor%2C%20professional%20headshot&width=400&height=500&seq=15&orientation=portrait"
+                    alt="Michelle Chang"
+                    class="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-1">Michelle Chang</h3>
+                  <p class="text-primary font-medium mb-3">Asia Specialist</p>
+                  <p class="text-gray-600 text-sm mb-4">
+                    Fluent in Mandarin and Japanese, expert in cultural
+                    immersion trips.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center text-primary hover:text-blue-700 font-medium"
+                  >
+                    <span>Contact Michelle</span>
+                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                      <i class="ri-arrow-right-line"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="w-64 bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+              >
+                <div class="h-72 overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20male%20travel%20agent%2C%20mid%2030s%2C%20business%20casual%20attire%2C%20friendly%20smile%2C%20office%20setting%20with%20European%20travel%20posters%2C%20professional%20headshot&width=400&height=500&seq=16&orientation=portrait"
+                    alt="James Wilson"
+                    class="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-1">James Wilson</h3>
+                  <p class="text-primary font-medium mb-3">
+                    European Destinations
+                  </p>
+                  <p class="text-gray-600 text-sm mb-4">
+                    Former tour guide with extensive knowledge of hidden
+                    European gems.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center text-primary hover:text-blue-700 font-medium"
+                  >
+                    <span>Contact James</span>
+                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                      <i class="ri-arrow-right-line"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="w-64 bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+              >
+                <div class="h-72 overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20female%20travel%20agent%2C%20early%2040s%2C%20business%20casual%20attire%2C%20warm%20smile%2C%20office%20setting%20with%20African%20travel%20decor%2C%20safari%20hat%20visible%2C%20professional%20headshot&width=400&height=500&seq=17&orientation=portrait"
+                    alt="Nicole Okafor"
+                    class="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-1">Nicole Okafor</h3>
+                  <p class="text-primary font-medium mb-3">
+                    Africa & Safari Expert
+                  </p>
+                  <p class="text-gray-600 text-sm mb-4">
+                    Born in Kenya with 12+ years planning luxury safaris and
+                    cultural tours.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center text-primary hover:text-blue-700 font-medium"
+                  >
+                    <span>Contact Nicole</span>
+                    <div class="w-5 h-5 flex items-center justify-center ml-1">
+                      <i class="ri-arrow-right-line"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div
+          class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 md:p-12"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 class="text-3xl font-bold mb-4">
+                Get Exclusive Travel Deals
+              </h2>
+              <p class="text-gray-600 mb-6">
+                Join our newsletter and be the first to know about flash sales
+                and limited-time offers.
+              </p>
+
+              <div class="space-y-3 mb-6">
+                <div class="flex items-start">
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-primary mr-3"
+                  >
+                    <i class="ri-check-line ri-lg"></i>
+                  </div>
+                  <p class="text-gray-700">
+                    Weekly deal alerts with savings up to 40%
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-primary mr-3"
+                  >
+                    <i class="ri-check-line ri-lg"></i>
+                  </div>
+                  <p class="text-gray-700">
+                    Early access to seasonal promotions
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-6 h-6 flex items-center justify-center text-primary mr-3"
+                  >
+                    <i class="ri-check-line ri-lg"></i>
+                  </div>
+                  <p class="text-gray-700">
+                    Travel tips and destination guides
+                  </p>
+                </div>
+              </div>
+
+              <form class="space-y-4">
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Email Address</label
+                  >
+                  <div class="relative">
+                    <input
+                      type="email"
+                      id="email"
+                      class="w-full px-4 py-3 border-gray-300 border rounded-button focus:ring-2 focus:ring-primary focus:border-primary text-gray-900"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="flex items-center h-5">
+                    <input
+                      id="privacy"
+                      type="checkbox"
+                      class="custom-checkbox"
+                    />
+                  </div>
+                  <div class="ml-3 text-sm">
+                    <label for="privacy" class="text-gray-600"
+                      >I agree to receive travel deals and accept the
+                      <a href="#" class="text-primary hover:underline"
+                        >privacy policy</a
+                      ></label
+                    >
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-button font-semibold transition duration-300 whitespace-nowrap"
+                >
+                  Subscribe Now
+                </button>
+              </form>
+            </div>
+
+            <div class="hidden md:block">
+              <img
+                src="https://readdy.ai/api/search-image?query=person%20checking%20travel%20deals%20on%20laptop%20at%20home%2C%20coffee%20cup%20nearby%2C%20excited%20expression%2C%20planning%20vacation%2C%20travel%20website%20visible%20on%20screen%2C%20warm%20lighting%2C%20cozy%20setting&width=600&height=500&seq=18&orientation=landscape"
+                alt="Newsletter Signup"
+                class="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div>
+            <a
+              href="#"
+              class="text-2xl font-['Pacifico'] text-white mb-6 inline-block"
+              >logo</a
+            >
+            <p class="text-gray-400 mb-6">
+              Creating unforgettable travel experiences since 2005. Your dream
+              vacation is just a conversation away.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <i class="ri-facebook-fill ri-lg"></i>
+                </div>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <i class="ri-instagram-fill ri-lg"></i>
+                </div>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <i class="ri-twitter-x-fill ri-lg"></i>
+                </div>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <i class="ri-pinterest-fill ri-lg"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Destinations</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Europe</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Asia</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Africa</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >South America</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Caribbean</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Oceania</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Travel Styles</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Luxury Travel</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Adventure Tours</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Honeymoons</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Family Vacations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Cruises</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Group Travel</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3 mt-1"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <span class="text-gray-400"
+                  >1234 Travel Lane, Suite 500<br />New York, NY 10001</span
+                >
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3 mt-1"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <span class="text-gray-400">+1 (555) 123-4567</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3 mt-1"
+                >
+                  <i class="ri-mail-line"></i>
+                </div>
+                <span class="text-gray-400">info@wanderlusttravel.com</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3 mt-1"
+                >
+                  <i class="ri-time-line"></i>
+                </div>
+                <span class="text-gray-400"
+                  >Mon-Fri: 9AM-6PM EST<br />Sat: 10AM-4PM EST</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+              <p class="text-gray-500 text-sm">
+                &copy; 2025 Wanderlust Travel Agency. All rights reserved.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+              <div class="flex items-center text-gray-500">
+                <div class="w-6 h-6 flex items-center justify-center mr-1">
+                  <i class="ri-visa-fill ri-lg"></i>
+                </div>
+                <span class="text-sm">Visa</span>
+              </div>
+              <div class="flex items-center text-gray-500">
+                <div class="w-6 h-6 flex items-center justify-center mr-1">
+                  <i class="ri-mastercard-fill ri-lg"></i>
+                </div>
+                <span class="text-sm">Mastercard</span>
+              </div>
+              <div class="flex items-center text-gray-500">
+                <div class="w-6 h-6 flex items-center justify-center mr-1">
+                  <i class="ri-paypal-fill ri-lg"></i>
+                </div>
+                <span class="text-sm">PayPal</span>
+              </div>
+              <div class="flex items-center text-gray-500">
+                <div class="w-6 h-6 flex items-center justify-center mr-1">
+                  <i class="ri-apple-fill ri-lg"></i>
+                </div>
+                <span class="text-sm">Apple Pay</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-6 flex flex-wrap justify-center gap-4 text-xs text-gray-500"
+          >
+            <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+            <a href="#" class="hover:text-gray-400">Terms of Service</a>
+            <a href="#" class="hover:text-gray-400">Cookie Policy</a>
+            <span>Registered Seller of Travel #ST12345</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Sticky Chat Button -->
+    <div class="sticky-chat">
+      <button
+        class="bg-primary hover:bg-blue-600 text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center transition duration-300"
+      >
+        <div class="w-16 h-16 flex items-center justify-center">
+          <i class="ri-customer-service-2-line ri-xl"></i>
+        </div>
+      </button>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Carousel Functionality
+        const carouselContainer = document.getElementById("carousel-container");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const indicators = document.querySelectorAll("[data-index]");
+        let currentIndex = 0;
+        const totalSlides = 3;
+
+        function updateCarousel() {
+          carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+          // Update indicators
+          indicators.forEach((indicator, index) => {
+            if (index === currentIndex) {
+              indicator.classList.remove("bg-gray-300");
+              indicator.classList.add("bg-primary");
+            } else {
+              indicator.classList.remove("bg-primary");
+              indicator.classList.add("bg-gray-300");
+            }
+          });
+        }
+
+        nextBtn.addEventListener("click", function () {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateCarousel();
+        });
+
+        prevBtn.addEventListener("click", function () {
+          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+          updateCarousel();
+        });
+
+        indicators.forEach((indicator, index) => {
+          indicator.addEventListener("click", function () {
+            currentIndex = index;
+            updateCarousel();
+          });
+        });
+
+        // Accordion Functionality
+        const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+        accordionHeaders.forEach((header) => {
+          header.addEventListener("click", function () {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector(".accordion-icon i");
+
+            content.classList.toggle("active");
+
+            if (content.classList.contains("active")) {
+              icon.classList.remove("ri-add-line");
+              icon.classList.add("ri-subtract-line");
+            } else {
+              icon.classList.remove("ri-subtract-line");
+              icon.classList.add("ri-add-line");
+            }
+          });
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+          // This is just a demo countdown - in a real app, you'd calculate from a target date
+          const days = document.querySelector(
+            ".countdown-box:nth-child(1) .text-2xl",
+          );
+          const hours = document.querySelector(
+            ".countdown-box:nth-child(2) .text-2xl",
+          );
+          const minutes = document.querySelector(
+            ".countdown-box:nth-child(3) .text-2xl",
+          );
+          const seconds = document.querySelector(
+            ".countdown-box:nth-child(4) .text-2xl",
+          );
+
+          let secondsValue = parseInt(seconds.textContent);
+          let minutesValue = parseInt(minutes.textContent);
+          let hoursValue = parseInt(hours.textContent);
+          let daysValue = parseInt(days.textContent);
+
+          secondsValue -= 1;
+
+          if (secondsValue < 0) {
+            secondsValue = 59;
+            minutesValue -= 1;
+
+            if (minutesValue < 0) {
+              minutesValue = 59;
+              hoursValue -= 1;
+
+              if (hoursValue < 0) {
+                hoursValue = 23;
+                daysValue -= 1;
+
+                if (daysValue < 0) {
+                  // Reset or do something when countdown reaches zero
+                  daysValue = 0;
+                  hoursValue = 0;
+                  minutesValue = 0;
+                  secondsValue = 0;
+                  return;
+                }
+              }
+            }
+          }
+
+          days.textContent = daysValue.toString().padStart(2, "0");
+          hours.textContent = hoursValue.toString().padStart(2, "0");
+          minutes.textContent = minutesValue.toString().padStart(2, "0");
+          seconds.textContent = secondsValue.toString().padStart(2, "0");
+        }
+
+        setInterval(updateCountdown, 1000);
+      });
+    </script>
+  </body>
+</html>
