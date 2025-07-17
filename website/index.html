@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artisanal Café</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#8B5A2B", secondary: "#D2B48C" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Poppins', sans-serif;
+      }
+      h1, h2, h3, h4, h5, h6 {
+          font-family: 'Playfair Display', serif;
+      }
+      .hero-section {
+          background-image: url('https://readdy.ai/api/search-image?query=A%20cozy%20caf%C3%A9%20interior%20with%20warm%20ambient%20lighting%2C%20steaming%20coffee%20cups%20on%20wooden%20tables%2C%20freshly%20baked%20pastries%20displayed%20on%20rustic%20wooden%20stands%2C%20and%20happy%20customers%20enjoying%20their%20time%20in%20comfortable%20seating.%20The%20scene%20has%20a%20warm%20color%20palette%20with%20rich%20browns%2C%20creams%2C%20and%20soft%20lighting%20creating%20an%20inviting%20atmosphere.%20The%20left%20side%20of%20the%20image%20has%20a%20gradient%20that%20smoothly%20transitions%20to%20a%20clean%20background%20for%20text%20overlay.&width=1920&height=1080&seq=cafe1&orientation=landscape');
+          background-size: cover;
+          background-position: center;
+      }
+      .menu-card:hover .menu-overlay {
+          opacity: 1;
+      }
+      .menu-card:hover img {
+          transform: scale(1.05);
+      }
+      .gallery-img:hover img {
+          transform: scale(1.05);
+      }
+      input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #8B5A2B;
+          cursor: pointer;
+      }
+      .custom-checkbox {
+          display: none;
+      }
+      .custom-checkbox + label {
+          position: relative;
+          padding-left: 35px;
+          cursor: pointer;
+          display: inline-block;
+      }
+      .custom-checkbox + label:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 24px;
+          height: 24px;
+          border: 2px solid #8B5A2B;
+          border-radius: 4px;
+          background: #fff;
+      }
+      .custom-checkbox:checked + label:after {
+          content: '';
+          position: absolute;
+          left: 8px;
+          top: 4px;
+          width: 8px;
+          height: 14px;
+          border: solid #8B5A2B;
+          border-width: 0 3px 3px 0;
+          transform: rotate(45deg);
+      }
+      .testimonial-card:hover {
+          transform: translateY(-5px);
+      }
+      .loyalty-circle {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 2px solid #8B5A2B;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s;
+      }
+      .loyalty-circle.active {
+          background-color: #8B5A2B;
+          color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ALL SECTIONS INSIDE HERE -->
+     
+  </body>
+</html>
